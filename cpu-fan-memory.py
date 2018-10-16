@@ -1,7 +1,6 @@
 #!/usr/bin/env python
-
 """
-This script uses the python-psutil module to display the CPU average load, frequency (current/max),
+This script uses the `python-psutil` module to display the CPU average load, frequency (current/max),
 the temperature sensor reading, the fan speed and memory usage (used/total).
 
 Author: Piotr Miller
@@ -15,10 +14,29 @@ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Publ
 
 Inspired by tknomanzr's cpu.py at https://forums.bunsenlabs.org/viewtopic.php?id=4276
 
-Executor: `python ~/tint2-executors/cpu-fan-memory.py`
-Arguments (optional): -a (average CPU load) | -p (textual percentage for each core) | -g (graphical CPU load bar)
-Combining -ag will slow the script down - not recommended
-Add `-s` argument to omit max CPU frequency and total memory value
+Executor: python ~/tint2-executors/cpu-fan-memory.py [-options]
+
+Optional argument: -GPAS (case insensitive)
+
+- [G]raphical CPU load bar
+- [P]ercentage for each core (text)
+- [A]verage CPU load (txt)
+- [F]ahrenheit instead of ℃
+- [S]hort - omit max CPU frequency and total memory value
+
+Note: avoid combining A with P and G - this will slow the script down.
+
+Called with no argument the script will display un[S]hortened line with temperature in ℃
+and [G]raphical CPU load indicator, e.g.:
+
+_▁▂___█_ 1.7/3.3GHz 47℃ 2500/m 2.7/15.6GB
+
+`python ~/tint2-executors/cpu-fan-memory.py -afs` displays [A]verage CPU load, Fahrenheit temperature
+and [S]hortens frequency and memory indication, e.g.:
+
+CPU: 13.4% 2.9Ghz 141.8℉ 2500/m 3.2GB
+
+Note: certain sensors may be unavailable on certain machines.
 """
 
 import sys
@@ -26,28 +44,30 @@ import psutil
 
 
 def main():
+    display_graph = True
     display_average = False
     display_percentage = False
     short = False
+    fahrenheit = False
 
     if len(sys.argv) > 1 and sys.argv[1].startswith("-"):
         options = sys.argv[1][1:].upper()
-        print(options)
         short = options.find("S") > -1
         display_average = options.find("A") > -1
         display_percentage = options.find("P") > -1
         display_graph = options.find("G") > -1
-    else:
+        fahrenheit = options.find("F") > -1
+
+    if not display_average and not display_percentage:
         display_graph = True
 
     # CPU load
-
     if display_graph or display_percentage:
 
         result = psutil.cpu_percent(interval=1, percpu=True)
 
         if display_graph:
-            # Display load per CPU as semi-graph:
+            # Load per CPU as semi-graph:
             print(graph_per_cpu(result), end=" ")
 
         if display_percentage:
@@ -64,17 +84,17 @@ def main():
         print(str(round(freq[0] / 1000, 1)), end="")
         if not short:
             print("/" + str(round(freq[2] / 1000, 1)), end="")
-        print("GHz")
+        print("GHz", end=" ")
 
     # Temperature sensor
-    temp = psutil.sensors_temperatures(False)       # True for Fahrenheit
-    if len(temp) > 0:                               # Temperature sensor found
+    temp = psutil.sensors_temperatures(fahrenheit)       # True for Fahrenheit
+    if len(temp) > 0:                               # Temperature sensor found!
         core_temp = temp["coretemp"]                # "acpitz" for ACPI Thermal Zone
-        print(core_temp[0][1], end = "℃")
+        print(core_temp[0][1], end="℉" if fahrenheit else "℃")
 
     # Fan speed
     fans = psutil.sensors_fans()
-    if len(fans) > 0:                               # fan sensor found
+    if len(fans) > 0:                               # Fan sensor found!
         fan0 = next(iter(fans.values()))
         print(" " + str(fan0[0][1]), end="/m ")
     else:
