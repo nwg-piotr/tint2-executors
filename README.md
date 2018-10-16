@@ -4,6 +4,6 @@ useful on [Arch Linux](https://www.archlinux.org), the others may be used anywhe
 
 Let's start from the latest one:
 
-## cpu-fan-memory.py
+## [cpu-fan-memory.py](cpu-fan-memory.py)
 This script uses the `python-psutil` module to display the CPU average load, frequency (current/max),
 the temperature sensor reading, the fan speed and memory usage (used/total).
