@@ -5,7 +5,8 @@ the temperature sensor reading, the fan speed and memory usage (used/total).
 
 Author: Piotr Miller
 e-mail: nwg.piotr@gmail.com
-website: http://nwg.pl
+Website: http://nwg.pl
+Project: https://github.com/nwg-piotr/tint2-executors
 
 The script is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
 as published by the Free Software Foundation, either version 3 of the License, or any later version.
@@ -16,7 +17,7 @@ Inspired by tknomanzr's cpu.py at https://forums.bunsenlabs.org/viewtopic.php?id
 
 Command: python ~/tint2-executors/cpu-fan-memory.py [-options]
 
-Optional argument: -GPAS (case insensitive)
+Optional argument: -GPAFS (case insensitive)
 
 - [G]raphical CPU load bar
 - [P]ercentage for each core (text)
@@ -24,19 +25,7 @@ Optional argument: -GPAS (case insensitive)
 - [F]ahrenheit instead of ℃
 - [S]hort - omit max CPU frequency and total memory value
 
-Note: avoid combining A with P and G - this will slow the script down.
-
-Called with no argument the script will display un[S]hortened line with temperature in ℃
-and [G]raphical CPU load indicator, e.g.:
-
-_▁▂___█_ 1.7/3.3GHz 47℃ 2500/m 2.7/15.6GB
-
-`python ~/tint2-executors/cpu-fan-memory.py -afs` displays [A]verage CPU load, Fahrenheit temperature
-and [S]hortens frequency and memory indication, e.g.:
-
-CPU: 13.4% 2.9Ghz 141.8℉ 2500/m 3.2GB
-
-Note: certain sensors may be unavailable on certain machines.
+Note: avoid combining A with P and G - this will slow the script down. See the project Wiki for more details.
 """
 
 import sys
