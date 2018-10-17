@@ -14,7 +14,7 @@ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Publ
 
 Inspired by tknomanzr's cpu.py at https://forums.bunsenlabs.org/viewtopic.php?id=4276
 
-Executor: python ~/tint2-executors/cpu-fan-memory.py [-options]
+Command: python ~/tint2-executors/cpu-fan-memory.py [-options]
 
 Optional argument: -GPAS (case insensitive)
 
