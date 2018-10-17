@@ -1,8 +1,6 @@
 # tint2-executors
 I thought to publish my collection of executors for Tint2 panel here, in hope it's useful to someone. Some of them are only
-useful on [Arch Linux](https://www.archlinux.org), the others may be used anywhere.
-
-Let's start from the latest one:
+useful on [Arch Linux](https://www.archlinux.org), the others may be used anywhere. Let's start from the latest one:
 
 ### [cpu-fan-memory.py](cpu-fan-memory.py)
 This script uses the `python-psutil` module to display the CPU average load, frequency (current/max),
