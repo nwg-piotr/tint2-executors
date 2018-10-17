@@ -9,7 +9,7 @@
 # Use the line below with `xorg-xbacklight`
 bri=B:$(xbacklight -get | cut -d'.' -f1)%
 
-# or replace with the line below for `light-git` (https://github.com/haikarainen/light, should work on Radeon graphics)
+# or replace with the line below to use the `light` package (should work with Radeon graphics)
 # bri=B:$(light -G | cut -d'.' -f1)%
 
 vol=V:$(amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }')
