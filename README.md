@@ -6,7 +6,7 @@ useful on [Arch Linux](https://www.archlinux.org), the others may be used anywhe
 This script uses the `python-psutil` module to display the CPU average load, frequency (current/max),
 the temperature sensor reading, the fan speed and memory usage (used/total).
 
-**Command:** `python ~/tint2-executors/cpu-fan-memory.py [-options]
+**Command:** `python ~/tint2-executors/cpu-fan-memory.py [-options]`
 
 ## Usage:
 
