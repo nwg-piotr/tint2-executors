@@ -10,11 +10,11 @@ the temperature sensor reading, the fan speed and memory usage (used/total).
 
 ## Usage:
 
-1. Clone the repository:
+Clone the repository:
 
 `$ git clone https://github.com/nwg-piotr/tint2-executors.git`
 
-2. Assuming you cloned to your home directory, add a Tint2 executor, enter path and command, e.g.:
+Assuming you cloned to your home directory, add a Tint2 executor, enter path and command, e.g.:
 
 `~/tint2-executors/command`
 
