@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Author: Piotr Miller
 # e-mail: nwg.piotr@gmail.com
