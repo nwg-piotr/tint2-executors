@@ -22,6 +22,8 @@ Have you ever needed to know if your hybrid (Optimus) laptop is currently runnin
 
 **Command:** `~/tint2-executors/bbswitch-status.sh`
 
+[Wiki: smaple executor](https://github.com/nwg-piotr/tint2-executors/wiki/Bumblebee-status)
+
 ## more scripts 
 Coming soon.
 
