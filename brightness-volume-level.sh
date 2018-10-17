@@ -6,7 +6,7 @@
 # Project: https://github.com/nwg-piotr/tint2-executors
 # License: GPL3
 
-# Dependencies: `alsa-utils`, `xorg-xbacklight` or `light-git`
+# Dependencies: `alsa-utils`, `xorg-xbacklight` | `light-git`
 
 # Use the line below with `xorg-xbacklight`
 bri=B:$(xbacklight -get | cut -d'.' -f1)%
