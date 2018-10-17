@@ -24,12 +24,7 @@ Have you ever needed to know if your hybrid (Optimus) laptop is currently runnin
 
 ## Installation:
 
-Clone the repository:
+Clone the repository to your home directory:
 
 `$ git clone https://github.com/nwg-piotr/tint2-executors.git`
 
-Assuming you cloned to your home directory, add a Tint2 executor, enter path and command, e.g.:
-
-`~/tint2-executors/command`
-
-Change the path if you cloned to anywhere else. 
