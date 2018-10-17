@@ -1,4 +1,4 @@
-# tint2-executors
+# Tint2 executors collection
 I thought to publish my collection of executors for [Tint2](https://gitlab.com/o9000/tint2) panel here, in hope it's useful to someone. Some of the scripts are only
 useful on [Arch Linux](https://www.archlinux.org), but most part should work anywhere. Let's start from the latest one:
 
