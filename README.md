@@ -12,6 +12,8 @@ the temperature sensor reading, the fan speed and memory usage (used/total).
 
 **Command:** `python ~/tint2-executors/cpu-fan-memory.py [-options]`
 
+[More on Wiki](https://github.com/nwg-piotr/tint2-executors/wiki/CPU-load,-fan-speed,-memory-usage)
+
 ## Usage:
 
 Clone the repository:
