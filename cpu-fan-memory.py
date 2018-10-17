@@ -85,12 +85,15 @@ def main():
         pass
 
     # Fan speed
-    fans = psutil.sensors_fans()
-    if len(fans) > 0:                               # Fan sensor found!
-        fan0 = next(iter(fans.values()))
-        print(" " + str(fan0[0][1]), end="/m ")
-    else:
-        print(" ", end = "")
+    try:
+        fans = psutil.sensors_fans()
+        if len(fans) > 0:                               # Fan sensor found!
+            fan0 = next(iter(fans.values()))
+            print(" " + str(fan0[0][1]), end="/m ")
+        else:
+            print(" ", end = "")
+    except:
+        pass
 
     # Memory: used/total
     memory = psutil.virtual_memory()
