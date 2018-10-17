@@ -32,6 +32,8 @@ Lately I needed to prove that my Internet connection sucks. And not as fast as t
 
 **Command:** `~/tint2-executors/speedtest.sh`
 
+[Wiki: dependencies, sample executor and output](https://github.com/nwg-piotr/tint2-executors/wiki/speedtest.cli-to-speedtest.txt)
+
 ## more scripts 
 Coming soon.
 
