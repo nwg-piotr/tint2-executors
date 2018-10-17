@@ -33,6 +33,12 @@ Lately I needed to prove that my Internet connection sucks. And not as fast as t
 
 [Wiki: dependencies, sample executor and output](https://github.com/nwg-piotr/tint2-executors/wiki/speedtest.cli-to-speedtest.txt)
 
+## [brightness-volume-level.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/brightness-volume-level.sh)
+
+This script displays current brightness and volume level.
+
+![brightness and volume level](http://nwg.pl/wiki-tint2-executors/brightness-volume-level.png)
+
 ## more scripts 
 Coming soon.
 
