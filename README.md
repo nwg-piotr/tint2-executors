@@ -49,4 +49,4 @@ Clone the repository to your home directory:
 
 `$ git clone https://github.com/nwg-piotr/tint2-executors.git`
 
-Check [Wiki](https://github.com/nwg-piotr/tint2-executors/wiki) for sample Tint2 executors.
+Check [Wiki](https://github.com/nwg-piotr/tint2-executors/wiki) for more details and sample Tint2 executors.
