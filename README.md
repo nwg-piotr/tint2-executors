@@ -22,7 +22,8 @@ Have you ever needed to know if your hybrid (Optimus) laptop is currently runnin
 
 **Command:** `~/tint2-executors/bbswitch-status.sh`
 
-## more scripts coming soon...
+## more scripts 
+Coming soon.
 
 # Installation (all-in-one):
 
@@ -30,3 +31,4 @@ Clone the repository to your home directory:
 
 `$ git clone https://github.com/nwg-piotr/tint2-executors.git`
 
+Check Wiki for sample Tint2 executors.
