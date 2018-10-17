@@ -41,6 +41,8 @@ This script displays current brightness and volume level.
 
 **Command:** `~/tint2-executors/./brightness-volume-level.sh`
 
+[Wiki: dependencies, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Brightness-and-volume-level)
+
 # Installation (all-in-one):
 
 Clone the repository to your home directory:
