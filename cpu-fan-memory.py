@@ -76,10 +76,13 @@ def main():
         print("GHz", end=" ")
 
     # Temperature sensor
-    temp = psutil.sensors_temperatures(fahrenheit)      # True for Fahrenheit
-    if len(temp) > 0:                                   # Temperature sensor found!
-        core_temp = temp["coretemp"]                    # "acpitz" for ACPI Thermal Zone
-        print(core_temp[0][1], end="℉" if fahrenheit else "℃")
+    try:
+        temp = psutil.sensors_temperatures(fahrenheit)      # True for Fahrenheit
+        if len(temp) > 0:                                   # Temperature sensor found!
+            core_temp = temp["coretemp"]                    # "acpitz" for ACPI Thermal Zone
+            print(core_temp[0][1], end="℉" if fahrenheit else "℃")
+    except:
+        pass
 
     # Fan speed
     fans = psutil.sensors_fans()
