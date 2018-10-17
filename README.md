@@ -16,9 +16,9 @@ the temperature sensor reading, the fan speed and memory usage (used/total).
 
 ## [bbswitch-status.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status.sh)
 
-![bbswitch-status](http://nwg.pl/wiki-tint2-executors/bumblebee-status.png)
-
 Have you ever needed to know if your hybrid (Optimus) laptop is currently running Intel or Nvidia graphics? In GNOME [there was an extension for that](https://extensions.gnome.org/extension/1100/bumblebee-status). Out of boredom I took a look at its code, which resulted in this short script.
+
+![bbswitch-status](http://nwg.pl/wiki-tint2-executors/bumblebee-status.png)
 
 **Command:** `~/tint2-executors/bbswitch-status.sh`
 
