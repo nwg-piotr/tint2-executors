@@ -22,7 +22,9 @@ Have you ever needed to know if your hybrid (Optimus) laptop is currently runnin
 
 **Command:** `~/tint2-executors/bbswitch-status.sh`
 
-## Installation:
+## more scripts coming soon...
+
+# Installation:
 
 Clone the repository to your home directory:
 
