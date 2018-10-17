@@ -12,7 +12,7 @@ the temperature sensor reading, the fan speed and memory usage (used/total).
 
 **Command:** `python ~/tint2-executors/cpu-fan-memory.py [-options]`
 
-[Wiki: -options and sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/CPU-load,-fan-speed,-memory-usage)
+[Wiki: -options, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/CPU-load,-fan-speed,-memory-usage)
 
 ## [bbswitch-status.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status.sh)
 
@@ -22,7 +22,7 @@ Have you ever needed to know if your hybrid (Optimus) laptop is currently runnin
 
 **Command:** `~/tint2-executors/bbswitch-status.sh`
 
-[Wiki: smaple executor](https://github.com/nwg-piotr/tint2-executors/wiki/Bumblebee-status)
+[Wiki: sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Bumblebee-status)
 
 ## more scripts 
 Coming soon.
