@@ -24,7 +24,7 @@ Have you ever needed to know if your hybrid (Optimus) laptop is currently runnin
 
 ## more scripts coming soon...
 
-# Installation:
+# Installation (all-in-one):
 
 Clone the repository to your home directory:
 
