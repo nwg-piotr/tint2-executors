@@ -3,8 +3,7 @@ I thought to publish my collection of executors for [Tint2](https://gitlab.com/o
 useful on [Arch Linux](https://www.archlinux.org), but most part should work anywhere. Let's start from the latest one:
 
 ## [cpu-fan-memory.py](cpu-fan-memory.py)
-This script uses the `python-psutil` module to display the CPU average load, frequency (current/max),
-the temperature sensor reading, the fan speed and memory usage (used/total).
+This script uses the `python-psutil` module to display the CPU load (graph or percentage per core or average percentage), frequency (current/max), the temperature sensor reading, the fan speed and memory usage (used/total).
 
 ![cpu-fan-memory overview](http://nwg.pl/wiki-tint2-executors/cpu-fan-memory-overview.png)
 
