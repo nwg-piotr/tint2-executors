@@ -13,8 +13,8 @@ upd=$(/bin/sh -c "/usr/bin/checkupdates && /usr/bin/trizen -Qqu -a")
 
 if [ ! -z "$upd" ]
 then
-    echo ~/.ob-arch-checker/arch-icon-notify.svg
+    echo ~/tint2-executors/images/arch-icon-notify.svg
     notify-send "Pending updates:" "<i>$upd</i>" --icon="archlinux" --expire-time=5000
 else
-    echo ~/.ob-arch-checker/arch-icon.svg
+    echo ~/tint2-executors/images/arch-icon.svg
 fi
