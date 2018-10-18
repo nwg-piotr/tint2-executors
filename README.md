@@ -13,11 +13,11 @@ This script uses the `python-psutil` module to display the CPU load (graph or pe
 
 [Wiki: -options, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/CPU-load,-fan-speed,-memory-usage)
 
-## [bbswitch-status.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status-on.sh)
+## [bbswitch-status.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status.sh)
 
 Have you ever needed to know if your hybrid (Optimus) laptop is currently running Intel or Nvidia graphics? In GNOME [there was an extension for that](https://extensions.gnome.org/extension/1100/bumblebee-status). Out of boredom I took a look at its code, which resulted in this short script.
 
-![bbswitch-status](http://nwg.pl/wiki-tint2-executors/bumblebee-status.png)
+![bbswitch-status](http://nwg.pl/wiki-tint2-executors/bumblebee-status-on.png)
 
 **Command:** `~/tint2-executors/bbswitch-status.sh`
 
