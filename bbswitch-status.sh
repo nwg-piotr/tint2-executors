@@ -11,6 +11,9 @@
 
 bb_status=$(cat /proc/acpi/bbswitch | awk -F ' ' '{print $2}')
 
-if [ "$bb_status" = "ON" ]; then
-  echo ~/tint2-executors/images/nvidia.svg
+if [ "$bb_status" = "ON" ]
+then
+  echo ~/tint2-executors/images/nvidia-on.svg
+else
+  echo ~/tint2-executors/images/nvidia-off.svg
 fi
