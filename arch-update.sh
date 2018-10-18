@@ -8,6 +8,7 @@
 
 # Credits: RaphaelRochet/arch-update
 # https://github.com/RaphaelRochet/arch-update
+# Icon by @edskeye
 
 upd=$(/bin/sh -c "/usr/bin/checkupdates && /usr/bin/trizen -Qqu -a")
 
