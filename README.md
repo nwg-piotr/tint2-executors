@@ -43,6 +43,14 @@ This script displays current brightness and volume level.
 
 [Wiki: dependencies, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Brightness-and-volume-level)
 
+## [arch-update.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/arch-update.sh)
+
+This script displays an icon to show Arch / AUR packages available.
+
+![Arch update notifier](http://nwg.pl/wiki-tint2-executors/arch-update.png)
+
+**Command:** ~/tint2-executors/./arch-update.sh
+
 # Installation (all-in-one):
 
 Clone the repository to your home directory:
