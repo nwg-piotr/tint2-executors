@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# _*_ coding: utf-8 _*_
+
 """
 This script uses the `python-psutil` module to display the CPU average load, frequency (current/max),
 the temperature sensor reading, the fan speed and memory usage (used/total).
@@ -68,12 +70,15 @@ def main():
         print("CPU: " + str(psutil.cpu_percent(interval=1)), end = "% ")
 
     # CPU frequency
-    freq = psutil.cpu_freq(False)
-    if freq is not None:
-        print(str(round(freq[0] / 1000, 1)), end="")
-        if not short:
-            print("/" + str(round(freq[2] / 1000, 1)), end="")
-        print("GHz", end=" ")
+    try:
+        freq = psutil.cpu_freq(False)
+        if freq is not None:
+            print(str(round(freq[0] / 1000, 1)), end="")
+            if not short:
+                print("/" + str(round(freq[2] / 1000, 1)), end="")
+            print("GHz", end=" ")
+    except:
+	    pass
 
     # Temperature sensor
     try:
@@ -87,7 +92,7 @@ def main():
     # Fan speed
     try:
         fans = psutil.sensors_fans()
-        if len(fans) > 0:                               # Fan sensor found!
+        if len(fans) > 0:                                   # Fan sensor found!
             fan0 = next(iter(fans.values()))
             print(" " + str(fan0[0][1]), end="/m ")
         else:
@@ -128,4 +133,3 @@ def graph_per_cpu(result):
 
 if __name__ == "__main__":
     main()
-
