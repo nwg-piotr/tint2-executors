@@ -8,6 +8,7 @@
 
 # Credits: dsboger/gnome-shell-extension-bumblebee-status
 # https://github.com/dsboger/gnome-shell-extension-bumblebee-status
+# no-bumblebee icon by @edskeye
 
 if [ -d "/proc/acpi/bbswitch" ]; then
 
