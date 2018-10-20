@@ -78,7 +78,7 @@ def main():
                 print("/" + str(round(freq[2] / 1000, 1)), end="")
             print("GHz", end=" ")
     except:
-	    pass
+        pass
 
     # Temperature sensor
     try:
