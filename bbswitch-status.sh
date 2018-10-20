@@ -19,5 +19,5 @@ if [ -f "/proc/acpi/bbswitch" ]; then
         echo ~/tint2-executors/images/intel.svg
     fi
 else
-    echo ~/tint2-executors/images/no-bumblebeee.svg
+    echo ~/tint2-executors/images/no-bumblebee.svg
 fi
