@@ -21,7 +21,15 @@ Have you ever needed to know if your hybrid (Optimus) laptop is currently runnin
 
 **Command:** `~/tint2-executors/bbswitch-status.sh`
 
-[Wiki: sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Bumblebee-status)
+## [bbswitch-status-temp.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status-temp.sh)
+
+A variant of the script above. If NVIDIA graphics turned on, it displays approprate icon with the GPU temperature.
+
+![bbswitch-status-temperature](http://nwg.pl/wiki-tint2-executors/bumblebee-status-on-off.png)
+
+**Command:** `~/tint2-executors/bbswitch-status-temp.sh`
+
+[Wiki: dependencies, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Bumblebee-status)
 
 ## [speedtest.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/speedtest.sh)
 
