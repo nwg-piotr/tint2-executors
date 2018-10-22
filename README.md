@@ -53,6 +53,14 @@ This script displays current brightness and volume level.
 
 [Wiki: dependencies, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Brightness-and-volume-level)
 
+## [brightness-icon.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/brightness-icon.sh)
+
+This script display an appropriate brightness icon, according to the current brightness level. By assigning left/right click command you may decrease/increase the level.
+
+![brightness icon](http://nwg.pl/wiki-tint2-executors/brightness-icon.png)
+
+**Command:** `~/tint2-executors/brightness-icon.sh`
+
 ## [arch-update.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/arch-update.sh)
 
 This script displays an icon to indicate Arch / AUR package updates available. Likely to need some customization to work well on each machine, as it depends on the terminal and AUR helper you use. Check [Wiki](https://github.com/nwg-piotr/tint2-executors/wiki/Arch-update-notifier) for details.
