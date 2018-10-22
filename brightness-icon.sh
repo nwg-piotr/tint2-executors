@@ -8,7 +8,7 @@
 # Project: https://github.com/nwg-piotr/tint2-executors
 # License: GPL3
 
-# Dependencies: `xbacklight` or `light-git'; `obhud` (AUR) for left/right click executor actions
+# Dependencies: `xbacklight` or `light-git'
 
 # Prefer the `light` package, use `xbacklight` if `light` not found
 if [[ $(which light) == *"/light"* ]]
