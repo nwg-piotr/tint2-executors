@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# This script display external and internal IP address in two rows
-# Depends on `bind-tools`
+# This script display external and internal IP address in a single row
+# Depends on `bind-tools` (Arch) or `dnsutils` (Debian)
 
 # Author: Piotr Miller
 # e-mail: nwg.piotr@gmail.com
