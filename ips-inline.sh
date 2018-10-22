@@ -12,4 +12,4 @@
 w=$(dig +short myip.opendns.com @resolver1.opendns.com)
 l=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
 
-echo -e WAN: ${w}"\n"LAN: ${l}
+echo -e WAN: ${w}" "LAN: ${l}
