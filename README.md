@@ -49,7 +49,11 @@ This script displays current brightness and volume level.
 
 ![brightness and volume level](http://nwg.pl/wiki-tint2-executors/brightness-volume-level.png)
 
-**Command:** `~/tint2-executors/./brightness-volume-level.sh`
+The [brightness-volume-inline.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/brightness-volume-inline.sh) displays the values in a row.
+
+![brightness and volume inline](http://nwg.pl/wiki-tint2-executors/brightness-volume-inline.png)
+
+**Command:** `~/tint2-executors/./brightness-volume-level.sh` or `~/tint2-executors/./brightness-volume-inline.sh`
 
 [Wiki: dependencies, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Brightness-and-volume-level)
 
