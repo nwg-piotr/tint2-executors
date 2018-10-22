@@ -23,6 +23,16 @@ Have you ever needed to know if your hybrid (Optimus) laptop is currently runnin
 
 [Wiki: sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Bumblebee-status)
 
+## [bbswitch-status-temp.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status-temp.sh)
+
+A variant of the script above. If NVIDIA graphics turned on, it displays approprate icon with the GPU temperature.
+
+![bbswitch-status-temperature](http://nwg.pl/wiki-tint2-executors/bumblebee-status-temp.png)
+
+**Command:** `~/tint2-executors/bbswitch-status-temp.sh`
+
+[Wiki: dependencies, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Bumblebee-status)
+
 ## [speedtest.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/speedtest.sh)
 
 Lately I needed to prove that my Internet connection sucks. And not as fast as the provider claims it does. To collect data on the speed over time, I used this bash script in a Tint2 executor. It saves Ping [ms] Download and Upload speed [Mbit/s] every a certain interval to ~/speedtest.txt.
