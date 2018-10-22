@@ -55,7 +55,7 @@ This script displays current brightness and volume level.
 
 ## [brightness-icon.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/brightness-icon.sh)
 
-This script display an appropriate brightness icon, according to the current brightness level. By assigning left/right click command you may decrease/increase the level.
+This script displays an appropriate brightness icon, according to the current brightness level. By assigning left/right click command you may decrease/increase the level.
 
 ![brightness icon](http://nwg.pl/wiki-tint2-executors/brightness-icon.png)
 
