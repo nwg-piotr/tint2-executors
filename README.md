@@ -61,7 +61,7 @@ The [brightness-volume-inline.sh](https://github.com/nwg-piotr/tint2-executors/b
 
 This script displays an appropriate brightness icon, according to the current brightness level. By assigning left/right click command you may decrease/increase the level.
 
-![brightness icon](http://nwg.pl/wiki-tint2-executors/brightness-icon.png)
+![brightness icon](http://nwg.pl/wiki-tint2-executors/brightness-icon1.png)
 
 **Command:** `~/tint2-executors/brightness-icon.sh`
 
