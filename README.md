@@ -81,7 +81,7 @@ This script displays an appropriate volume icon, according to the current volume
 
 This script has mainly aesthetic values: it should rather be used next to the built-in Tint2 battery indicator, not instead of it. It displays an appropriate battery icon, according to the current load level and charging state.
 
-![volume icon](http://nwg.pl/wiki-tint2-executors/battery-icon.png)
+![battery icon](http://nwg.pl/wiki-tint2-executors/battery-icon.png)
 
 **Command:** `~/tint2-executors/battery-icon.sh`
 
