@@ -16,7 +16,7 @@
    sodipodi:version="0.32"
    inkscape:version="0.92.2 2405546, 2018-03-11"
    version="1.0"
-   sodipodi:docname="archlinux-icon-au.svg"
+   sodipodi:docname="arch-icon.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    inkscape:export-filename="/home/thayer/archlinux-logo-contest/archer-full-detail.png"
    inkscape:export-xdpi="90"
@@ -127,14 +127,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="17.145834"
-     inkscape:cx="21.480864"
+     inkscape:cx="11.711727"
      inkscape:cy="32.250003"
      inkscape:document-units="px"
      inkscape:current-layer="g2210"
      inkscape:window-width="1920"
-     inkscape:window-height="1019"
+     inkscape:window-height="1001"
      inkscape:window-x="0"
-     inkscape:window-y="38"
+     inkscape:window-y="36"
      showgrid="false"
      inkscape:window-maximized="1" />
   <metadata
@@ -162,12 +162,12 @@
         <g
            id="g28"
            transform="translate(21.523438,-24.492188)"
-           style="opacity:0.7">
+           style="opacity:0.7;fill:#ececec">
           <path
              inkscape:connector-curvature="0"
              id="path2518"
              d="m 741.00015,483.12318 c -6.34282,15.5509 -10.19396,25.73748 -17.25586,40.82611 4.32983,4.58962 9.65118,9.91474 18.28217,15.95123 -9.27916,-3.81832 -15.60463,-7.64184 -20.33478,-11.61987 -9.03787,18.85892 -23.20682,45.7121 -51.94153,97.34253 22.57885,-13.03517 40.08235,-21.07534 56.39465,-24.14429 -0.69789,-3.00828 -1.0707,-6.27752 -1.0437,-9.67163 l 0.0174,-0.71319 c 0.35836,-14.46931 7.88723,-25.59559 16.80359,-24.84009 8.91635,0.75549 15.85732,13.1018 15.49896,27.5711 -0.0675,2.72544 -0.38436,5.34421 -0.92194,7.77558 16.13675,3.15791 33.47519,11.16227 55.75104,24.02252 -4.39297,-8.08778 -8.32763,-15.37432 -12.07214,-22.31781 -5.89822,-4.57152 -12.04738,-10.51908 -24.59656,-16.96014 8.62559,2.24128 14.80767,4.83303 19.62158,7.72338 -38.07152,-70.88252 -41.14731,-80.30772 -54.20288,-110.94543 z"
-             style="fill:#e6e6e6;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.55664062;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
+             style="fill:#ececec;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.55664062;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
         </g>
       </g>
     </g>
