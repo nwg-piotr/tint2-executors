@@ -15,7 +15,7 @@ state=$(echo $bat | awk '{print $3}')
 level=$(echo $bat | awk '{print $4}')
 level=${level::-2}
 
-if [ "$state" = "Charging," ]; then
+if [ "$state" = "Charging," ] || [ "$state" = "Not" ]; then
 
     if [ "$level" -ge "90" ]; then
         echo ~/tint2-executors/images/bat-full-charging.svg
