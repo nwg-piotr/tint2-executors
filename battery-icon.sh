@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script displays battery icons according to the charge level and charging state
+# This script displays battery icon according to the charge level and charging state
 
 # Author: Piotr Miller
 # e-mail: nwg.piotr@gmail.com
