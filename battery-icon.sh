@@ -17,7 +17,7 @@ level=${level::-2}
 
 if [ "$state" = "Charging," ]; then
 
-    if [ "$level" -ge "99" ]; then
+    if [ "$level" -ge "90" ]; then
         echo ~/tint2-executors/images/bat-full-charging.svg
     elif [ "$level" -ge "40" ]; then
         echo ~/tint2-executors/images/bat-medium-charging.svg
@@ -27,7 +27,7 @@ if [ "$state" = "Charging," ]; then
         echo ~/tint2-executors/images/bat-empty-charging.svg
     fi
 else
-    if [ "$level" -ge "99" ]; then
+    if [ "$level" -ge "90" ]; then
         echo ~/tint2-executors/images/bat-full.svg
     elif [ "$level" -ge "40" ]; then
         echo ~/tint2-executors/images/bat-medium.svg
