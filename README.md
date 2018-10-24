@@ -65,6 +65,8 @@ This script displays an appropriate brightness icon, according to the current br
 
 **Command:** `~/tint2-executors/brightness-icon.sh`
 
+[Wiki: dependencies, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Brightness-icon)
+
 ## [volume-icon.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/volume-icon.sh)
 
 This script displays an appropriate volume icon, according to the current volume level. Assigning left | middle | right click command to decrease | mute | increase the volume level.
@@ -72,6 +74,8 @@ This script displays an appropriate volume icon, according to the current volume
 ![volume icon](http://nwg.pl/wiki-tint2-executors/volume-icon.png)
 
 **Command:** `~/tint2-executors/volume-icon.sh`
+
+[Wiki: dependencies, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Volume-icon)
 
 ## [arch-update.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/arch-update.sh)
 
