@@ -11,8 +11,8 @@
 # Dependencies: `acpi`
 
 bat=$(acpi -b)
-acpi=$(echo $bat | awk '{print $3}')
-if [ "$acpi" = "Not" ]; then
+level=$(echo $bat | awk '{print $3}')
+if [ "$level" = "Not" ]; then
     level=$(echo $bat | awk '{print $5}')
     level=${level::-1}
 else
