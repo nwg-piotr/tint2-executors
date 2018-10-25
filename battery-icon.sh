@@ -12,7 +12,7 @@
 
 bat=$(acpi -b)
 state=$(echo $bat | awk '{print $3}')
-if [ "$state" = "Not" ]; then
+if [ "$state" = "Not" ] || [ "$state" = "Unknown," ]; then
     level=$(echo $bat | awk '{print $5}')
     level=${level::-1}
 else
