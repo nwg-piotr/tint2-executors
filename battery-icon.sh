@@ -20,8 +20,7 @@ else
     level=${level::-2}
 fi
 
-
-if [ "$state" = "Charging," ] || [ "$state" = "Not" ]; then
+if [ "$state" = "Charging," ]; then
 
     if [ "$level" -ge "90" ]; then
         echo ~/tint2-executors/images/bat-full-charging.svg
