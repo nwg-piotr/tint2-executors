@@ -20,7 +20,7 @@ else
     level=${level::-2}
 fi
 
-if [ "$acpi" == *"until charged"* ]; then
+if [ "$bat" == *"until charged"* ]; then
 
     if [ "$level" -ge "90" ]; then
         echo ~/tint2-executors/images/bat-full-charging.svg
