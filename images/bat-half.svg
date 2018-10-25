@@ -16,7 +16,7 @@
    sodipodi:version="0.32"
    inkscape:version="0.92.2 2405546, 2018-03-11"
    version="1.0"
-   sodipodi:docname="bat-full.svg"
+   sodipodi:docname="bat-half.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    inkscape:export-filename="/home/thayer/archlinux-logo-contest/archer-full-detail.png"
    inkscape:export-xdpi="90"
@@ -177,14 +177,14 @@
          transform="matrix(0.25,0,0,0.25,502.3126,469.21738)">
         <path
            inkscape:connector-curvature="0"
-           style="opacity:1;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:8.7451725"
-           d="m 730.79502,565.69244 v 35.58847 h -27.0898 v -35.58847 z"
-           id="path1072-84-1" />
+           style="opacity:1;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:6.18384933"
+           d="m 730.79507,583.48626 v 17.79469 h -27.08981 v -17.79469 z"
+           id="path1072-6-0" />
         <path
            inkscape:connector-curvature="0"
-           id="path878-5-36-6-2-2-5-4"
+           id="path878-5-36-6-2-2-1-7"
            style="opacity:1;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:8.7451725"
-           d="m 708.99332,549.17791 h 16.5137 v 9.46289 h 11.2255 v 48.42774 h -38.9648 V 558.6408 h 11.2256 z m -5.9375,-8.90625 v 9.46289 h -14.1943 v 66.24024 h 56.7773 v -66.24024 h -14.1943 v -9.46289 z" />
+           d="m 708.99331,549.17795 h 16.51371 v 9.46289 h 11.22555 v 48.42774 h -38.96481 v -48.42774 h 11.22555 z m -5.9375,-8.90625 v 9.46289 h -14.19429 v 66.24024 h 56.7773 v -66.24024 h -14.1943 v -9.46289 z" />
       </g>
     </g>
   </g>

@@ -16,7 +16,7 @@
    sodipodi:version="0.32"
    inkscape:version="0.92.2 2405546, 2018-03-11"
    version="1.0"
-   sodipodi:docname="bat-low-charging.svg"
+   sodipodi:docname="bat-empty-charging.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    inkscape:export-filename="/home/thayer/archlinux-logo-contest/archer-full-detail.png"
    inkscape:export-xdpi="90"
@@ -126,9 +126,9 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.0539097"
-     inkscape:cx="79.281055"
-     inkscape:cy="48.040051"
+     inkscape:zoom="5.7570681"
+     inkscape:cx="102.86597"
+     inkscape:cy="36.592832"
      inkscape:document-units="px"
      inkscape:current-layer="g2210"
      inkscape:window-width="1920"
@@ -145,10 +145,12 @@
        id="guide1583"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="-20.025031,64.080099"
+       position="54.889246,73.185661"
        orientation="0,1"
        id="guide1585"
-       inkscape:locked="false" />
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
   </sodipodi:namedview>
   <metadata
      id="metadata2429">
@@ -174,9 +176,13 @@
          id="g2210"
          transform="matrix(0.25,0,0,0.25,502.3126,469.21738)">
         <path
-           id="path878-5-36-6-6-8"
+           id="path878-5-36-6-2-2"
            style="opacity:1;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:8.7451725"
-           d="m 708.99339,546.20921 h 16.5137 v 9.46289 h 14.1943 v 54.36524 h -44.9023 V 555.6721 h 14.1943 z m -5.9375,-5.9375 v 9.46289 h -14.1943 v 66.24024 h 56.7773 V 549.7346 h -14.1943 v -9.46289 z m 20.1402,24.11099 -2.9717,15.87876 h 8.9179 l -17.8386,22.23083 2.9746,-15.87875 h -8.9208 z"
+           d="m 708.99323,549.17786 h 16.5137 v 9.46289 h 11.22555 v 48.42774 h -38.9648 v -48.42774 h 11.22555 z m -5.9375,-8.90625 v 9.46289 h -14.1943 v 66.24024 h 56.7773 V 549.7345 h -14.1943 v -9.46289 z" />
+        <path
+           style="opacity:1;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:1.12204727;stroke-miterlimit:4;stroke-dasharray:none"
+           d="m 722.14498,567.80076 -2.44629,13.07137 h 7.34119 l -14.6847,18.30037 2.44868,-13.07135 h -7.34358 z"
+           id="path1064"
            inkscape:connector-curvature="0" />
       </g>
     </g>

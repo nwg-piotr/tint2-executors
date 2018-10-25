@@ -16,7 +16,7 @@
    sodipodi:version="0.32"
    inkscape:version="0.92.2 2405546, 2018-03-11"
    version="1.0"
-   sodipodi:docname="bat-medium-charging.svg"
+   sodipodi:docname="bat-half-charging.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    inkscape:export-filename="/home/thayer/archlinux-logo-contest/archer-full-detail.png"
    inkscape:export-xdpi="90"
@@ -126,9 +126,9 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.0539097"
-     inkscape:cx="79.281055"
-     inkscape:cy="48.040051"
+     inkscape:zoom="5.7570681"
+     inkscape:cx="102.86597"
+     inkscape:cy="36.592832"
      inkscape:document-units="px"
      inkscape:current-layer="g2210"
      inkscape:window-width="1920"
@@ -145,10 +145,12 @@
        id="guide1583"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="-20.025031,64.080099"
+       position="54.889246,73.185661"
        orientation="0,1"
        id="guide1585"
-       inkscape:locked="false" />
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
   </sodipodi:namedview>
   <metadata
      id="metadata2429">
@@ -173,16 +175,21 @@
       <g
          id="g2210"
          transform="matrix(0.25,0,0,0.25,502.3126,469.21738)">
-        <g
-           id="g1242-7"
-           transform="matrix(0.50000001,0,0,0.50000001,166.66524,229.89244)"
-           style="fill:#ececec;fill-opacity:1;stroke:none">
-          <path
-             id="path840-3-1-7-4-0"
-             style="opacity:1;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:6.14539671"
-             d="m 1111.1836,668.97158 -25.4548,31.72851 h 19.5173 z m -43.0411,31.72851 v 50.12666 h 66.0547 v -50.12666 l -11.1271,0.0348 v 0 l -35.6772,44.46165 5.949,-31.75749 h -17.8356 l 10.2224,-12.73895 z m 4.6386,-79.9417 v 18.92578 h -28.3886 v 132.48048 h 113.5546 V 639.68417 h -28.3886 v -18.92578 z m 11.875,11.875 h 33.0274 v 18.92578 h 28.3886 v 108.73048 h -89.8046 V 651.55917 h 28.3886 z"
-             inkscape:connector-curvature="0" />
-        </g>
+        <path
+           inkscape:connector-curvature="0"
+           id="path878-5-36-6-2-2-1"
+           style="opacity:1;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:8.7451725"
+           d="m 708.99329,549.17792 h 16.5137 v 9.46289 h 11.22555 v 48.42774 h -38.9648 v -48.42774 h 11.22555 z m -5.9375,-8.90625 v 9.46289 h -14.1943 v 66.24024 h 56.7773 v -66.24024 h -14.1943 v -9.46289 z" />
+        <path
+           inkscape:connector-curvature="0"
+           style="opacity:1;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:6.18384933"
+           d="m 703.70522,583.48581 v 17.79511 h 27.08985 v -17.79511 h -5.85053 l -12.59399,15.69031 2.45269,-13.07526 h -7.34649 l 2.099,-2.61505 z"
+           id="path1072-6-9" />
+        <path
+           style="opacity:1;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:1.12204731;stroke-miterlimit:4;stroke-dasharray:none"
+           d="m 722.14394,567.8013 -12.58819,15.68451 h 15.38299 l 2.099,-2.61505 h -7.3407 z"
+           id="path1064-2-6"
+           inkscape:connector-curvature="0" />
       </g>
     </g>
   </g>

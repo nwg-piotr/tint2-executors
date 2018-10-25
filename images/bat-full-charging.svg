@@ -126,9 +126,9 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.0539097"
-     inkscape:cx="79.281055"
-     inkscape:cy="48.040051"
+     inkscape:zoom="5.7570681"
+     inkscape:cx="102.86597"
+     inkscape:cy="36.592832"
      inkscape:document-units="px"
      inkscape:current-layer="g2210"
      inkscape:window-width="1920"
@@ -145,10 +145,12 @@
        id="guide1583"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="-20.025031,64.080099"
+       position="54.889246,73.185661"
        orientation="0,1"
        id="guide1585"
-       inkscape:locked="false" />
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
   </sodipodi:namedview>
   <metadata
      id="metadata2429">
@@ -174,10 +176,15 @@
          id="g2210"
          transform="matrix(0.25,0,0,0.25,502.3126,469.21738)">
         <path
-           id="path878-5-36-6-6"
            style="opacity:1;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:8.7451725"
-           d="m 700.73615,561.56757 v 43.73688 h 33.0274 v -43.73688 z m 22.4599,2.81509 -2.9717,15.87876 h 8.9179 l -17.8386,22.23083 2.9746,-15.87875 h -8.9208 z m -20.1402,-24.11099 v 9.46289 h -14.1943 v 66.24024 h 56.7773 v -66.24024 h -14.1943 v -9.46289 z m 5.9375,5.9375 h 16.5137 v 9.46289 h 14.1943 v 54.36524 h -44.9023 v -54.36524 h 14.1943 z"
+           d="m 703.70493,565.69155 v 35.59021 h 27.08985 v -35.59021 z m 18.43873,2.1106 -2.4469,13.06945 h 7.34071 l -14.68139,18.29956 2.4469,-13.06945 h -7.34071 z"
+           id="path1072-84"
            inkscape:connector-curvature="0" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path878-5-36-6-2-2-5"
+           style="opacity:1;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:8.7451725"
+           d="m 708.99332,549.17788 h 16.5137 v 9.46289 h 11.2255 v 48.42774 h -38.9648 v -48.42774 h 11.2256 z m -5.9375,-8.90625 v 9.46289 h -14.1943 v 66.24024 h 56.7773 v -66.24024 h -14.1943 v -9.46289 z" />
       </g>
     </g>
   </g>
