@@ -12,12 +12,13 @@
 
 bat=$(acpi -b)
 level=$(echo $bat | awk '{print $3}')
+
 if [ "$level" = "Not" ]; then
     level=$(echo $bat | awk '{print $5}')
     level=${level::-1}
 else
     level=$(echo $bat | awk '{print $4}')
-    level=${level::-2}
+    level=${level::-1}
 fi
 
 if [ "$bat" == *"until charged"* ]; then
