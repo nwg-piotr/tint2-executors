@@ -15,7 +15,7 @@ state=$(echo $bat | awk '{print $3}')
 
 if [ "$state" = "Not" ]; then
     level=$(echo $bat | awk '{print $5}')
-    if [ "$state" = "Unknown" ]; then
+    if [ "$state" = "Unknown," ]; then
         level=${level::-1}
     else
         level=${level::-2}
