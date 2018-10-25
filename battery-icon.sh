@@ -28,22 +28,26 @@ fi
 
 if [[ "$bat" == *"until"* ]]; then
 
-    if [ "$level" -ge "90" ]; then
+    if [ "$level" -ge "95" ]; then
         echo ~/tint2-executors/images/bat-full-charging.svg
-    elif [ "$level" -ge "40" ]; then
-        echo ~/tint2-executors/images/bat-medium-charging.svg
-    elif [ "$level" -ge "20" ]; then
-        echo ~/tint2-executors/images/bat-low-charging.svg
+    elif [ "$level" -ge "75" ]; then
+        echo ~/tint2-executors/images/bat-threefourth-charging.svg
+    elif [ "$level" -ge "50" ]; then
+        echo ~/tint2-executors/images/bat-half-charging.svg
+    elif [ "$level" -ge "25" ]; then
+        echo ~/tint2-executors/images/bat-quarter-charging.svg
     else
         echo ~/tint2-executors/images/bat-empty-charging.svg
     fi
 else
-    if [ "$level" -ge "90" ]; then
+    if [ "$level" -ge "95" ]; then
         echo ~/tint2-executors/images/bat-full.svg
-    elif [ "$level" -ge "40" ]; then
-        echo ~/tint2-executors/images/bat-medium.svg
-    elif [ "$level" -ge "20" ]; then
-        echo ~/tint2-executors/images/bat-low.svg
+    elif [ "$level" -ge "75" ]; then
+        echo ~/tint2-executors/images/bat-threefourth.svg
+    elif [ "$level" -ge "50" ]; then
+        echo ~/tint2-executors/images/bat-half.svg
+    elif [ "$level" -ge "25" ]; then
+        echo ~/tint2-executors/images/bat-quarter.svg
     else
         echo ~/tint2-executors/images/bat-empty.svg
     fi
