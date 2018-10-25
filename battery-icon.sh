@@ -14,10 +14,12 @@ bat=$(acpi -b)
 state=$(echo $bat | awk '{print $3}')
 if [ "$state" = "Not" ]; then
     level=$(echo $bat | awk '{print $5}')
+    level=${level::-1}
 else
     level=$(echo $bat | awk '{print $4}')
+    level=${level::-2}
 fi
-level=${level::-2}
+
 
 if [ "$state" = "Charging," ] || [ "$state" = "Not" ]; then
 
