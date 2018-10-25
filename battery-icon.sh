@@ -11,8 +11,8 @@
 # Dependencies: `acpi`
 
 bat=$(acpi -b)
-state=$(echo $bat | awk '{print $3}')
-if [ "$state" = "Not" ] || [ "$state" = "Unknown," ]; then
+acpi=$(echo $bat | awk '{print $3}')
+if [ "$acpi" = "Not" ]; then
     level=$(echo $bat | awk '{print $5}')
     level=${level::-1}
 else
@@ -20,7 +20,7 @@ else
     level=${level::-2}
 fi
 
-if [ "$state" = "Charging," ] || [ "$state" = "Unknown," ]; then
+if [ "$acpi" == *"until charged"* ]; then
 
     if [ "$level" -ge "90" ]; then
         echo ~/tint2-executors/images/bat-full-charging.svg
