@@ -19,7 +19,7 @@ if [ "$state" = "Not" ]; then
 
 else
     level=$(echo $bat | awk '{print $4}')
-    if [[ "$state" == *"Unknown"* ]]; then
+    if [[ "$state" == *"Unknown"* ]] || [[ "$state" == *"Not charging"* ]]; then
         level=${level::-1}
     else
         level=${level::-2}
