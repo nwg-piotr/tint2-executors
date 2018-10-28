@@ -95,6 +95,8 @@ Opens a Zenity box to set the brightness level. Could be used e.g. as the left c
 
 **Command:** `~/tint2-executors/zenity-set-brightness.sh`
 
+[Wiki: dependencies](https://github.com/nwg-piotr/tint2-executors/wiki/Brightness-zenity-box)
+
 ## [zenity-set-volume.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/zenity-set-volume.sh)
 
 Opens a Zenity box to set the volume level. Could be used e.g. as the left click action with the [volume icon](https://github.com/nwg-piotr/tint2-executors/wiki/Volume-icon).
@@ -102,8 +104,6 @@ Opens a Zenity box to set the volume level. Could be used e.g. as the left click
 ![volume zenity box](http://nwg.pl/wiki-tint2-executors/zenity-set-volume.png)
 
 **Command:** `~/tint2-executors/zenity-set-volume.sh`
-
-[Wiki: dependencies](https://github.com/nwg-piotr/tint2-executors/wiki/Brightness-zenity-box)
 
 [Wiki: dependencies](https://github.com/nwg-piotr/tint2-executors/wiki/Volume-zenity-box)
 
