@@ -87,6 +87,14 @@ This script has mainly aesthetic values: it should rather be used next to the bu
 
 [Wiki: dependencies, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Battery-icon)
 
+## [zenity-set-brightness.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/zenity-set-brightness.sh)
+
+Opens a Zenity box to set the brightness level. Could be used e.g. as the left click action with the [brightness icon](https://github.com/nwg-piotr/tint2-executors/wiki/Brightness-icon).
+
+![brightness zenity box](http://nwg.pl/wiki-tint2-executors/zenity-set-brightness.png)
+
+**Command:** `~/tint2-executors/zenity-set-brightness.sh`
+
 ## [arch-update.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/arch-update.sh)
 
 This script displays an icon to indicate Arch / AUR package updates available. Likely to need some customization to work well on each machine, as it depends on the terminal and AUR helper you use. Check [Wiki](https://github.com/nwg-piotr/tint2-executors/wiki/Arch-update-notifier) for details.
