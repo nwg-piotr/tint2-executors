@@ -103,6 +103,8 @@ Opens a Zenity box to set the volume level. Could be used e.g. as the left click
 
 **Command:** `~/tint2-executors/zenity-set-volume.sh`
 
+[Wiki: dependencies](https://github.com/nwg-piotr/tint2-executors/wiki/Volume-zenity-box)
+
 ## [arch-update.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/arch-update.sh)
 
 This script displays an icon to indicate Arch / AUR package updates available. Likely to need some customization to work well on each machine, as it depends on the terminal and AUR helper you use. Check [Wiki](https://github.com/nwg-piotr/tint2-executors/wiki/Arch-update-notifier) for details.
