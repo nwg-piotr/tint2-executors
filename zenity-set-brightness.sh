@@ -2,7 +2,7 @@
 
 # Set the brightness level with a zenity dialog box
 
-# Dependencies: `xbacklight` or `light-git', `zenity`
+# Dependencies: `xbacklight` or `light-git`, `zenity`
 
 # Prefer the `light` package, use `xbacklight` if `light` not found
 if [[ $(which light) == *"/light"* ]]
