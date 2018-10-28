@@ -103,6 +103,8 @@ Opens a Zenity box to set the volume level. Could be used e.g. as the left click
 
 **Command:** `~/tint2-executors/zenity-set-volume.sh`
 
+[Wiki: dependencies](https://github.com/nwg-piotr/tint2-executors/wiki/Brightness-zenity-box)
+
 [Wiki: dependencies](https://github.com/nwg-piotr/tint2-executors/wiki/Volume-zenity-box)
 
 ## [arch-update.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/arch-update.sh)
