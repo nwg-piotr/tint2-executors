@@ -11,10 +11,23 @@
 
 # Dependencies: `xorg-xprop`, `wmctrl`
 
-id=$(xprop -name $1 | grep PID | awk '{print $3}')
-if [ ! -z "$id" ]; then
-	name=$(wmctrl -lp | grep $id | awk '{print $5}')
-	wmctrl -a $name
+if [[ "$1" == *"-P"* ]]; then
+   id=$(xprop -name $2 | grep PID | awk '{print $3}')
+   echo "id: "$id
+   if [ ! -z "$id" ]; then
+       name=$(wmctrl -lp | grep $id | awk '{print $5}')
+       echo "name: "$name
+       wmctrl -a $name
+   else
+       $3
+   fi
+
 else
-	$1 $2 $3
+   id=$(xprop -name $1 | grep PID | awk '{print $3}')
+   if [ ! -z "$id" ]; then
+       name=$(wmctrl -lp | grep $id | awk '{print $4}')
+       wmctrl -a $name
+   else
+       $1 $2 $3
+   fi
 fi
