@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# This script will launch the command given as an argument if not yet running
+# Else it'll give focus to the command window
+
+# Author: Piotr Miller
+# e-mail: nwg.piotr@gmail.com
+# Website: http://nwg.pl
+# Project: https://github.com/nwg-piotr/tint2-executors
+# License: GPL3
+
+# Dependencies: `xorg-xprop`, `wmctrl`
+
+id=$(xprop -name $1 | grep PID | awk '{print $3}')
+if [ ! -z "$id" ]; then
+	name=$(wmctrl -lp | grep $id | awk '{print $5" "$6" "$7}')
+	wmctrl -a $name
+else
+	$1 $2 $3
+fi
