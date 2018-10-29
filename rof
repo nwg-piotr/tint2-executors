@@ -20,7 +20,7 @@ if [[ "$1" == *"-P"* ]]; then
        echo "name: "$name
        wmctrl -a $name
    else
-       $3
+       $3 $4 $5
    fi
 
 else
