@@ -3,6 +3,15 @@
 # This script will launch the command given as an argument if not yet running
 # Else it'll give focus to the command window
 
+# Usage:
+# ./rof [-P process_name] command
+
+# Examples:
+# ./rof pavucontrol
+# ./rof -P zenity ~/tint2-executors/zenity-set-volume.sh
+
+# In the 2nd case the process name is `zenity` and varies from the command itself
+
 # Author: Piotr Miller
 # e-mail: nwg.piotr@gmail.com
 # Website: http://nwg.pl
@@ -10,25 +19,23 @@
 # License: GPL3
 
 # Dependencies: `xorg-xprop`, `wmctrl`
-# Usage: ./rof [-P process_name] command
+
 
 if [[ "$1" == *"-P"* ]]; then
    id=$(xprop -name $2 | grep PID | awk '{print $3}')
-   echo "id: "$id
    if [ ! -z "$id" ]; then
-       name=$(wmctrl -lp | grep $id | awk '{print $5}')
-       echo "name: "$name
+       name=$(wmctrl -lp | grep $id | awk '{print $5" "$6}')
        wmctrl -a $name
    else
-       $3 $4 $5
+       ${@:3}
    fi
 
 else
    id=$(xprop -name $1 | grep PID | awk '{print $3}')
    if [ ! -z "$id" ]; then
-       name=$(wmctrl -lp | grep $id | awk '{print $4}')
+       name=$(wmctrl -lp | grep $id | awk '{print $5" "$6}')
        wmctrl -a $name
    else
-       $1 $2 $3
+       $@
    fi
 fi
