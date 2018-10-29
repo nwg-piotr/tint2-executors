@@ -10,7 +10,7 @@
 # License: GPL3
 
 # Dependencies: `xorg-xprop`, `wmctrl`
-# Usage: .rof [-P process_name] command
+# Usage: ./rof [-P process_name] command
 
 if [[ "$1" == *"-P"* ]]; then
    id=$(xprop -name $2 | grep PID | awk '{print $3}')
