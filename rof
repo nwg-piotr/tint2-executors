@@ -19,21 +19,47 @@
 
 # Dependencies: `xorg-xprop`, `wmctrl`
 
-if [[ "$1" == *"-P"* ]]; then
-   id=$(xprop -name $2 | grep PID | awk '{print $3}')
-   if [ ! -z "$id" ]; then
-       name=$(wmctrl -lp | grep $id | awk '{print $5" "$6}')
-       wmctrl -a $name
-   else
-       ${@:3}
-   fi
+if [[ $(which xprop) != *"/xprop"* ]]; then
+    echo -e "\nDependencies: xorg-xprop package missing...\n"
+    exit
+fi
+if [[ $(which wmctrl) != *"/wmctrl"* ]]; then
+    echo -e "\nDependencies: wmctrl package missing...\n"
+    exit
+fi
 
+if [ ! -z "$1" ]; then
+
+    if [[ "$1" == "-P" ]]; then
+
+       if [ "$#" -ge 3 ]; then
+           pid=$(xprop -name $2 | grep PID | awk '{print $3}')
+           if [ ! -z "$pid" ]; then
+               name=$(wmctrl -lp | grep $pid | awk '{print $1}')
+               wmctrl -a ${name}
+           else
+               ${@:3}
+           fi
+       else
+           echo -e "\nShould be: rof -P process_name command\n"
+       fi
+
+    elif [[ "$1" == *"-h"* ]] || [[ "$1" == *"--help"* ]]; then
+       echo -e "\nUsage: rof [-P process_name] command\n"
+
+    else
+
+       pid=$(xprop -name $1 | grep PID | awk '{print $3}')
+       echo "pid=$pid"
+       if [ ! -z "$pid" ]; then
+           name=$(wmctrl -lp | grep ${pid} | awk '{print $1}')
+           echo "Set focus on window id $name"
+           wmctrl -i -a ${name}
+       else
+           echo "Launch a new instance of $1"
+           sh -c "$@ &"
+       fi
+    fi
 else
-   id=$(xprop -name $1 | grep PID | awk '{print $3}')
-   if [ ! -z "$id" ]; then
-       name=$(wmctrl -lp | grep $id | awk '{print $5" "$6}')
-       wmctrl -a $name
-   else
-       $@
-   fi
+    echo -e "\nUsage: rof [-P process_name] command\n"
 fi
