@@ -9,7 +9,6 @@
 # Examples:
 # ./rof pavucontrol
 # ./rof -P zenity ~/tint2-executors/zenity-set-volume.sh
-
 # In the 2nd case the process name is `zenity` and varies from the command itself
 
 # Author: Piotr Miller
@@ -19,7 +18,6 @@
 # License: GPL3
 
 # Dependencies: `xorg-xprop`, `wmctrl`
-
 
 if [[ "$1" == *"-P"* ]]; then
    id=$(xprop -name $2 | grep PID | awk '{print $3}')
