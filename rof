@@ -13,7 +13,7 @@
 
 id=$(xprop -name $1 | grep PID | awk '{print $3}')
 if [ ! -z "$id" ]; then
-	name=$(wmctrl -lp | grep $id | awk '{print $5" "$6" "$7}')
+	name=$(wmctrl -lp | grep $id | awk '{print $5"}')
 	wmctrl -a $name
 else
 	$1 $2 $3
