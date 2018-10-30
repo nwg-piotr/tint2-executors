@@ -9,13 +9,7 @@
 # Project: https://github.com/nwg-piotr/tint2-executors
 # License: GPL3
 
-# Usage:
-# ./rof [-P process_name] command
-
-# Examples:
-# ./rof pavucontrol
-# ./rof -P zenity ~/tint2-executors/zenity-set-volume.sh
-# In the 2nd case the process name is `zenity` and varies from the command itself
+# Usage: rof [-P process_name] command
 
 # Dependencies: `xorg-xprop`, `wmctrl`
 
@@ -33,30 +27,38 @@ if [ ! -z "$1" ]; then
     if [[ "$1" == "-P" ]]; then
 
        if [ "$#" -ge 3 ]; then
+           # find process ID
            pid=$(xprop -name $2 | grep PID | awk '{print $3}')
            if [ ! -z "$pid" ]; then
-               name=$(wmctrl -lp | grep $pid | awk '{print $1}')
-               wmctrl -a ${name}
+               # find window ID by process ID
+               win=$(wmctrl -lp | grep $pid | awk '{print $1}')
+               wmctrl -i -a ${win}
            else
-               ${@:3}
+               sh -c "${@:3} &"
            fi
        else
            echo -e "\nShould be: rof -P process_name command\n"
        fi
 
     elif [[ "$1" == *"-h"* ]] || [[ "$1" == *"--help"* ]]; then
-       echo -e "\nUsage: rof [-P process_name] command\n"
+       echo -e "\nThis script [r]uns a command [o]r sets [f]ocus to its window if command is already running. May be used in two ways:\n"
+       echo -e "1: \`rof command\` (e.g. \`rof tint2conf\`)\n"
+       echo -e "- the command and the process name are the same;\n"
+       echo -e "2: \`rof -P process_name command\` (e.g. \`rof -P zenity zenity-set-volume.sh\`)\n"
+       echo -e "- where \`zenity-set-volume.sh\` is a script which launches \`zenity\` box with arguments.\n"
+
 
     else
 
+       # find process ID
        pid=$(xprop -name $1 | grep PID | awk '{print $3}')
-       echo "pid=$pid"
        if [ ! -z "$pid" ]; then
-           name=$(wmctrl -lp | grep ${pid} | awk '{print $1}')
-           echo "Set focus on window id $name"
-           wmctrl -i -a ${name}
+           # find window ID by process ID
+           win=$(wmctrl -lp | grep ${pid} | awk '{print $1}')
+           # "Set focus on window id $win"
+           wmctrl -i -a ${win}
        else
-           echo "Launch a new instance of $1"
+           # "Launch a new instance of $1"
            sh -c "$@ &"
        fi
     fi
