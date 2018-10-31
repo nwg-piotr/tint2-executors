@@ -34,7 +34,7 @@ if [[ "$bat" == *"until"* ]]; then
         echo ~/tint2-executors/images/bat-threefourth-charging.svg
     elif [ "$level" -ge "40" ]; then
         echo ~/tint2-executors/images/bat-half-charging.svg
-    elif [ "$level" -ge "25" ]; then
+    elif [ "$level" -ge "15" ]; then
         echo ~/tint2-executors/images/bat-quarter-charging.svg
     else
         echo ~/tint2-executors/images/bat-empty-charging.svg
@@ -46,7 +46,7 @@ else
         echo ~/tint2-executors/images/bat-threefourth.svg
     elif [ "$level" -ge "40" ]; then
         echo ~/tint2-executors/images/bat-half.svg
-    elif [ "$level" -ge "25" ]; then
+    elif [ "$level" -ge "15" ]; then
         echo ~/tint2-executors/images/bat-quarter.svg
     else
         echo ~/tint2-executors/images/bat-empty.svg
