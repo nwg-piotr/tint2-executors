@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+printf "\nThe tint2-executors package only installs dependencies needed to run the scripts. \
+You should clone the repository, and add Tint2 executors, as described in the project Wiki.\n"
+echo -e "\nPlease visit https://github.com/nwg-piotr/tint2-executors/wiki\n"
