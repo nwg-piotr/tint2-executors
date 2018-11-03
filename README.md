@@ -1,6 +1,6 @@
 # Tint2 executors collection
 I thought to publish my collection of executors for [Tint2](https://gitlab.com/o9000/tint2) panel here, in hope it's useful to someone. Some of the scripts are only
-useful on [Arch Linux](https://www.archlinux.org), but most part should work anywhere
+useful on [Arch Linux](https://www.archlinux.org), but most part should work anywhere.
 
 ## [cpu-fan-memory.py](cpu-fan-memory.py)
 This script uses the `python-psutil` module to display the CPU load (graph or percentage per core or average percentage), frequency (current/max), the temperature sensor reading, the fan speed and memory usage (used/total).
