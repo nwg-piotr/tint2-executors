@@ -123,6 +123,6 @@ Clone the repository to your home directory:
 
 `$ git clone https://github.com/nwg-piotr/tint2-executors.git`
 
-To install all dependencies in one step, you can download the [tint2-executors](https://github.com/nwg-piotr/tint2-executors/raw/master/tint2-executors-0.0.1-1-x86_64.pkg.tar.xz) dummy package. **Attention: just added, not yet really tested, so some dependencies may still be missing.**
+To install all dependencies in one step, you may use the [tint2-executors](https://github.com/nwg-piotr/tint2-executors/raw/master/tint2-executors-0.0.1-1-x86_64.pkg.tar.xz) dummy package. **Attention: just added, not yet really tested, so some dependencies may still be missing.**
 
 Check [Wiki](https://github.com/nwg-piotr/tint2-executors/wiki) for more details and sample Tint2 executors.
