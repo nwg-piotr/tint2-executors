@@ -21,16 +21,18 @@ Inspired by tknomanzr's cpu.py at https://forums.bunsenlabs.org/viewtopic.php?id
 
 Command: python ~/tint2-executors/cpu-fan-memory.py [-C{components}] [-F]
 
-Optional arguments: -Cgpaxfmt -F
+Optional arguments: -Cgpasxtfml -F
 
 -C stands for Components:
-    g - Graphical CPU load bar
-    p - Percentage for each core (text)
-    a - Average CPU load (text)
-    x - maX CPU speed
-    f - Fan speed
-    m - Memory in use
-    t - Total memory
+    g - (g)raphical CPU load bar
+    p - (p)ercentage for each core (text)
+    a - (a)verage CPU load (text)
+    s - current CPU (s)peed
+    x - ma(x) CPU speed
+    t - CPU (t)emperature
+    f - (f)an speed
+    m - (m)emory in use
+    l - tota(l) memory
 -F - use Fahrenheit instead of ℃
 
 Note: combining -Cgp will slow the script down - not recommended.
@@ -39,6 +41,7 @@ Note: combining -Cgp will slow the script down - not recommended.
 
 import sys
 import psutil
+import re
 
 
 def main():
@@ -52,10 +55,28 @@ def main():
     for i in range(1, len(sys.argv)):
         if sys.argv[i].startswith("-C"):
             components = sys.argv[i][2::]
-            for char in components:
-                print(char)
+            pcpu, avg = None, None
+            output = ""
 
-    print(fahrenheit)
+            # prepare requested data only once
+            if "g" in components or "p" in components:
+                pcpu = psutil.cpu_percent(interval=1, percpu=True)
+
+            if "a" in components:
+                avg = psutil.cpu_percent(interval=1)
+
+            for char in components:
+                if char == "g":
+                    output += " " + graph_per_cpu(pcpu) + " "
+
+                if char == "p":
+                    output += " " + per_cpu(pcpu) + " "
+
+                if char == "a":
+                    output += " CPU: " + str(psutil.cpu_percent(interval=1)) + "% "
+
+            # remove double spaces and print
+            print(re.sub(' +', ' ', output))
 
     exit(0)
 
@@ -63,7 +84,6 @@ def main():
     display_average = False
     display_percentage = False
     short = False
-
 
     if len(sys.argv) > 1 and sys.argv[1].startswith("-"):
         options = sys.argv[1][1:].upper()
