@@ -93,7 +93,7 @@ This Python script displays current desktop indicator. It also allows to switch 
 
 ![desktop icon](http://nwg.pl/wiki-tint2-executors/desktop-icon.png)
 
-[Wiki: dependencies, optional arguments, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Battery-icon)
+[Wiki: dependencies, optional arguments, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Desktop-indicator-and-switcher)
 
 ## [zenity-set-brightness.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/zenity-set-brightness.sh)
 
