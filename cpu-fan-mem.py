@@ -42,11 +42,28 @@ import psutil
 
 
 def main():
+
+    fahrenheit = False
+
+    for i in range(1, len(sys.argv)):
+        if sys.argv[i] == "-F":
+            fahrenheit = True
+
+    for i in range(1, len(sys.argv)):
+        if sys.argv[i].startswith("-C"):
+            components = sys.argv[i][2::]
+            for char in components:
+                print(char)
+
+    print(fahrenheit)
+
+    exit(0)
+
     display_graph = True
     display_average = False
     display_percentage = False
     short = False
-    fahrenheit = False
+
 
     if len(sys.argv) > 1 and sys.argv[1].startswith("-"):
         options = sys.argv[1][1:].upper()
@@ -127,9 +144,7 @@ def per_cpu(result):
 
 def graph_per_cpu(result):
 
-    # Un-hash the pattern you like below or replace with your own:
     graph = "_▁▂▃▄▅▆▇███"
-    # graph = " ⢀⣀⣠⣤⣴⣶⣾⣿⣿⣿"
 
     string = ""
     for val in result:
