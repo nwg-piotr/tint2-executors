@@ -21,62 +21,99 @@ Inspired by tknomanzr's cpu.py at https://forums.bunsenlabs.org/viewtopic.php?id
 
 Command: python ~/tint2-executors/cpu-fan-memory.py [-C{components}] [-F]
 
-Optional arguments: -Cgpasxtfml -F
+Optional arguments: -CgpaStfM -F
 
 -C stands for Components:
     g - (g)raphical CPU load bar
     p - (p)ercentage for each core (text)
     a - (a)verage CPU load (text)
     s - current CPU (s)peed
-    x - ma(x) CPU speed
+    S - current/max CPU (S)peed
     t - CPU (t)emperature
     f - (f)an speed
     m - (m)emory in use
-    l - tota(l) memory
+    M - (M)emory in use/total
 -F - use Fahrenheit instead of ℃
+-T - test execution time
 
-Note: combining -Cgp will slow the script down - not recommended.
+Note: Combining `g` or `p` with `a` slows the script down twice.
 
 """
 
 import sys
 import psutil
 import re
+import time
 
 
 def main():
 
     fahrenheit = False
+    testing = False
+    time_start = None
+    components = None
 
     for i in range(1, len(sys.argv)):
         if sys.argv[i] == "-F":
             fahrenheit = True
 
-    for i in range(1, len(sys.argv)):
+        if sys.argv[i] == "-T":
+            testing = True
+
         if sys.argv[i].startswith("-C"):
             components = sys.argv[i][2::]
-            pcpu, avg = None, None
-            output = ""
 
-            # prepare requested data only once
-            if "g" in components or "p" in components:
-                pcpu = psutil.cpu_percent(interval=1, percpu=True)
+    if components is None:
+        components = "gStfM"
 
-            if "a" in components:
-                avg = psutil.cpu_percent(interval=1)
+    if testing:
+        time_start = int(round(time.time() * 1000))
 
-            for char in components:
-                if char == "g":
-                    output += " " + graph_per_cpu(pcpu) + " "
+    pcpu, avg, speed, temp = None, None, None, None
+    output = ""
 
-                if char == "p":
-                    output += " " + per_cpu(pcpu) + " "
+    # prepare requested data only once
+    if "g" in components or "p" in components:
+        pcpu = psutil.cpu_percent(interval=1, percpu=True)
 
-                if char == "a":
-                    output += " CPU: " + str(psutil.cpu_percent(interval=1)) + "% "
+    if "a" in components:
+        avg = psutil.cpu_percent(interval=1)
 
-            # remove double spaces and print
-            print(re.sub(' +', ' ', output))
+    if "s" in components or "S" in components:
+        try:
+            speed = psutil.cpu_freq(False)
+        except:
+            pass
+
+    if "t" in components:
+        temp = psutil.sensors_temperatures(fahrenheit)
+
+    for char in components:
+        if char == "g":
+            output += " " + graph_per_cpu(pcpu) + " "
+
+        if char == "p":
+            output += " " + per_cpu(pcpu) + " "
+
+        if char == "a":
+            output += " CPU: " + str(avg) + "% "
+
+        if char == "s" and speed is not None:
+            output += " " + str(round(speed[0] / 1000, 1)) + "GHz "
+
+        if char == "S" and speed is not None:
+            output += " " + str(round(speed[0] / 1000, 1)) + "/" + str(round(speed[2] / 1000, 1)) + "GHz "
+
+        if char == "t" and temp is not None and len(temp) > 0:
+            # Change to "acpitz" for ACPI Thermal Zone
+            output += " " + str(temp["coretemp"][0][1])
+            output += "℉ " if fahrenheit else "℃ "
+
+    # remove double spaces and print
+    print(re.sub(' +', ' ', output))
+
+    if testing:
+        print("\nIt took " + str(int((round(time.time() * 1000)) - time_start) / 1000) + " s")
 
     exit(0)
 
@@ -158,7 +195,7 @@ def per_cpu(result):
         proc = str(int(round(val, 1)))
         if len(proc) < 2:
             proc = "0" + proc
-        string += proc + " "
+        string += proc + "% "
     return string
 
 
