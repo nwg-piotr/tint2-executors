@@ -19,9 +19,9 @@ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Publ
 
 Inspired by tknomanzr's cpu.py at https://forums.bunsenlabs.org/viewtopic.php?id=4276
 
-Command: python ~/tint2-executors/cpu-fan-memory.py [-C{components}] [-F]
+Command: python ~/tint2-executors/cpu-fan-memory.py [-C{components}] [-F] [-T]
 
-Optional arguments: -CgpaStfM -F
+Optional arguments: -CgpaStfM -F -T
 
 -C stands for Components:
     g - (g)raphical CPU load bar
@@ -71,7 +71,7 @@ def main():
     pcpu, avg, speed, temp, fans, memory = None, None, None, None, None, None
     output = ""
 
-    # prepare requested data only once
+    # prepare ONLY requested data, ONLY once
     if "g" in components or "p" in components:
         pcpu = psutil.cpu_percent(interval=1, percpu=True)
 
@@ -113,7 +113,7 @@ def main():
             output += " " + str(round(speed[0] / 1000, 1)) + "/" + str(round(speed[2] / 1000, 1)) + "GHz "
 
         if char == "t" and temp is not None and len(temp) > 0:
-            # Change to "acpitz" for ACPI Thermal Zone
+            # "acpitz" for ACPI Thermal Zone
             output += " " + str(temp["coretemp"][0][1])
             output += "℉ " if fahrenheit else "℃ "
 
@@ -128,11 +128,11 @@ def main():
             output += " " + str(round((memory[0] - memory[1]) / 1073741824, 1)) + "/" + str(
                 round(memory[0] / 1073741824, 1)) + "GB "
 
-    # remove double spaces and print
-    print(re.sub(' +', ' ', output))
+    # remove double, leading and trailing spaces before printing
+    print(re.sub(' +', ' ', output).strip())
 
     if testing:
-        print("\nIt took " + str(int((round(time.time() * 1000)) - time_start) / 1000) + " s")
+        print("\nIt took " + str(int((round(time.time() * 1000)) - time_start) / 1000) + "s")
 
 
 def per_cpu(result):
