@@ -128,11 +128,11 @@ def main():
             output += " " + str(round((memory[0] - memory[1]) / 1073741824, 1)) + "/" + str(
                 round(memory[0] / 1073741824, 1)) + "GB "
 
+    if testing:
+        output += " [" + str(int((round(time.time() * 1000)) - time_start) / 1000) + "s]"
+
     # remove double, leading and trailing spaces before printing
     print(re.sub(' +', ' ', output).strip())
-
-    if testing:
-        print("\nIt took " + str(int((round(time.time() * 1000)) - time_start) / 1000) + "s")
 
 
 def per_cpu(result):
