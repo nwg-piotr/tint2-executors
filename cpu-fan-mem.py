@@ -69,10 +69,16 @@ def main():
 
     # prepare ONLY requested data, ONLY once
     if "g" in components or "p" in components:
-        pcpu = psutil.cpu_percent(interval=1, percpu=True)
+        try:
+            pcpu = psutil.cpu_percent(interval=1, percpu=True)
+        except:
+            pass
 
     if "a" in components:
-        avg = psutil.cpu_percent(interval=1)
+        try:
+            avg = psutil.cpu_percent(interval=1)
+        except:
+            pass
 
     if "s" in components or "S" in components:
         try:
@@ -81,7 +87,10 @@ def main():
             pass
 
     if "t" in components:
-        temp = psutil.sensors_temperatures(fahrenheit)
+        try:
+            temp = psutil.sensors_temperatures(fahrenheit)
+        except:
+            pass
 
     if "f" in components:
         try:
@@ -90,16 +99,19 @@ def main():
             pass
 
     if "m" in components or "M" in components:
-        memory = psutil.virtual_memory()
+        try:
+            memory = psutil.virtual_memory()
+        except:
+            pass
 
     for char in components:
-        if char == "g":
+        if char == "g" and pcpu is not None:
             output += " " + graph_per_cpu(pcpu) + " "
 
-        if char == "p":
+        if char == "p" and pcpu is not None:
             output += " " + per_cpu(pcpu) + " "
 
-        if char == "a":
+        if char == "a" and avg is not None:
             output += " CPU: " + str(avg) + "% "
 
         if char == "s" and speed is not None:
