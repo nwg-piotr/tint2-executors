@@ -133,7 +133,7 @@ def main():
             output += " " + str(round((memory[0] - memory[1]) / 1073741824, 1)) + "GB "
 
         if char == 'M' and memory is not None:
-            output += " " + str(round((memory[0] - memory[1]) / 1073741824, 1)) + "/" + str(
+            output += " " + str(round((memory[3]) / 1073741824, 1)) + "/" + str(
                 round(memory[0] / 1073741824, 1)) + "GB "
 
     if testing:
