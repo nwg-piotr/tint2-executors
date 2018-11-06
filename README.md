@@ -5,13 +5,11 @@ useful on [Arch Linux](https://www.archlinux.org), but most part should work any
 ## [cpu-fan-memory.py](cpu-fan-memory.py)
 This script uses the `python-psutil` module to display the CPU load (graph or percentage per core or average percentage), frequency (current/max), the temperature sensor reading, the fan speed and memory usage (used/total).
 
-![cpu-fan-memory overview](http://nwg.pl/wiki-tint2-executors/cpu-fan-memory-overview.png)
+![cpu-fan-mem](http://nwg.pl/wiki-tint2-executors/cpu-fan-mem.png)
 
-![cpu-fan-memory zoom](http://nwg.pl/wiki-tint2-executors/cpu-fan-memory-zoom.png)
+**Command:** `python ~/tint2-executors/cpu-fan-memory.py [-C{components}] [-F] [-T]`
 
-**Command:** `python ~/tint2-executors/cpu-fan-memory.py [-options]`
-
-[Wiki: -options, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/CPU-load,-fan-speed,-memory-usage)
+[Wiki: options, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/CPU-load,-temperature,-fan-speed,-memory-usage)
 
 ## [bbswitch-status.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status.sh)
 
