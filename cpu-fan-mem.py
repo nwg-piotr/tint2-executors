@@ -20,12 +20,14 @@ Inspired by tknomanzr's cpu.py at https://forums.bunsenlabs.org/viewtopic.php?id
 
 Command: python ~/tint2-executors/cpu-fan-mem.py [-C{components}] [-F] [-T]
 
-Optional arguments: -CgpaStfM -F -T
+Optional arguments: -CgpaQStfM -F -T
 
 -C stands for Components:
     g - (g)raphical CPU load bar
     p - (p)ercentage for each core (text)
     a - (a)verage CPU load (text)
+    q - fre(q)ency for each thread
+    Q - fre(Q)ency for each thread/max frequency
     s - current CPU (s)peed
     S - current/max CPU (S)peed
     t - CPU (t)emperature
@@ -64,7 +66,7 @@ def main():
     if testing:
         time_start = int(round(time.time() * 1000))
 
-    pcpu, avg, speed, temp, fans, memory = None, None, None, None, None, None
+    pcpu, avg, speed, freqs, temp, fans, memory = None, None, None, None, None, None, None
     output = ""
 
     # prepare ONLY requested data, ONLY once
@@ -83,6 +85,12 @@ def main():
     if "s" in components or "S" in components:
         try:
             speed = psutil.cpu_freq(False)
+        except:
+            pass
+
+    if "q" in components or "Q" in components:
+        try:
+            freqs = psutil.cpu_freq(True)
         except:
             pass
 
@@ -113,6 +121,13 @@ def main():
 
         if char == "a" and avg is not None:
             output += " CPU: " + str(avg) + "% "
+
+        if char == "q" and freqs is not None:
+            output += freq_per_cpu(freqs)[0] + "GHz "
+
+        if char == "Q" and freqs is not None:
+            result = freq_per_cpu(freqs)
+            output += result[0].strip() + "/" + result[1] + "GHz "
 
         if char == "s" and speed is not None:
             output += " " + str(round(speed[0] / 1000, 1)) + "GHz "
@@ -151,6 +166,17 @@ def per_cpu(result):
             proc = "0" + proc
         string += proc + "% "
     return string
+
+
+def freq_per_cpu(result):
+    string = ""
+    max_freq = 0
+    for val in result:
+        freq = str(round(val[0] / 1000, 1))
+        string += freq + " "
+        max_freq = str(round(val[2] / 1000, 1))
+
+    return string, max_freq
 
 
 def graph_per_cpu(result):
