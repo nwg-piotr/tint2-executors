@@ -123,11 +123,11 @@ def main():
             output += " CPU: " + str(avg) + "% "
 
         if char == "q" and freqs is not None:
-            output += freq_per_cpu(freqs)[0] + "GHz "
+            output += freq_per_cpu(freqs)[0][:-1] + "GHz "
 
         if char == "Q" and freqs is not None:
             result = freq_per_cpu(freqs)
-            output += result[0].strip() + "/" + result[1] + "GHz "
+            output += result[0][:-1] + "/" + result[1] + "GHz "
 
         if char == "s" and speed is not None:
             output += " " + str(round(speed[0] / 1000, 1)) + "GHz "
@@ -173,7 +173,7 @@ def freq_per_cpu(result):
     max_freq = 0
     for val in result:
         freq = str(round(val[0] / 1000, 1))
-        string += freq + " "
+        string += freq + "|"
         max_freq = str(round(val[2] / 1000, 1))
 
     return string, max_freq
