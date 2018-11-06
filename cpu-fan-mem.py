@@ -2,7 +2,6 @@
 # _*_ coding: utf-8 _*_
 
 """
-ATTENTION: THIS SCRIPT IS UNDER DEVELOPMENT, NOT YET READY TO USE
 
 This script uses the `python-psutil` module to display the CPU average load, frequency (current/max),
 the temperature sensor reading, the fan speed and memory usage (used/total).
@@ -50,7 +49,7 @@ def main():
     fahrenheit = False
     testing = False
     time_start = None
-    components = None
+    components = "gStfM"
 
     for i in range(1, len(sys.argv)):
         if sys.argv[i] == "-F":
@@ -61,9 +60,6 @@ def main():
 
         if sys.argv[i].startswith("-C"):
             components = sys.argv[i][2::]
-
-    if components is None:
-        components = "gStfM"
 
     if testing:
         time_start = int(round(time.time() * 1000))
