@@ -35,6 +35,7 @@ Optional arguments: -CgpaQStfM -F -T
     m - (m)emory in use
     M - (M)emory in use/total
 -F - use Fahrenheit instead of ℃
+-N - display field names (except for (g)raphical CPU load bar)
 -T - test execution time
 
 Note: Combining `g` or `p` with `a` slows the script down twice.
