@@ -18,7 +18,7 @@ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Publ
 
 Inspired by tknomanzr's cpu.py at https://forums.bunsenlabs.org/viewtopic.php?id=4276
 
-Command: python ~/tint2-executors/cpu-fan-mem.py [-C{components}] [-F] [-T]
+Command: python ~/tint2-executors/cpu-fan-mem.py [-C{components}] [-F] [-T] [-N]
 
 Optional arguments: -CgpaQStfM -F -T -N
 
