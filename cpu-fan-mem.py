@@ -49,6 +49,7 @@ import time
 
 def main():
     fahrenheit = False
+    names = False
     testing = False
     time_start = None
     components = "gStfM"
@@ -56,6 +57,9 @@ def main():
     for i in range(1, len(sys.argv)):
         if sys.argv[i] == "-F":
             fahrenheit = True
+
+        if sys.argv[i] == "-N":
+            names = True
 
         if sys.argv[i] == "-T":
             testing = True
@@ -69,7 +73,7 @@ def main():
     pcpu, avg, speed, freqs, temp, fans, memory = None, None, None, None, None, None, None
     output = ""
 
-    # prepare ONLY requested data, ONLY once
+    # Prepare ONLY requested data, ONLY once
     if "g" in components or "p" in components:
         try:
             pcpu = psutil.cpu_percent(interval=1, percpu=True)
@@ -78,7 +82,9 @@ def main():
 
     if "a" in components:
         try:
-            avg = psutil.cpu_percent(interval=1)
+            avg = str(psutil.cpu_percent(interval=1))
+            if len(avg) < 4:
+                avg = "~" + avg
         except:
             pass
 
@@ -112,43 +118,55 @@ def main():
         except:
             pass
 
+    # Build output component after component
     for char in components:
         if char == "g" and pcpu is not None:
+            #output += " CPU:" if names else " "
             output += " " + graph_per_cpu(pcpu) + " "
 
         if char == "p" and pcpu is not None:
-            output += " " + per_cpu(pcpu) + " "
+            output += " CPU:" if names else " "
+            output += per_cpu(pcpu) + " "
 
         if char == "a" and avg is not None:
-            output += " CPU: " + str(avg) + "% "
+            output += " avCPU:" if names else " "
+            output += avg + "% "
 
         if char == "q" and freqs is not None:
+            output += " CPU:" if names else " "
             output += freq_per_cpu(freqs)[0][:-1] + "GHz "
 
         if char == "Q" and freqs is not None:
+            output += " CPU:" if names else " "
             result = freq_per_cpu(freqs)
             output += result[0][:-1] + "/" + result[1] + "GHz "
 
         if char == "s" and speed is not None:
-            output += " " + str(round(speed[0] / 1000, 1)) + "GHz "
+            output += " SPD:" if names else " "
+            output += str(round(speed[0] / 1000, 1)) + "GHz "
 
         if char == "S" and speed is not None:
-            output += " " + str(round(speed[0] / 1000, 1)) + "/" + str(round(speed[2] / 1000, 1)) + "GHz "
+            output += " avSPD:" if names else " "
+            output += str(round(speed[0] / 1000, 1)) + "/" + str(round(speed[2] / 1000, 1)) + "GHz "
 
         if char == "t" and temp is not None and len(temp) > 0:
+            output += " CORE:" if names else " "
             # "acpitz" for ACPI Thermal Zone
-            output += " " + str(temp["coretemp"][0][1])
+            output += str(temp["coretemp"][0][1])
             output += "℉ " if fahrenheit else "℃ "
 
         if char == "f" and fans is not None and len(fans) > 0:
+            output += " FAN:" if names else " "
             fan0 = next(iter(fans.values()))
-            output += " " + str(fan0[0][1]) + "/m "
+            output += str(fan0[0][1]) + "/m "
 
         if char == 'm' and memory is not None:
-            output += " " + str(round((memory[0] - memory[1]) / 1073741824, 1)) + "GB "
+            output += " MEM:" if names else " "
+            output += str(round((memory[0] - memory[1]) / 1073741824, 1)) + "GB "
 
         if char == 'M' and memory is not None:
-            output += " " + str(round((memory[3]) / 1073741824, 1)) + "/" + str(
+            output += " MEM:" if names else " "
+            output += str(round((memory[3]) / 1073741824, 1)) + "/" + str(
                 round(memory[0] / 1073741824, 1)) + "GB "
 
     if testing:
@@ -163,7 +181,7 @@ def per_cpu(result):
     for val in result:
         proc = str(int(round(val, 1)))
         if len(proc) < 2:
-            proc = "0" + proc
+            proc = "~" + proc
         string += proc + "% "
     return string
 
