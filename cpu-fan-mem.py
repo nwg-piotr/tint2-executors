@@ -20,7 +20,7 @@ Inspired by tknomanzr's cpu.py at https://forums.bunsenlabs.org/viewtopic.php?id
 
 Command: python ~/tint2-executors/cpu-fan-mem.py [-C{components}] [-F] [-T]
 
-Optional arguments: -CgpaQStfM -F -T
+Optional arguments: -CgpaQStfM -F -T -N
 
 -C stands for Components:
     g - (g)raphical CPU load bar
