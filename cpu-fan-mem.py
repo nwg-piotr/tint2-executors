@@ -37,8 +37,10 @@ Optional arguments: -CgpaQStfMWDu -F -T -N
     M - (M)emory in use/total
     w - s(w)ap memory in use
     W - s(W)ap memory in use/total
-    d - (d)rives usage in %
-    D - (D)rives used/total
+    d - (d)rives as names usage in %
+    D - (D)rives as names used/total
+    n - drives as mou(n)tpoints usage in %
+    D - (D)rives as mou(N)tpoints used/total
     u - (u)ptime HH:MM
     U - (U)ptime HH:MM:SS
 
@@ -134,24 +136,42 @@ def main():
         except:
             pass
 
-    if "d" in components or "D" in components:
+    drives = []
+    # Find drive names, mountpoints
+    if "d" in components or "D" in components or "n" in components or "N" in components:
         try:
             d = psutil.disk_partitions()
             # This will store name, mountpoint
-            drives = []
+
             for entry in d:
                 n = entry[0].split("/")
                 name = n[len(n) - 1]
                 # name, mountpoint
                 drive = name, entry[1]
                 drives.append(drive)
+        except:
+            pass
 
+    if "d" in components or "D" in components:
+        try:
             disks_usage = []
             for drive in drives:
                 # Search drives by path
                 data = psutil.disk_usage(drive[1])
                 # Store name, used, total, percent
                 essential = drive[0].upper(), data[1], data[0], data[3]
+                disks_usage.append(essential)
+        except:
+            pass
+
+    if "n" in components or "N" in components:
+        try:
+            disks_usage = []
+            for drive in drives:
+                # Search drives by path
+                data = psutil.disk_usage(drive[1])
+                # Store mountpoint, used, total, percent
+                essential = drive[1], data[1], data[0], data[3]
                 disks_usage.append(essential)
         except:
             pass
@@ -235,12 +255,12 @@ def main():
             output += str(round(swap[0] / 1073741824, 1)) + "/"
             output += str(round(swap[1] / 1073741824, 1)) + "GB "
 
-        if char == "d" and disks_usage is not None:
+        if char == "d" or char == "n" and disks_usage is not None:
             for entry in disks_usage:
                 output += " " + entry[0] + ":"
                 output += str(entry[3]) + "% "
 
-        if char == "D" and disks_usage is not None:
+        if char == "D" or char == "N" and disks_usage is not None:
             for entry in disks_usage:
                 output += " " + entry[0] + ":"
                 output += str(round(entry[1] / 1073741824, 1)) + "/"
