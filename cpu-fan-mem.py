@@ -75,7 +75,7 @@ def main():
     if testing:
         time_start = int(round(time.time() * 1000))
 
-    pcpu, avg, speed, freqs, temp, fans, memory, swap = None, None, None, None, None, None, None, None
+    pcpu, avg, speed, freqs, temp, fans, b_time, memory, swap = None, None, None, None, None, None, None, None, None
     output = ""
 
     # Prepare ONLY requested data, ONLY once
@@ -123,9 +123,18 @@ def main():
         except:
             pass
 
+    if "u" in components or "U" in components:
+        try:
+            b_time = psutil.boot_time()
+        except:
+            pass
+
     if "w" in components or "W" in components:
-        s = psutil.swap_memory()
-        swap = s[1], s[0]
+        try:
+            s = psutil.swap_memory()
+            swap = s[1], s[0]
+        except:
+            pass
 
     # Build output component after component
     for char in components:
@@ -177,15 +186,15 @@ def main():
             output += str(round((memory[3]) / 1073741824, 1)) + "/" + str(
                 round(memory[0] / 1073741824, 1)) + "GB "
 
-        if char == 'u':
-            up_time = int(time.time()) - psutil.boot_time()
+        if char == 'u' and b_time is not None:
+            up_time = int(time.time()) - b_time
             m, s = divmod(up_time, 60)
             h, m = divmod(m, 60)
             output += " UP:" if names else " "
             output += "%d:%02d " % (h, m)
 
-        if char == 'U':
-            up_time = int(time.time()) - psutil.boot_time()
+        if char == 'U' and b_time is not None:
+            up_time = int(time.time()) - b_time
             m, s = divmod(up_time, 60)
             h, m = divmod(m, 60)
             output += " UP:" if names else " "
