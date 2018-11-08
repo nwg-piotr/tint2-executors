@@ -280,7 +280,7 @@ def main():
         output += " [" + str(int((round(time.time() * 1000)) - time_start) / 1000) + "s]"
 
     # remove double, leading and trailing spaces before printing
-    print(" " + re.sub(' +', ' ', output).strip() + " ")
+    print(re.sub(' +', ' ', output).strip())
 
 
 def per_cpu(result):
