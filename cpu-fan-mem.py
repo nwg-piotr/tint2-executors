@@ -20,9 +20,10 @@ Inspired by tknomanzr's cpu.py at https://forums.bunsenlabs.org/viewtopic.php?id
 
 Command: python ~/tint2-executors/cpu-fan-mem.py [-C{components}] [-F] [-T] [-N]
 
-Optional arguments: -CgpaQStfM -F -T -N
+Optional arguments: -CgpaQStfMWDu -F -T -N
 
 -C stands for Components:
+
     g - (g)raphical CPU load bar
     p - (p)ercentage for each core (text)
     a - (a)verage CPU load (text)
@@ -36,8 +37,11 @@ Optional arguments: -CgpaQStfM -F -T -N
     M - (M)emory in use/total
     w - s(w)ap memory in use
     W - s(W)ap memory in use/total
+    d - (d)rives usage in %
+    D - (D)rives used/total
     u - (u)ptime HH:MM
     U - (U)ptime HH:MM:SS
+
 -F - use Fahrenheit instead of ℃
 -N - display field names (except for (g)raphical CPU load bar)
 -T - test execution time
@@ -75,7 +79,9 @@ def main():
     if testing:
         time_start = int(round(time.time() * 1000))
 
-    pcpu, avg, speed, freqs, temp, fans, b_time, memory, swap = None, None, None, None, None, None, None, None, None
+    pcpu, avg, speed, freqs, temp, fans, b_time, \
+        memory, swap, disks_usage = None, None, None, None, None, None, None, None, None, None
+
     output = ""
 
     # Prepare ONLY requested data, ONLY once
@@ -123,16 +129,38 @@ def main():
         except:
             pass
 
-    if "u" in components or "U" in components:
-        try:
-            b_time = psutil.boot_time()
-        except:
-            pass
-
     if "w" in components or "W" in components:
         try:
             s = psutil.swap_memory()
             swap = s[1], s[0]
+        except:
+            pass
+
+    if "d" in components or "D" in components:
+        try:
+            d = psutil.disk_partitions()
+            # This will store name, mountpoint
+            drives = []
+            for entry in d:
+                n = entry[0].split("/")
+                name = n[len(n) - 1]
+                # name, mountpoint
+                drive = name, entry[1]
+                drives.append(drive)
+
+            disks_usage = []
+            for drive in drives:
+                # Search drives by path
+                data = psutil.disk_usage(drive[1])
+                # Store name, used, total, percent
+                essential = drive[0].upper(), data[1], data[0], data[3]
+                disks_usage.append(essential)
+        except:
+            pass
+
+    if "u" in components or "U" in components:
+        try:
+            b_time = psutil.boot_time()
         except:
             pass
 
@@ -209,6 +237,16 @@ def main():
             output += str(round(swap[0] / 1073741824, 1)) + "/"
             output += str(round(swap[1] / 1073741824, 1)) + "GB "
 
+        if char == "d" and disks_usage is not None:
+            for entry in disks_usage:
+                output += " " + entry[0] + ":"
+                output += str(entry[3]) + "% "
+
+        if char == "D" and disks_usage is not None:
+            for entry in disks_usage:
+                output += " " + entry[0] + ":"
+                output += str(round(entry[1] / 1073741824, 1)) + "/"
+                output += str(round(entry[2] / 1073741824, 1)) + "GB "
 
     if testing:
         output += " [" + str(int((round(time.time() * 1000)) - time_start) / 1000) + "s]"
