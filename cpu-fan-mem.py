@@ -247,14 +247,14 @@ def main():
             m, s = divmod(up_time, 60)
             h, m = divmod(m, 60)
             output += " UP:" if names else " "
-            output += "%d:%02d" % (h, m) + " "
+            output += "%d:%02d " % (h, m)
 
         if char == 'U' and b_time is not None:
             up_time = int(time.time()) - b_time
             m, s = divmod(up_time, 60)
             h, m = divmod(m, 60)
             output += " UP:" if names else " "
-            output += "%d:%02d:%02d" % (h, m, s) + " "
+            output += "%d:%02d:%02d " % (h, m, s)
 
         if char == "w" and swap is not None:
             output += " SWAP:" if names else " "
@@ -280,7 +280,7 @@ def main():
         output += " [" + str(int((round(time.time() * 1000)) - time_start) / 1000) + "s]"
 
     # remove double, leading and trailing spaces before printing
-    print(re.sub(' +', ' ', output).strip())
+    print(" " + re.sub(' +', ' ', output).strip() + " ")
 
 
 def per_cpu(result):
