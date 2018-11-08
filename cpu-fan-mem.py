@@ -40,7 +40,7 @@ Optional arguments: -CgpaQStfMWDu -F -T -N
     d - (d)rives as names usage in %
     D - (D)rives as names used/total
     n - drives as mou(n)tpoints usage in %
-    D - (D)rives as mou(N)tpoints used/total
+    N - drives as mou(N)tpoints used/total
     u - (u)ptime HH:MM
     U - (U)ptime HH:MM:SS
 
@@ -61,9 +61,13 @@ def main():
     names = False
     testing = False
     time_start = None
-    components = "gStfMu"
+    components = "gStfM"
 
     for i in range(1, len(sys.argv)):
+        if sys.argv[i] == "-h" or sys.argv[i] == "--help":
+            print_help()
+            exit(0)
+
         if sys.argv[i] == "-F":
             fahrenheit = True
 
@@ -75,6 +79,11 @@ def main():
 
         if sys.argv[i].startswith("-C"):
             components = sys.argv[i][2::]
+
+        if sys.argv[i] == "-ALL":
+            components = "gpaQStfMWDU"
+            names = True
+            testing = True
 
     if testing:
         time_start = int(round(time.time() * 1000))
@@ -108,6 +117,8 @@ def main():
     if "q" in components or "Q" in components:
         try:
             freqs = psutil.cpu_freq(True)
+            if len(freqs) == 0:
+                freqs = None
         except:
             pass
 
@@ -202,7 +213,7 @@ def main():
         if char == "Q" and freqs is not None:
             output += " CPU:" if names else " "
             result = freq_per_cpu(freqs)
-            output += result[0][:-1] + "/" + result[1] + "GHz "
+            output += result[0][:-1] + "/" + str(result[1]) + "GHz "
 
         if char == "s" and speed is not None:
             output += " SPD:" if names else " "
@@ -302,6 +313,35 @@ def graph_per_cpu(result):
         proc = int(round(val / 10, 0))
         string += graph[proc]
     return string
+
+
+def print_help():
+    print("\nArguments: [-C{components}] [-F] [-T] [-N] [-h] [--help]")
+
+    print("\n-C defines Components. If none given, -CgStfM will be used by default\n")
+    print("  g - (g)raphical CPU load bar")
+    print("  p - (p)ercentage for each core (text)")
+    print("  a - (a)verage CPU load (text)")
+    print("  q - fre(q)ency for each thread")
+    print("  Q - fre(Q)ency for each thread/max frequency")
+    print("  s - current CPU (s)peed")
+    print("  S - current/max CPU (S)peed")
+    print("  t - CPU (t)emperature")
+    print("  f - (f)an speed")
+    print("  m - (m)emory in use")
+    print("  M - (M)emory in use/total")
+    print("  w - s(w)ap memory in use")
+    print("  W - s(W)ap memory in use/total")
+    print("  d - (d)rives as names usage in %")
+    print("  D - (D)rives as names used/total")
+    print("  n - drives as mou(n)tpoints usage in %")
+    print("  N - drives as mou(N)tpoints used/total")
+    print("  u - (u)ptime HH:MM")
+    print("  U - (U)ptime HH:MM:SS")
+
+    print("\n-F - use Fahrenheit instead of ℃")
+    print("-N - display field names (except for (g)raphical CPU load bar)")
+    print("-T - test execution time\n")
 
 
 if __name__ == "__main__":
