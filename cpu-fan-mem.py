@@ -18,9 +18,7 @@ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Publ
 
 Inspired by tknomanzr's cpu.py at https://forums.bunsenlabs.org/viewtopic.php?id=4276
 
-Command: python ~/tint2-executors/cpu-fan-mem.py [-C{components}] [-F] [-T] [-N]
-
-Optional arguments: -CgpaQStfMWDu -F -T -N
+Command: python ~/tint2-executors/cpu-fan-mem.py [-C{components}] [-F] [-N] [-T] [-ALL] [-h] [--help]
 
 -C stands for Components:
 
@@ -47,6 +45,7 @@ Optional arguments: -CgpaQStfMWDu -F -T -N
 -F - use Fahrenheit instead of ℃
 -N - display field names (except for (g)raphical CPU load bar)
 -T - test execution time
+-ALL - display all possible data (for use in terminal)
 
 """
 
@@ -316,7 +315,7 @@ def graph_per_cpu(result):
 
 
 def print_help():
-    print("\nArguments: [-C{components}] [-F] [-T] [-N] [-h] [--help]")
+    print("\nArguments: [-C{components}] [-F] [-N] [-T] [-ALL] [-h] [--help]")
 
     print("\n-C defines Components. If none given, -CgStfM will be used by default\n")
     print("  g - (g)raphical CPU load bar")
@@ -341,7 +340,8 @@ def print_help():
 
     print("\n-F - use Fahrenheit instead of ℃")
     print("-N - display field names (except for (g)raphical CPU load bar)")
-    print("-T - test execution time\n")
+    print("-T - test execution time")
+    print("-ALL - display all possible data (for use in terminal)\n")
 
 
 if __name__ == "__main__":
