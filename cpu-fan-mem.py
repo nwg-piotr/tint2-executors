@@ -46,8 +46,6 @@ Optional arguments: -CgpaQStfMWDu -F -T -N
 -N - display field names (except for (g)raphical CPU load bar)
 -T - test execution time
 
-Note: Combining `g` or `p` with `a` slows the script down twice.
-
 """
 
 import sys
