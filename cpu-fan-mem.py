@@ -34,6 +34,10 @@ Optional arguments: -CgpaQStfM -F -T -N
     f - (f)an speed
     m - (m)emory in use
     M - (M)emory in use/total
+    w - s(w)ap memory in use
+    W - s(W)ap memory in use/total
+    u - (u)ptime HH:MM
+    U - (U)ptime HH:MM:SS
 -F - use Fahrenheit instead of ℃
 -N - display field names (except for (g)raphical CPU load bar)
 -T - test execution time
@@ -53,7 +57,7 @@ def main():
     names = False
     testing = False
     time_start = None
-    components = "gStfM"
+    components = "gStfMu"
 
     for i in range(1, len(sys.argv)):
         if sys.argv[i] == "-F":
@@ -71,7 +75,7 @@ def main():
     if testing:
         time_start = int(round(time.time() * 1000))
 
-    pcpu, avg, speed, freqs, temp, fans, memory = None, None, None, None, None, None, None
+    pcpu, avg, speed, freqs, temp, fans, memory, swap = None, None, None, None, None, None, None, None
     output = ""
 
     # Prepare ONLY requested data, ONLY once
@@ -119,10 +123,13 @@ def main():
         except:
             pass
 
+    if "w" in components or "W" in components:
+        s = psutil.swap_memory()
+        swap = s[1], s[0]
+
     # Build output component after component
     for char in components:
         if char == "g" and pcpu is not None:
-            #output += " CPU:" if names else " "
             output += " " + graph_per_cpu(pcpu) + " "
 
         if char == "p" and pcpu is not None:
@@ -169,6 +176,30 @@ def main():
             output += " MEM:" if names else " "
             output += str(round((memory[3]) / 1073741824, 1)) + "/" + str(
                 round(memory[0] / 1073741824, 1)) + "GB "
+
+        if char == 'u':
+            up_time = int(time.time()) - psutil.boot_time()
+            m, s = divmod(up_time, 60)
+            h, m = divmod(m, 60)
+            output += " UP:" if names else " "
+            output += "%d:%02d " % (h, m)
+
+        if char == 'U':
+            up_time = int(time.time()) - psutil.boot_time()
+            m, s = divmod(up_time, 60)
+            h, m = divmod(m, 60)
+            output += " UP:" if names else " "
+            output += "%d:%02d:%02d " % (h, m, s)
+
+        if char == "w" and swap is not None:
+            output += " SWAP:" if names else " "
+            output += str(round(swap[0] / 1073741824, 1)) + "GB "
+
+        if char == "W" and swap is not None:
+            output += " SWAP:" if names else " "
+            output += str(round(swap[0] / 1073741824, 1)) + "/"
+            output += str(round(swap[1] / 1073741824, 1)) + "GB "
+
 
     if testing:
         output += " [" + str(int((round(time.time() * 1000)) - time_start) / 1000) + "s]"
