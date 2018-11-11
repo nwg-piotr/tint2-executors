@@ -2,7 +2,7 @@
 
 # This script display an appropriate volume icon according to the volume level
 
-# Author: Piotr Miller
+# Authors: Piotr Miller, @natemaia
 # e-mail: nwg.piotr@gmail.com
 # Website: http://nwg.pl
 # Project: https://github.com/nwg-piotr/tint2-executors
