@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # This script display an appropriate volume icon according to the volume level
 
@@ -10,21 +10,17 @@
 
 # Dependencies: `alsa-utils`, `libnotify`, `xfce4-notifyd` or another notification server
 
-snd=$(amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $4 }')
+if [ "$(amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {print $4}')" = "on" ]; then
 
-if [ "$snd" = "on" ]; then
+    # search for the lines containing 'Right:' or 'Mono:', when more than 1 field exists
+    # we strip the trailing '%' and round it up with printf "%0.0f" just in case
+    vol=$(amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {sub(/%/, ""); printf "%0.0f\n", $2}')
 
-    vol=$(amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }')
-    v=${vol::-1}
-
-    # Lets round the float result
-    v=$(echo "($v+0.5)/1" | bc)
-
-    if [ "$v" -ge "90" ]; then
+    if [ $vol -ge 90 ]; then
         echo ~/tint2-executors/images/vol-full.svg
-    elif [ "$v" -ge "40" ]; then
+    elif [ $vol -ge 40 ]; then
         echo ~/tint2-executors/images/vol-medium.svg
-    elif [ "$v" -ge "10" ]; then
+    elif [ $vol -ge 10 ]; then
         echo ~/tint2-executors/images/vol-low.svg
     else
         echo ~/tint2-executors/images/vol-lowest.svg
