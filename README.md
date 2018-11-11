@@ -1,6 +1,9 @@
 # Tint2 executors collection
-I thought to publish my collection of executors for [Tint2](https://gitlab.com/o9000/tint2) panel here, in hope it's useful to someone. Some of the scripts are only
-useful on [Arch Linux](https://www.archlinux.org), but most part should work anywhere.
+While playing with Openbox, we often need a script to perform some actions not included OOTB. Having to search the same answers again and again on each new machine, I thought it was worth documenting them somewhere for further use.
+
+The [Tint2 panel](https://gitlab.com/o9000/tint2) - a brilliant and flexible piece of software - allows to execute scripts every certain period of time. At least some of these scripts should also be useful in other applications (panels?), however.
+
+If you find the project useful, feel free to contribute. Many thanks to [PackRat-SC2018](https://github.com/PackRat-SC2018), [Head_on_a_Stick](https://forum.archlabslinux.com/u/head_on_a_stick/summary), [Nathaniel](https://github.com/natemaia) for advices and pull requests.
 
 ## [cpu-fan-mem.py](https://github.com/nwg-piotr/tint2-executors/blob/master/cpu-fan-mem.py)
 This script uses the `python-psutil` module to display the CPU load (graph or percentage per core or average percentage), frequency (current/max), the temperature sensor reading, the fan speed and memory usage (used/total).
