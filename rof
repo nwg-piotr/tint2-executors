@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # This script will launch the command given as an argument if not yet running
 # Else it'll give focus to the command window

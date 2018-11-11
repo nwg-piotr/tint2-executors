@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # This script displays Internet DL/UL speed, external and internal IP address in a single row
 # Dependencies: `speedtest-cli`, `bind-tools` (Arch) or `dnsutils` (Debian)

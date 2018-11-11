@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # This script display external and internal IP address in two rows
 # Depends on `bind-tools`

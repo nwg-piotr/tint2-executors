@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # This script display an appropriate brightness icon according to the brightness level
 

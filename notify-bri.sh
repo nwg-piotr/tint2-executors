@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Helper to kill notification if and display volume level as a new one
 

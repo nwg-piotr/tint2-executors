@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # This script displays external and internal IP address in a single row
 # Depends on `bind-tools` (Arch) or `dnsutils` (Debian)
