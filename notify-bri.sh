@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-# Helper to kill notification if and display volume level as a new one
+# Helper to kill notification if any, and display brightness level as a new one
 
 # Dependencies: `xbacklight` or `light-git`, `libnotify`, `xfce4-notifyd` or another notification server
 
@@ -13,7 +13,7 @@ else
 fi
 
 # Round the float result
-bri=$(echo "($b+0.5)/1" | bc)%
+b=$(echo $b | awk '{ printf "%0.0f\n", $1 }')
 
 kill $(ps -e | grep notify | awk '{ print $1 }')
-notify-send "$bri" --expire-time=750
+notify-send "$b"% --urgency=low --expire-time=100
