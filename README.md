@@ -49,25 +49,13 @@ Lately I needed to prove that my Internet connection sucks. And not as fast as t
 
 [Wiki: dependencies, sample executor and output](https://github.com/nwg-piotr/tint2-executors/wiki/speedtest.cli-to-speedtest.txt)
 
-## [brightness-volume-level.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/brightness-volume-level.sh)
-
-This script displays current brightness and volume level.
-
-![brightness and volume level](http://nwg.pl/wiki-tint2-executors/brightness-volume-level.png)
-
-The [brightness-volume-inline.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/brightness-volume-inline.sh) displays the values in a row.
-
-![brightness and volume inline](http://nwg.pl/wiki-tint2-executors/brightness-volume-inline.png)
-
-**Command:** `~/tint2-executors/./brightness-volume-level.sh` or `~/tint2-executors/./brightness-volume-inline.sh`
-
 [Wiki: dependencies, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Brightness-and-volume-level)
 
 ## [brightness-icon.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/brightness-icon.sh)
 
 This script displays an appropriate brightness icon, according to the current brightness level. By assigning left/right click command you may decrease/increase the level.
 
-![brightness icon](http://nwg.pl/wiki-tint2-executors/brightness-icon1.png)
+![brightness icon](http://nwg.pl/wiki-tint2-executors/icon-brightness.png)
 
 **Command:** `~/tint2-executors/brightness-icon.sh`
 
@@ -77,7 +65,7 @@ This script displays an appropriate brightness icon, according to the current br
 
 This script displays an appropriate volume icon, according to the current volume level. Assigning left | middle | right click command to decrease | mute | increase the volume level.
 
-![volume icon](http://nwg.pl/wiki-tint2-executors/volume-icon.png)
+![volume icon](http://nwg.pl/wiki-tint2-executors/icon-volume.png)
 
 **Command:** `~/tint2-executors/volume-icon.sh`
 
@@ -87,7 +75,7 @@ This script displays an appropriate volume icon, according to the current volume
 
 This script has mainly aesthetic values: it should rather be used next to the built-in Tint2 battery indicator, not instead of it. It displays an appropriate battery icon, according to the current charge level and charging state.
 
-![battery icon](http://nwg.pl/wiki-tint2-executors/battery-icon.png)
+![battery icon](http://nwg.pl/wiki-tint2-executors/icon-battery.png)
 
 **Command:** `~/tint2-executors/battery-icon.sh`
 
@@ -97,7 +85,7 @@ This script has mainly aesthetic values: it should rather be used next to the bu
 
 This Python script displays current desktop indicator. It also allows to switch desktops.
 
-![desktop icon](http://nwg.pl/wiki-tint2-executors/desktop-icon.png)
+![desktop icon](http://nwg.pl/wiki-tint2-executors/icon-desktop.png)
 
 [Wiki: dependencies, optional arguments, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Desktop-indicator-and-switcher)
 
