@@ -53,7 +53,7 @@ Lately I needed to prove that my Internet connection sucks. And not as fast as t
 
 ## [brightness-icon.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/brightness-icon.sh)
 
-This script displays an appropriate brightness icon, according to the current brightness level. Assign scroll up/down  command increase/decrease. Use `-l` argument to display level as text next to the icon.
+This script displays an appropriate brightness icon, according to the current brightness level. Assign scroll up/down  command to increase/decrease level. Use `-l` argument to display level as text next to the icon.
 
 ![brightness icon](http://nwg.pl/wiki-tint2-executors/icon-brightness.png)
 
@@ -63,7 +63,7 @@ This script displays an appropriate brightness icon, according to the current br
 
 ## [volume-icon.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/volume-icon.sh)
 
-This script displays an appropriate volume icon, according to the current volume level. Assign scroll up/down  command increase/decrease. Use `-l` argument to display level as text next to the icon.
+This script displays an appropriate volume icon, according to the current volume level. Assign scroll up/down command to increase/decrease level. Use `-l` argument to display level as text next to the icon.
 
 ![volume icon](http://nwg.pl/wiki-tint2-executors/icon-volume.png)
 
@@ -83,7 +83,7 @@ This script displays an appropriate battery icon, according to the current charg
 
 ## [desktop.py](https://github.com/nwg-piotr/tint2-executors/blob/master/desktop.py)
 
-This Python script displays current desktop indicator. Assign scroll up/down command with `-n` (next) / `p` (previous) argument to switch desktops. Use `-l` argument to display level as text next to the icon.
+This Python script displays current desktop indicator. Assign scroll up/down command with `-n` (next) / `p` (previous) argument to switch desktops. Use `-l` argument to display level as text, next to the icon.
 
 ![desktop icon](http://nwg.pl/wiki-tint2-executors/icon-desktop.png)
 
