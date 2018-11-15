@@ -21,12 +21,15 @@ fi
 # Lets round the float result
 bri=$(echo "($b+0.5)/1" | bc)
 
-if [ "$bri" -gt "90" ]; then
+if [[ "$bri" -gt "90" ]]; then
     echo ~/tint2-executors/images/bri-full.svg
-elif [ "$bri" -gt "50" ]; then
+elif [[ "$bri" -gt "50" ]]; then
     echo ~/tint2-executors/images/bri-high.svg
-elif [ "$bri" -gt "30" ]; then
+elif [[ "$bri" -gt "30" ]]; then
     echo ~/tint2-executors/images/bri-medium.svg
 else
     echo ~/tint2-executors/images/bri-low.svg
+fi
+if  [[ $1 = "-l" ]]; then
+    echo ${bri}%
 fi

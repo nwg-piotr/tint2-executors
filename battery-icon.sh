@@ -52,3 +52,6 @@ else
         echo ~/tint2-executors/images/bat-empty.svg
     fi
 fi
+if  [[ $1 = "-l" ]]; then
+    echo ${level}%
+fi
