@@ -28,6 +28,6 @@ if [[ "$(amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {print $4}'
 else
     echo ~/tint2-executors/images/vol-muted.svg
 fi
-if  [[ $1 = "-i" ]]; then
+if  [[ $1 = "-l" ]]; then
     echo ${vol}%
 fi
