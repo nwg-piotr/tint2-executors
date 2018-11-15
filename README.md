@@ -17,7 +17,7 @@ This script uses the `python-psutil` module to display the CPU load (graph or pe
 
 **Command:** `python ~/tint2-executors/cpu-fan-mem.py [-C{components}] [-F] [-T]`
 
-[Wiki: options, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/CPU-load,-temperature,-fan-speed,-memory-usage)
+[Wiki: options, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/cpu%E2%80%90fan%E2%80%90mem.py-(deprecated))
 
 ## [bbswitch-status.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status.sh)
 
