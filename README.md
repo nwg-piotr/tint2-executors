@@ -23,7 +23,7 @@ This script uses the `python-psutil` module to display the CPU load (graph or pe
 
 ## [bbswitch-status-temp.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status-temp.sh)
 
-A variant of the script above. If NVIDIA graphics turned on, it displays approprate icon with the GPU temperature.
+Displays an icon according to the current Bumblebee status. If NVIDIA graphics turned on, it'll also display the GPU temperature.
 
 ![bbswitch-status-temperature](http://nwg.pl/wiki-tint2-executors/icon-bbswitch-status-temp.png)
 
