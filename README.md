@@ -11,15 +11,13 @@ The project is being developed and tested on [Arch Linux](https://www.archlinux.
 ___
 **Important note:** the cpu-fan-mem.py script has been turned into a separate [project](https://github.com/nwg-piotr/psuinfo) and also [AUR package](https://aur.archlinux.org/packages/psuinfo), and will no longer be updated here. The description below, Wiki and the script itself are out of date. Please check the project site.
 ___
-This script uses the `python-psutil` module to display the CPU load (graph or percentage per core or average percentage), frequency (current/max), the temperature sensor reading, the fan speed and memory usage (used/total).
+~~This script uses the `python-psutil` module to display the CPU load (graph or percentage per core or average percentage), frequency (current/max), the temperature sensor reading, the fan speed and memory usage (used/total).~~
 
 ![cpu-fan-mem](http://nwg.pl/wiki-tint2-executors/cpu-fan-mem.png)
 
-**Command:** `python ~/tint2-executors/cpu-fan-mem.py [-C{components}] [-F] [-T]`
+~~**Command:** `python ~/tint2-executors/cpu-fan-mem.py [-C{components}] [-F] [-T]`~~
 
-[Wiki: options, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/cpu%E2%80%90fan%E2%80%90mem.py-(deprecated))
-
-[Wiki: sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Bumblebee-status)
+~~[Wiki: options, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/cpu%E2%80%90fan%E2%80%90mem.py-(deprecated))~~
 
 ## [bbswitch-status-temp.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status-temp.sh)
 
