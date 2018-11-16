@@ -126,15 +126,15 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="17.145834"
-     inkscape:cx="1.9425901"
+     inkscape:zoom="11.829307"
+     inkscape:cx="31.250001"
      inkscape:cy="32.250003"
      inkscape:document-units="px"
      inkscape:current-layer="g2210"
      inkscape:window-width="1920"
-     inkscape:window-height="997"
+     inkscape:window-height="999"
      inkscape:window-x="0"
-     inkscape:window-y="40"
+     inkscape:window-y="32"
      showgrid="false"
      inkscape:window-maximized="1" />
   <metadata
@@ -161,7 +161,7 @@
          transform="matrix(0.25,0,0,0.25,502.3126,469.21738)">
         <g
            id="g28"
-           transform="translate(21.523438,-24.492188)"
+           transform="matrix(1.3333334,0,0,1.3333334,-223.25007,-208.54109)"
            style="opacity:1;fill:#ececec">
           <path
              inkscape:connector-curvature="0"
