@@ -7,7 +7,7 @@ If you find the project useful, feel free to contribute. **Many thanks** to [Pac
 
 The project is being developed and tested on [Arch Linux](https://www.archlinux.org). Dependencies, shell references or something else (?), may, and probably will be invalid be on other Linux distributions.
 
-## [cpu-fan-mem.py](https://github.com/nwg-piotr/tint2-executors/blob/master/cpu-fan-mem.py)
+## [cpu-fan-mem.py](https://github.com/nwg-piotr/tint2-executors/blob/master/cpu-fan-mem.py) (deprecated)
 ___
 **Important note:** the cpu-fan-mem.py script has been turned into a separate [project](https://github.com/nwg-piotr/psuinfo) and also [AUR package](https://aur.archlinux.org/packages/psuinfo), and will no longer be updated here. The description below, Wiki and the script itself are out of date. Please check the project site.
 ___
