@@ -43,7 +43,9 @@ def main():
             except ValueError:
                 print("Argument not allowed. Should be: `desktop.py [n] | [p] | [number]`")
     else:
-        print(str(Path.home()) + "/tint2-executors/images/desktop" + str(current_desktop(desktops) + 1) + ".svg")
+        # print(str(Path.home()) + "/tint2-executors/images/desktop" + str(current_desktop(desktops) + 1) + ".svg")
+        print(str(Path.home()) + "/tint2-executors/images/desktop.svg")
+        print(str(current_desktop(desktops) + 1))
 
 
 def current_desktop(desktops):
