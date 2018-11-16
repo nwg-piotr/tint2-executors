@@ -19,21 +19,13 @@ This script uses the `python-psutil` module to display the CPU load (graph or pe
 
 [Wiki: options, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/cpu%E2%80%90fan%E2%80%90mem.py-(deprecated))
 
-## [bbswitch-status.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status.sh)
-
-Have you ever needed to know if your hybrid (Optimus) laptop is currently running Intel or Nvidia graphics? In GNOME [there was an extension for that](https://extensions.gnome.org/extension/1100/bumblebee-status). Out of boredom I took a look at its code, which resulted in this short script.
-
-![bbswitch-status](http://nwg.pl/wiki-tint2-executors/bumblebee-status-on-off.png)
-
-**Command:** `~/tint2-executors/bbswitch-status.sh`
-
 [Wiki: sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Bumblebee-status)
 
 ## [bbswitch-status-temp.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status-temp.sh)
 
 A variant of the script above. If NVIDIA graphics turned on, it displays approprate icon with the GPU temperature.
 
-![bbswitch-status-temperature](http://nwg.pl/wiki-tint2-executors/bumblebee-status-temp.png)
+![bbswitch-status-temperature](http://nwg.pl/wiki-tint2-executors/icon-bbswitch-status-temp.png)
 
 **Command:** `~/tint2-executors/bbswitch-status-temp.sh`
 
