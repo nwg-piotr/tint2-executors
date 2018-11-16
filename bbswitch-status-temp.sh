@@ -10,26 +10,18 @@
 # https://github.com/dsboger/gnome-shell-extension-bumblebee-status
 # no-bumblebee icon by @edskeye
 
-if [ -f "/proc/acpi/bbswitch" ]; then
+if [[ -f "/proc/acpi/bbswitch" ]]; then
 
     bb_status=$(cat /proc/acpi/bbswitch | awk -F ' ' '{print $2}')
-    if [ "$bb_status" = "ON" ]; then
+    if [[ "$bb_status" = "ON" ]]; then
 
         t=$(nvidia-smi -q -d TEMPERATURE | grep "GPU Current Temp" | awk -F ' ' '{ print $5 }')
 
-        # to avoid adding icons for unlikely values
-        if [ "$t" -le "29" ]; then
-            t="na"
-        fi
-        # overheat!
-        if [ "$t" -gt "99" ]; then
-            t="oh"
-        fi
+        echo ~/tint2-executors/images/nvidia.svg;
+        echo ${t}"℃"
 
-        echo ~/tint2-executors/images/nvidia/${t}.svg
-
-    elif [ "$bb_status" = "OFF" ]; then
-        echo ~/tint2-executors/images/intel.svg
+    elif [[ "$bb_status" = "OFF" ]]; then
+        echo ~/tint2-executors/images/nvidia-off.svg
     fi
 else
     echo ~/tint2-executors/images/no-bumblebee.svg
