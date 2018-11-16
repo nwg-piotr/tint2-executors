@@ -10,13 +10,13 @@
 # https://github.com/dsboger/gnome-shell-extension-bumblebee-status
 # no-bumblebee icon by @edskeye
 
-if [ -f "/proc/acpi/bbswitch" ]; then
+if [[ -f "/proc/acpi/bbswitch" ]]; then
 
     bb_status=$(cat /proc/acpi/bbswitch | awk -F ' ' '{print $2}')
-    if [ "$bb_status" = "ON" ]; then
+    if [[ "$bb_status" = "ON" ]]; then
         echo ~/tint2-executors/images/nvidia.svg
-    elif [ "$bb_status" = "OFF" ]; then
-        echo ~/tint2-executors/images/intel.svg
+    elif [[ "$bb_status" = "OFF" ]]; then
+        echo ~/tint2-executors/images/nvidia-off.svg
     fi
 else
     echo ~/tint2-executors/images/no-bumblebee.svg
