@@ -10,6 +10,8 @@
 # https://github.com/dsboger/gnome-shell-extension-bumblebee-status
 # no-bumblebee icon by @edskeye
 
+# DEPRECATED - use bbswitch-status-temp.sh instead
+
 if [[ -f "/proc/acpi/bbswitch" ]]; then
 
     bb_status=$(cat /proc/acpi/bbswitch | awk -F ' ' '{print $2}')
