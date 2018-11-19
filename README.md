@@ -3,7 +3,7 @@ While playing with Openbox, we often need a script to perform some actions not i
 
 The [Tint2 panel](https://gitlab.com/o9000/tint2) - a brilliant and flexible piece of software - allows to execute scripts every certain period of time. At least some of these scripts should also be useful in other applications (panels?), however.
 
-If you find the project useful, feel free to contribute. **Many thanks** to [PackRat](https://github.com/PackRat-SC2018), [Head_on_a_Stick](https://forum.archlabslinux.com/u/head_on_a_stick/summary), [Nathaniel](https://github.com/natemaia) for advices and pull requests.
+If you find the project useful, feel free to contribute. **Many thanks** to [PackRat](https://github.com/PackRat-SC2018), [Head_on_a_Stick](https://forum.archlabslinux.com/u/head_on_a_stick/summary), [Nathaniel](https://github.com/natemaia), [edskeye](https://github.com/edskeye) for advices and contibution.
 
 The project is being developed and tested on [Arch Linux](https://www.archlinux.org). Dependencies, shell references or something else (?), may, and probably will be invalid be on other Linux distributions.
 
