@@ -27,18 +27,6 @@ Displays an icon according to the current Bumblebee status. If NVIDIA graphics t
 
 [Wiki: dependencies, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Bumblebee-status)
 
-## [speedtest.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/speedtest.sh)
-
-Lately I needed to prove that my Internet connection sucks. And not as fast as the provider claims it does. To collect data on the speed over time, I used this bash script in a Tint2 executor. It saves Ping [ms] Download and Upload speed [Mbit/s] every a certain interval to ~/speedtest.txt.
-
-![speedtest-cli >> txt](http://nwg.pl/wiki-tint2-executors/speedtest-cli-txt.png)
-
-**Command:** `~/tint2-executors/speedtest.sh`
-
-[Wiki: dependencies, sample executor and output](https://github.com/nwg-piotr/tint2-executors/wiki/speedtest.cli-to-speedtest.txt)
-
-[Wiki: dependencies, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Brightness-and-volume-level)
-
 ## [brightness-icon.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/brightness-icon.sh)
 
 This script displays an appropriate brightness icon, according to the current brightness level. Assign scroll up/down  command to increase/decrease level. Use `-l` argument to display level as text next to the icon.
@@ -106,6 +94,16 @@ Opens a Zenity box to set the volume level. Could be used e.g. as the left click
 **Command:** `~/tint2-executors/zenity-set-volume.sh`
 
 [Wiki: dependencies](https://github.com/nwg-piotr/tint2-executors/wiki/Volume-zenity-box)
+
+## [speedtest.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/speedtest.sh)
+
+Lately I needed to prove that my Internet connection sucks. And not as fast as the provider claims it does. To collect data on the speed over time, I used this bash script in a Tint2 executor. It saves Ping [ms] Download and Upload speed [Mbit/s] every a certain interval to ~/speedtest.txt.
+
+![speedtest-cli >> txt](http://nwg.pl/wiki-tint2-executors/speedtest-cli-txt.png)
+
+**Command:** `~/tint2-executors/speedtest.sh`
+
+[Wiki: dependencies, sample executor and output](https://github.com/nwg-piotr/tint2-executors/wiki/speedtest.cli-to-speedtest.txt)
 
 # Installation (all-in-one):
 
