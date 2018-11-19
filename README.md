@@ -13,8 +13,6 @@ ___
 ___
 ~~This script uses the `python-psutil` module to display the CPU load (graph or percentage per core or average percentage), frequency (current/max), the temperature sensor reading, the fan speed and memory usage (used/total).~~
 
-![cpu-fan-mem](http://nwg.pl/wiki-tint2-executors/cpu-fan-mem.png)
-
 ~~**Command:** `python ~/tint2-executors/cpu-fan-mem.py [-C{components}] [-F] [-T]`~~
 
 ~~[Wiki: options, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/cpu%E2%80%90fan%E2%80%90mem.py-(deprecated))~~
