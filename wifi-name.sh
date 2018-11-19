@@ -5,10 +5,9 @@
 # Website: http://nwg.pl
 # Project: https://github.com/nwg-piotr/tint2-executors
 # License: GPL3
-
 # Icon by @edskeye
 
-name="No Wi-Fi"
+name="none"
 
 wifi=$(iwgetid | awk -F '"' '{ print $2 }')
 if [[ ! -z "$wifi" ]]; then
