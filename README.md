@@ -49,11 +49,19 @@ This script displays an appropriate battery icon, according to the current charg
 
 ## [desktop.py](https://github.com/nwg-piotr/tint2-executors/blob/master/desktop.py)
 
-This Python script displays current desktop indicator. Assign scroll up/down command with `-n` (next) / `p` (previous) argument to switch desktops. Use `-l` argument to display level as text, next to the icon.
+This Python script displays current desktop indicator. Assign scroll up/down command with `n` | `p` (next | previous) argument to switch desktops.
 
 ![desktop icon](http://nwg.pl/wiki-tint2-executors/icon-desktop.png)
 
 [Wiki: dependencies, optional arguments, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Desktop-indicator-and-switcher)
+
+## [wifi-name.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/wifi-name.sh)
+
+Bash script to display the name of Wi-Fi network currently in use, labeled with an icon or text.
+
+**Command:** `~/tint2-executors/wifi-name.sh`
+
+![wi-fi name](http://nwg.pl/wiki-tint2-executors/wifi-name.png)
 
 ## [arch-update.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/arch-update.sh)
 
