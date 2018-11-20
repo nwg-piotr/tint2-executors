@@ -59,9 +59,11 @@ This Python script displays current desktop indicator. Assign scroll up/down com
 
 Bash script to display the name of Wi-Fi network currently in use, labeled with an icon or text.
 
+![wi-fi name](http://nwg.pl/wiki-tint2-executors/wifi-name.png)
+
 **Command:** `~/tint2-executors/wifi-name.sh`
 
-![wi-fi name](http://nwg.pl/wiki-tint2-executors/wifi-name.png)
+[Wiki: optional agruments, sample executor](https://github.com/nwg-piotr/tint2-executors/wiki/Wi-Fi-networkname)
 
 ## [arch-update.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/arch-update.sh)
 
