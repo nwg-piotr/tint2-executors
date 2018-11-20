@@ -1,9 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 # _*_ coding: utf-8 _*_
 
 """
 
-This script uses `wmctrl` to switch desktops, or just prints path to the icon corresponding to currently active desktop
+This script uses `wmctrl` to switch desktops, or just prints path to the icon corresponding to currently active desktop,
+followed by the desktop number as text.
 
 Author: Piotr Miller
 e-mail: nwg.piotr@gmail.com
@@ -11,10 +12,10 @@ Website: http://nwg.pl
 Project: https://github.com/nwg-piotr/tint2-executors
 License: GPL3
 
-Command: python ~/tint2-executors/nesktop.py [n] | [p] | [number]
+Command: python ~/tint2-executors/desktop.py [-n] | [-p] | [number]
 
-[n] - switch to next desktop
-[p] - switch to previous desktop
+[-n] - switch to next desktop
+[-p] - switch to previous desktop
 [number] - switch to desktop of number given
 
 """
@@ -32,18 +33,17 @@ def main():
     last = len(desktops) - 1
 
     if len(sys.argv) > 1:
-        if sys.argv[1].upper() == "N":
+        if sys.argv[1].upper() == "N" or "-N":
             next_desktop(current, last)
-        elif sys.argv[1].upper() == "P":
+        elif sys.argv[1].upper() == "P" or "-P":
             previous_desktop(current, last)
         else:
             try:
                 d = int(sys.argv[1])
                 select_desktop(d - 1, last)
             except ValueError:
-                print("Argument not allowed. Should be: `desktop.py [n] | [p] | [number]`")
+                print("Argument not allowed. Should be: `desktop.py [-n] | [-p] | [number]`")
     else:
-        # print(str(Path.home()) + "/tint2-executors/images/desktop" + str(current_desktop(desktops) + 1) + ".svg")
         print(str(Path.home()) + "/tint2-executors/images/desktop.svg")
         print(str(current_desktop(desktops) + 1))
 
