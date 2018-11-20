@@ -8,7 +8,7 @@
 # Project: https://github.com/nwg-piotr/tint2-executors
 # License: GPL3
 
-# Dependencies: `alsa-utils`, `libnotify`, `xfce4-notifyd` or another notification server
+# Dependencies: `alsa-utils`
 
 if [[ "$(amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {print $4}')" = "on" ]]; then
 
