@@ -7,7 +7,7 @@ t2ec --script [argument]
 
 Example: `t2ec --volume up`
 
-This should simplify usage of the script in Tint2 executors significantly.
+This should simplify as well installation, as usage of the scripts in Tint2 executors significantly.
 
 The installation process should perform following actions:
 
