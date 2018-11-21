@@ -16,3 +16,6 @@ The installation process should perform following actions:
 3. copy the scripts to /usr/lib/t2ec
 4. copy all icons to /usr/share/t2ec
 
+The scripts I'm currently thinking about:
+
+![selection](http://nwg.pl/wiki-tint2-executors/package-selection.png)
