@@ -23,7 +23,7 @@ if [[ $1 == -N* ]]; then
 elif [[ $1 == -M* ]]; then
     echo "$(echo $1 | cut -c3-) $name"
 else
-    echo ~/tint2-executors/images/network.svg
+    echo /usr/share/t2ec/network.svg
     echo ${name}
 fi
 
