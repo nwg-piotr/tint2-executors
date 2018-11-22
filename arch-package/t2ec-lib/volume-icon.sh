@@ -11,11 +11,15 @@
 # Dependencies: `alsa-utils`
 
 if [[ $1 == up ]]; then
-    exec amixer set Master 5%+ unmute -q
+    exec amixer set Master 5%+ -q
 elif [[ $1 == down ]]; then
     exec amixer set Master 5%- -q
 elif [[ $1 == toggle ]]; then
     exec amixer set Master toggle -q
+else
+    if [[ $(($1)) == $1 ]] && [[ "$1" -ge 0 ]] && [[ "$1" -le 100 ]]; then
+        amixer set Master "$1"% -q
+    fi
 fi
 
 if [[ "$(amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {print $4}')" = "on" ]]; then
@@ -35,5 +39,7 @@ if [[ "$(amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {print $4}'
     fi
     echo ${vol}%
 else
+    vol=$(amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {sub(/%/, ""); printf "%0.0f\n", $2}')
     echo /usr/share/t2ec/vol-muted.svg
+    echo ${vol}%
 fi
