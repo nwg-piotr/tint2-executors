@@ -12,7 +12,7 @@ Website: http://nwg.pl
 Project: https://github.com/nwg-piotr/tint2-executors
 License: GPL3
 
-Command: python ~/tint2-executors/desktop.py [-n] | [-p] | [number]
+Arguments [next] | [prev] | [<number>] [-N]
 
 [-n] - switch to next desktop
 [-p] - switch to previous desktop
