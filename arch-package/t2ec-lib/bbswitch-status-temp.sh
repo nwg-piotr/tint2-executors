@@ -19,7 +19,7 @@ if [[ -f "/proc/acpi/bbswitch" ]]; then
         t=$(nvidia-smi -q -d TEMPERATURE | grep "GPU Current Temp" | awk -F ' ' '{ print $5 }')
 
         if [[ $1 == -N* ]]; then
-            echo "Nvidia: ${bb_status}${t}℃"
+            echo "Nvidia: ${t}℃"
         else
             echo /usr/share/t2ec/nvidia.svg;
             echo ${t}"℃"
@@ -27,7 +27,7 @@ if [[ -f "/proc/acpi/bbswitch" ]]; then
 
     elif [[ "$bb_status" = "OFF" ]]; then
         if [[ $1 == -N* ]]; then
-            echo "Nvidia: OFF"
+            echo "Nvidia: off"
         else
             echo /usr/share/t2ec/nvidia-off.svg
         fi
