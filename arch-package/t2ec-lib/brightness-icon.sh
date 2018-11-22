@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# This script displays an appropriate brightness icon according to the brightness level by xbacklight command
+# This script displays an appropriate brightness icon according to the brightness level by `xbacklight` command
 
 # Author: Piotr Miller
 # e-mail: nwg.piotr@gmail.com
@@ -9,7 +9,7 @@
 # License: GPL3
 
 # Dependencies: `xbacklight`
-# arguments: [up] | [down] | [<percentage>]
+# arguments: [up] | [down] | [<level>]
 
 if [[ $1 == up ]]; then
     exec xbacklight +5

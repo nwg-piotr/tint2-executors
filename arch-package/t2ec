@@ -8,6 +8,8 @@ elif [[ $1 == --volume ]]; then
     exec /usr/lib/t2ec/volume-icon.sh $2
 elif [[ $1 == --brightness ]]; then
     exec /usr/lib/t2ec/brightness-icon.sh $2
+elif [[ $1 == --lbrightness ]]; then
+    exec /usr/lib/t2ec/brightness-icon-light.sh $2
 else
     echo "Unknown command"
 fi

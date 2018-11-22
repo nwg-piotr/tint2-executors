@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# This script display an appropriate brightness icon according to the brightness level
+# This script displays an appropriate brightness icon according to the brightness level by `light` command
 
 # Author: Piotr Miller
 # e-mail: nwg.piotr@gmail.com
@@ -8,14 +8,20 @@
 # Project: https://github.com/nwg-piotr/tint2-executors
 # License: GPL3
 
-# Dependencies: `xbacklight` or `light-git'
+# Dependencies: `light-git`
+# arguments: [up] | [down] | [<level>]
 
-# Prefer the `light` package, use `xbacklight` if `light` not found
-if [[ $(which light) == *"/light"* ]]; then
-    b=$(light -G)
+if [[ $1 == up ]]; then
+    light -A 5
+elif [[ $1 == down ]]; then
+    light -U 5
 else
-    b=$(xbacklight -get)
+    if [[ $(($1)) == $1 ]] && [[ "$1" -ge 0 ]] && [[ "$1" -le 100 ]]; then
+        light -S $1
+    fi
 fi
+
+b=$(light -G)
 
 # Lets round the float result
 bri=$(echo $b | awk '{ printf"%0.0f\n", $1 }')
