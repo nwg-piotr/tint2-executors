@@ -81,18 +81,18 @@ package() {
   install -D -m 755 t2ec \
  	 "$pkgdir"/usr/bin/t2ec
   install -D -m 755 battery-icon.sh \
- 	 "$pkgdir"/usr/lib/battery-icon.sh
+ 	 "$pkgdir"/usr/lib/$pkgname/battery-icon.sh
   install -D -m 755 bbswitch-status-temp.sh \
- 	 "$pkgdir"/usr/lib/bbswitch-status-temp.sh
+ 	 "$pkgdir"/usr/lib/$pkgname/bbswitch-status-temp.sh
   install -D -m 755 brightness-icon-light.sh \
- 	 "$pkgdir"/usr/lib/brightness-icon-light.sh
+ 	 "$pkgdir"/usr/lib/$pkgname/brightness-icon-light.sh
   install -D -m 755 brightness-icon.sh \
- 	 "$pkgdir"/usr/lib/brightness-icon.sh
+ 	 "$pkgdir"/usr/lib/$pkgname/brightness-icon.sh
   install -D -m 755 desktop.py \
- 	 "$pkgdir"/usr/lib/desktop.py
+ 	 "$pkgdir"/usr/lib/$pkgname/desktop.py
   install -D -m 755 volume-icon.sh \
- 	 "$pkgdir"/usr/lib/volume-icon.sh
+ 	 "$pkgdir"/usr/lib/$pkgname/volume-icon.sh
   install -D -m 755 wifi-name.sh \
- 	 "$pkgdir"/usr/lib/wifi-name.sh
+ 	 "$pkgdir"/usr/lib/$pkgname/wifi-name.sh
   install -D -t "$pkgdir/usr/share/$pkgname" *.svg
 }
