@@ -23,7 +23,6 @@ fi
 
 b=$(xbacklight -get)
 
-# Lets round the float result
 bri=$(echo $b | awk '{ printf"%0.0f\n", $1 }')
 
 if [[ $1 == -N* ]]; then
