@@ -10,6 +10,8 @@
 # https://github.com/dsboger/gnome-shell-extension-bumblebee-status
 # no-bumblebee icon by @edskeye
 
+# Argument: [-N]
+
 if [[ -f "/proc/acpi/bbswitch" ]]; then
 
     bb_status=$(cat /proc/acpi/bbswitch | awk -F ' ' '{print $2}')
@@ -17,12 +19,24 @@ if [[ -f "/proc/acpi/bbswitch" ]]; then
 
         t=$(nvidia-smi -q -d TEMPERATURE | grep "GPU Current Temp" | awk -F ' ' '{ print $5 }')
 
-        echo /usr/share/t2ec/nvidia.svg;
-        echo ${t}"℃"
+        if [[ $1 == -N* ]]; then
+            echo "Nvidia: ${bb_status}${t}℃"
+        else
+            echo /usr/share/t2ec/nvidia.svg;
+            echo ${t}"℃"
+        fi
 
     elif [[ "$bb_status" = "OFF" ]]; then
-        echo /usr/share/t2ec/nvidia-off.svg
+        if [[ $1 == -N* ]]; then
+            echo "Nvidia: OFF"
+        else
+            echo /usr/share/t2ec/nvidia-off.svg
+        fi
     fi
 else
-    echo /usr/share/t2ec/no-bumblebee.svg
+    if [[ $1 == -N* ]]; then
+            echo "No Bumblebee"
+    else
+        echo /usr/share/t2ec/no-bumblebee.svg
+    fi
 fi
