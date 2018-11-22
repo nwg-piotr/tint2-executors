@@ -27,32 +27,36 @@ else
     fi
 fi
 
-if [[ "$bat" == *"until"* ]]; then
-
-    if [[ "$level" -ge "95" ]]; then
-        echo /usr/share/t2ec/bat-full-charging.svg
-    elif [[ "$level" -ge "75" ]]; then
-        echo /usr/share/t2ec/bat-threefourth-charging.svg
-    elif [[ "$level" -ge "35" ]]; then
-        echo /usr/share/t2ec/bat-half-charging.svg
-    elif [[ "$level" -ge "15" ]]; then
-        echo /usr/share/t2ec/bat-quarter-charging.svg
-    else
-        echo /usr/share/t2ec/bat-empty-charging.svg
-    fi
+if [[ $1 == -N* ]]; then
+        echo "Bat: ${level}%"
 else
-    if [[ "$level" -ge "95" ]]; then
-        echo /usr/share/t2ec/images/bat-full.svg
-    elif [[ "$level" -ge "75" ]]; then
-        echo /usr/share/t2ec/bat-threefourth.svg
-    elif [[ "$level" -ge "35" ]]; then
-        echo /usr/share/t2ec/bat-half.svg
-    elif [[ "$level" -ge "15" ]]; then
-        echo /usr/share/t2ec/bat-quarter.svg
+    if [[ "$bat" == *"until"* ]]; then
+
+        if [[ "$level" -ge "95" ]]; then
+            echo /usr/share/t2ec/bat-full-charging.svg
+        elif [[ "$level" -ge "75" ]]; then
+            echo /usr/share/t2ec/bat-threefourth-charging.svg
+        elif [[ "$level" -ge "35" ]]; then
+            echo /usr/share/t2ec/bat-half-charging.svg
+        elif [[ "$level" -ge "15" ]]; then
+            echo /usr/share/t2ec/bat-quarter-charging.svg
+        else
+            echo /usr/share/t2ec/bat-empty-charging.svg
+        fi
     else
-        echo /usr/share/t2ec/bat-empty.svg
+        if [[ "$level" -ge "95" ]]; then
+            echo /usr/share/t2ec/images/bat-full.svg
+        elif [[ "$level" -ge "75" ]]; then
+            echo /usr/share/t2ec/bat-threefourth.svg
+        elif [[ "$level" -ge "35" ]]; then
+            echo /usr/share/t2ec/bat-half.svg
+        elif [[ "$level" -ge "15" ]]; then
+            echo /usr/share/t2ec/bat-quarter.svg
+        else
+            echo /usr/share/t2ec/bat-empty.svg
+        fi
     fi
-fi
-if  [[ $1 = "-l" ]]; then
-    echo ${level}%
+    if  [[ $1 = "-l" ]]; then
+        echo ${level}%
+    fi
 fi
