@@ -9,6 +9,7 @@
 # License: GPL3
 
 # Dependencies: `alsa-utils`
+# arguments: [up] | [down] | [<level>] | [-N]
 
 if [[ $1 == up ]]; then
     amixer set Master 5%+ -q
