@@ -6,8 +6,7 @@
 # Project: https://github.com/nwg-piotr/tint2-executors
 # License: GPL3
 
-# Credits: dsboger/gnome-shell-extension-bumblebee-status
-# https://github.com/dsboger/gnome-shell-extension-bumblebee-status
+# Credits: https://github.com/dsboger/gnome-shell-extension-bumblebee-status
 # no-bumblebee icon by @edskeye
 
 # Argument: [-N]
