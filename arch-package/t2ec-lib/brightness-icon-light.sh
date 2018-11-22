@@ -23,16 +23,19 @@ fi
 
 b=$(light -G)
 
-# Lets round the float result
 bri=$(echo $b | awk '{ printf"%0.0f\n", $1 }')
 
-if [[ "$bri" -gt "90" ]]; then
-    echo /usr/share/t2ec/bri-full.svg
-elif [[ "$bri" -gt "50" ]]; then
-    echo /usr/share/t2ec/bri-high.svg
-elif [[ "$bri" -gt "30" ]]; then
-    echo /usr/share/t2ec/bri-medium.svg
+if [[ $1 == -N* ]]; then
+        echo "Bri: ${bri}%"
 else
-    echo /usr/share/t2ec/bri-low.svg
+    if [[ "$bri" -gt "90" ]]; then
+        echo /usr/share/t2ec/bri-full.svg
+    elif [[ "$bri" -gt "50" ]]; then
+        echo /usr/share/t2ec/bri-high.svg
+    elif [[ "$bri" -gt "30" ]]; then
+        echo /usr/share/t2ec/bri-medium.svg
+    else
+        echo /usr/share/t2ec/bri-low.svg
+    fi
+    echo ${bri}%
 fi
-echo ${bri}%
