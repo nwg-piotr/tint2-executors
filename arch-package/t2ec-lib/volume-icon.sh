@@ -11,11 +11,11 @@
 # Dependencies: `alsa-utils`
 
 if [[ $1 == up ]]; then
-    exec amixer set Master 5%+ -q
+    amixer set Master 5%+ -q
 elif [[ $1 == down ]]; then
-    exec amixer set Master 5%- -q
+    amixer set Master 5%- -q
 elif [[ $1 == toggle ]]; then
-    exec amixer set Master toggle -q
+    amixer set Master toggle -q
 else
     if [[ $(($1)) == $1 ]] && [[ "$1" -ge 0 ]] && [[ "$1" -le 100 ]]; then
         amixer set Master "$1"% -q
@@ -28,16 +28,21 @@ if [[ "$(amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {print $4}'
     # we strip the trailing '%' and round it up with printf "%0.0f" just in case
     vol=$(amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {sub(/%/, ""); printf "%0.0f\n", $2}')
 
-    if [[ ${vol} -ge 90 ]]; then
-        echo /usr/share/t2ec/vol-full.svg
-    elif [[ ${vol} -ge 40 ]]; then
-        echo /usr/share/t2ec/vol-medium.svg
-    elif [[ ${vol} -ge 10 ]]; then
-        echo /usr/share/t2ec/vol-low.svg
+    if [[ $1 == -N* ]]; then
+        echo "Vol: ${vol}%"
+
     else
-        echo /usr/share/t2ec/vol-lowest.svg
+        if [[ ${vol} -ge 90 ]]; then
+            echo /usr/share/t2ec/vol-full.svg
+        elif [[ ${vol} -ge 40 ]]; then
+            echo /usr/share/t2ec/vol-medium.svg
+        elif [[ ${vol} -ge 10 ]]; then
+            echo /usr/share/t2ec/vol-low.svg
+        else
+            echo /usr/share/t2ec/vol-lowest.svg
+        fi
+        echo ${vol}%
     fi
-    echo ${vol}%
 else
     vol=$(amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {sub(/%/, ""); printf "%0.0f\n", $2}')
     echo /usr/share/t2ec/vol-muted.svg
