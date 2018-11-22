@@ -1,0 +1,98 @@
+# Maintainer: Piotr Miller <nwg.piotr@gmail.com>
+pkgname=('t2ec')
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="A package of scripts to display system icons and controls in Tint2 panel"
+arch=('x86_64')
+url="https://github.com/nwg-piotr/tint2-executors"
+license=('GPL3')
+depends=('python' 'acpi' 'xorg-xbacklight' 'alsa-utils' 'wireless_tools')
+optdepends=('light-git: for machines not handling xbacklight'
+	'rof-git: to launch mouse events commands only once'
+	'psuinfo: for more tint2-aimed scripts')
+
+source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/battery-icon.sh"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/bbswitch-status-temp.sh"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/brightness-icon-light.sh"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/brightness-icon.sh"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/desktop.py"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/volume-icon.sh"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/wifi-name.sh"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-empty-charging.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-empty.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-full-charging.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-full.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-half-charging.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-half.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-quarter-charging.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-quarter.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-threefourth-charging.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-threefourth.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bri-full.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bri-high.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bri-low.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bri-medium.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/desktop.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/network.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/no-bumblebee.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/nvidia-off.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/nvidia.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-full.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-low.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-lowest.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-medium.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-muted.svg")
+
+md5sums=('3de1c4b6fd930cccfa34e08f38cfcb46'
+         '681619ae7d27789cf8fca076e5299a23'
+         '2c0e826e4ae765a512cf7066a808c118'
+         '429ab8c8028b81e56fd11a8d0d02bfab'
+         'eb16826a9b958e41e4da23bbc24082ab'
+         '9978942e8095022bcded1061c5c5ee8e'
+         'ed93ab6a52220bcf2fee64710c87657e'
+         '4d5efb2581959b68db65a0964e1c26b9'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
+
+package() {
+  install -D -m 755 t2ec \
+ 	 "$pkgdir"/usr/bin/t2ec
+  install -D -m 755 battery-icon.sh \
+ 	 "$pkgdir"/usr/lib/battery-icon.sh
+  install -D -m 755 bbswitch-status-temp.sh \
+ 	 "$pkgdir"/usr/lib/bbswitch-status-temp.sh
+  install -D -m 755 brightness-icon-light.sh \
+ 	 "$pkgdir"/usr/lib/brightness-icon-light.sh
+  install -D -m 755 brightness-icon.sh \
+ 	 "$pkgdir"/usr/lib/brightness-icon.sh
+  install -D -m 755 desktop.py \
+ 	 "$pkgdir"/usr/lib/desktop.py
+  install -D -m 755 volume-icon.sh \
+ 	 "$pkgdir"/usr/lib/volume-icon.sh
+  install -D -m 755 wifi-name.sh \
+ 	 "$pkgdir"/usr/lib/wifi-name.sh
+  install -D -t "$pkgdir/usr/share/$pkgname" *.svg
+}
