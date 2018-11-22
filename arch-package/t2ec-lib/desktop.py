@@ -27,21 +27,26 @@ import subprocess
 def main():
     output = subprocess.check_output("wmctrl -d", shell=True)
     desktops = output.splitlines()
-
+    textual = False
     current = current_desktop(desktops)
     last = len(desktops) - 1
 
     if len(sys.argv) > 1:
-        if sys.argv[1].upper() == "N" or sys.argv[1].upper() == "-N":
+        if sys.argv[1].upper() == "NEXT":
             next_desktop(current, last)
-        elif sys.argv[1].upper() == "P" or sys.argv[1].upper() == "-P":
+        elif sys.argv[1].upper() == "PREV" or sys.argv[1].upper() == "PREVIOUS":
             previous_desktop(current, last)
+        elif sys.argv[1].upper() == "-N":
+            textual = True
         else:
             try:
                 d = int(sys.argv[1])
                 select_desktop(d - 1, last)
             except ValueError:
-                print("Argument not allowed. Should be: `desktop.py [-n] | [-p] | [number]`")
+                print("Argument not allowed. Should be: desktop.py [next] | [prev] | [<number>] | [-N]")
+
+    if textual:
+        print("Desktop: " + str(current_desktop(desktops) + 1))
     else:
         print(str("/usr/share/t2ec/desktop.svg"))
         print(str(current_desktop(desktops) + 1))
