@@ -17,6 +17,7 @@ elif [[ $1 == down ]]; then
 elif [[ $1 == toggle ]]; then
     amixer set Master toggle -q
 else
+    # If none of above, check if argument is a valid int, set volume if so
     if [[ $(($1)) == $1 ]] && [[ "$1" -ge 0 ]] && [[ "$1" -le 100 ]]; then
         amixer set Master "$1"% -q
     fi
@@ -30,7 +31,6 @@ if [[ "$(amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {print $4}'
 
     if [[ $1 == -N* ]]; then
         echo "Vol: ${vol}%"
-
     else
         if [[ ${vol} -ge 90 ]]; then
             echo /usr/share/t2ec/vol-full.svg
