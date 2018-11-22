@@ -10,6 +10,14 @@
 
 # Dependencies: `alsa-utils`
 
+if [[ $1 == up ]]; then
+    exec amixer set Master 5%+ unmute -q
+elif [[ $1 == down ]]; then
+    exec amixer set Master 5%- -q
+elif [[ $1 == toggle ]]; then
+    exec amixer set Master toggle -q
+fi
+
 if [[ "$(amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {print $4}')" = "on" ]]; then
 
     # search for the lines containing 'Right:' or 'Mono:', when more than 1 field exists
@@ -28,11 +36,4 @@ if [[ "$(amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {print $4}'
     echo ${vol}%
 else
     echo /usr/share/t2ec/vol-muted.svg
-fi
-if [[ $1 == up ]]; then
-    exec amixer set Master 5%+ unmute -q
-elif [[ $1 == down ]]; then
-    exec amixer set Master 5%- -q
-elif [[ $1 == toggle ]]; then
-    exec amixer set Master toggle -q
 fi
