@@ -46,7 +46,7 @@ source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2
 
 md5sums=('365881db955bfa0fddc5c3799716c107'
          'b86f03023ea9a927c90a50e12c51d05b'
-         'bfe38acd9b151428c0b6415edd43e58f'
+         '921064d0eb82b775080872a5507e820d'
          '9645fb3645cd3734d5ca247f9cd0989f'
          '5019cebbf405090d789c1ef5469478b4'
          '5193ce4ee5ab775c709410df111717b0'
