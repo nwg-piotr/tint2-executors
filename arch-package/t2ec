@@ -12,6 +12,8 @@ elif [[ $1 == --lbrightness ]]; then
     exec /usr/lib/t2ec/brightness-icon-light.sh $2
 elif [[ $1 == --battery ]]; then
     exec /usr/lib/t2ec/battery-icon.sh $2
+elif [[ $1 == --wifi ]]; then
+    exec /usr/lib/t2ec/wifi-name.sh $2
 else
     echo "Unknown command"
 fi
