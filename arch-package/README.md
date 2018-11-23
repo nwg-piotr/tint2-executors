@@ -16,3 +16,5 @@ t2ec --script [argument]
 Together with the [psuinfo](https://github.com/nwg-piotr/psuinfo) package, all the most useful scripts (except for `arch-update.sh` at the moment) are now unified and given common syntax.
 
 ![commands map](http://nwg.pl/wiki-tint2-executors/my-panels-231118.png)
+
+The 0.1-7 package is in beta, and not yet published. You may find PKBUILD and the package above.
