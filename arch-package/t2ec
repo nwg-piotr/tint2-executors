@@ -14,9 +14,9 @@ elif [[ $1 == --battery ]]; then
     exec /usr/lib/t2ec/battery-icon.sh $2
 elif [[ $1 == --wifi ]]; then
     exec /usr/lib/t2ec/wifi-name.sh "$2"
-elif [[ $1 == --zslider ]]; then
+elif [[ $1 == --zbox ]]; then
     if [[ $(which rof 2>/dev/null) == *"/rof"* ]]; then
-        exec /usr/lib/t2ec/zenity-slider.sh $2
+        exec /usr/lib/t2ec/zenity-box.sh $2
     else
         echo "'rof-git' package missing"
     fi
