@@ -5,17 +5,14 @@ and a common command:
 t2ec --script [argument]
 ```
 
-Example: `t2ec --volume up`
+**Example:**
 
-This should simplify as well installation, as usage of the scripts in Tint2 executors significantly.
+`t2ec --volume` - to draw the volume icon + current volume level
 
-The installation process should perform following actions:
+`t2ec --volume -N` - to print "Vol: " + current volume level
 
-1. install necessary dependencies, propose optional dependencies
-2. copy the `t2ec` command to /usr/bin
-3. copy the scripts to /usr/lib/t2ec
-4. copy all icons to /usr/share/t2ec
+`t2ec --volume [up] | [down] | [toggle] | [level]` - to use as mouse event commands
 
-The scripts I'm currently thinking about:
+Together with the [psuinfo](https://github.com/nwg-piotr/psuinfo) package, all the most useful executors are now unified and given common syntax.
 
-![selection](http://nwg.pl/wiki-tint2-executors/package-selection.png)
+![commands map](http://nwg.pl/wiki-tint2-executors/my-panels-231118.png)
