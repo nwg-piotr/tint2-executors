@@ -17,7 +17,7 @@ Together with the [psuinfo](https://github.com/nwg-piotr/psuinfo) package, all t
 
 ![commands map](http://nwg.pl/wiki-tint2-executors/my-panels-231118.png)
 
-The 0.1-7 package is in beta, and not yet published. You may find PKBUILD and the package above.
+The 0.1-7 package is in beta, and not yet published. You may find PKGBUILD and/or the package above.
 
 **Commands to display information** (`[-N]` replaces icons with text):
 
