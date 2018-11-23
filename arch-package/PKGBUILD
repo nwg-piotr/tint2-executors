@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('t2ec')
 pkgver=0.1
-pkgrel=5
+pkgrel=7
 pkgdesc="A package of scripts to display system icons and controls in Tint2 panel"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/tint2-executors"
@@ -44,7 +44,7 @@ source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-medium.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-muted.svg")
 
-md5sums=('f0c4296d48c2d5fd804bd621d6b2f613'
+md5sums=('b9a17504468b98267a7990fcd5bcc898'
          'b86f03023ea9a927c90a50e12c51d05b'
          '921064d0eb82b775080872a5507e820d'
          '1dae806f7c7b0eb34cda8468b4631474'
@@ -53,7 +53,7 @@ md5sums=('f0c4296d48c2d5fd804bd621d6b2f613'
          '63a955c04f03451a13fd4a5f3ea1bbf3'
          '4d5efb2581959b68db65a0964e1c26b9'
          'f9a82c34f8f4228c5dc194b0fb7b37a0'
-         '386f7d9f8ab6a6fbbc79536aaf65776c'
+         '969b1c0bdb8af02287c08e4e1df7a50b'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -96,8 +96,8 @@ package() {
  	 "$pkgdir"/usr/lib/$pkgname/volume-icon.sh
   install -D -m 755 wifi-name.sh \
  	 "$pkgdir"/usr/lib/$pkgname/wifi-name.sh
-  install -D -m 755 zenity-slider.sh \
- 	 "$pkgdir"/usr/lib/$pkgname/zenity-slider.sh
+  install -D -m 755 zenity-box.sh \
+ 	 "$pkgdir"/usr/lib/$pkgname/zenity-box.sh
   install -D -m 755 help.sh \
  	 "$pkgdir"/usr/lib/$pkgname/help.sh
   install -D -t "$pkgdir/usr/share/$pkgname" *.svg
