@@ -1,15 +1,13 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('t2ec')
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A package of scripts to display system icons and controls in Tint2 panel"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/tint2-executors"
 license=('GPL3')
 depends=('python' 'acpi' 'xorg-xbacklight' 'alsa-utils' 'wireless_tools')
-optdepends=('light-git: for machines not handling xbacklight'
-            'rof-git: for handling additional mouse events'
-            'zenity: for volume and brightness sliders')
+optdepends=('light-git: for machines not handling xbacklight')
 
 source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/battery-icon.sh"
@@ -19,6 +17,8 @@ source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/desktop.py"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/volume-icon.sh"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/wifi-name.sh"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/zenity-slider.sh"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/help.sh"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-empty-charging.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-empty.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-full-charging.svg"
@@ -44,14 +44,16 @@ source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-medium.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-muted.svg")
 
-md5sums=('365881db955bfa0fddc5c3799716c107'
+md5sums=('f0c4296d48c2d5fd804bd621d6b2f613'
          'b86f03023ea9a927c90a50e12c51d05b'
          '921064d0eb82b775080872a5507e820d'
-         '9645fb3645cd3734d5ca247f9cd0989f'
+         '1dae806f7c7b0eb34cda8468b4631474'
          '5019cebbf405090d789c1ef5469478b4'
          '5193ce4ee5ab775c709410df111717b0'
          '63a955c04f03451a13fd4a5f3ea1bbf3'
          '4d5efb2581959b68db65a0964e1c26b9'
+         'f9a82c34f8f4228c5dc194b0fb7b37a0'
+         '386f7d9f8ab6a6fbbc79536aaf65776c'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -94,5 +96,9 @@ package() {
  	 "$pkgdir"/usr/lib/$pkgname/volume-icon.sh
   install -D -m 755 wifi-name.sh \
  	 "$pkgdir"/usr/lib/$pkgname/wifi-name.sh
+  install -D -m 755 zenity-slider.sh \
+ 	 "$pkgdir"/usr/lib/$pkgname/zenity-slider.sh
+  install -D -m 755 help.sh \
+ 	 "$pkgdir"/usr/lib/$pkgname/help.sh
   install -D -t "$pkgdir/usr/share/$pkgname" *.svg
 }
