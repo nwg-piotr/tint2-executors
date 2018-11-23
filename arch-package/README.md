@@ -1,4 +1,4 @@
-To simplify installation of the scripts I like most, I thought to give them a PKGBUILD file, 
+To simplify installation and usage of the scripts I like most, I thought to give them a PKGBUILD file, 
 and a common command:
 
 ```bash
