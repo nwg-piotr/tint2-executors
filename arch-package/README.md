@@ -19,10 +19,6 @@ Together with the [psuinfo](https://github.com/nwg-piotr/psuinfo) package, all t
 
 The 0.1-7 package is in beta, and not yet published. You may find PKBUILD and the package above.
 
-```
-t2ec [--desktop] | [--bbswitch] | [--volume] | [--brightness] | [--lbrightness] | [--battery] | [--wifi] | [--zslider]
-```
-
 **Commands to display information** (`[-N]` replaces icons with text):
 
 `t2ec --desktop [-N]`
