@@ -52,6 +52,6 @@ The 0.1-7 package is in beta, and not yet published. You may find PKGBUILD and/o
 
 `t2ec --zbox [bri] | [vol]` - displays Zenity box to set volume | brightness level. Depends on 'zenity' and 'rof-git' optional packages.
 
-**Sample isage in Tint2**:
+**Sample usage in Tint2**:
 
 ![sample executor](http://nwg.pl/wiki-tint2-executors/tint2conf-commented.png)
