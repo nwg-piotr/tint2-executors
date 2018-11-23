@@ -14,6 +14,14 @@ elif [[ $1 == --battery ]]; then
     exec /usr/lib/t2ec/battery-icon.sh $2
 elif [[ $1 == --wifi ]]; then
     exec /usr/lib/t2ec/wifi-name.sh "$2"
+elif [[ $1 == --zslider ]]; then
+    if [[ $(which rof 2>/dev/null) == *"/rof"* ]]; then
+        exec /usr/lib/t2ec/zenity-slider.sh $2
+    else
+        echo "'rof-git' package missing"
+    fi
+elif [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
+    exec /usr/lib/t2ec/help.sh
 else
-    echo "Unknown command"
+    echo "Try 't2ec -h' for help"
 fi

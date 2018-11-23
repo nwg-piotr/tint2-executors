@@ -9,7 +9,7 @@
 # License: GPL3
 
 # Dependencies: `light-git`
-# arguments: [up] | [down] | [<level>]
+# arguments: [up] | [down] | [<level>] | [-N]
 
 if [[ $1 == up ]]; then
     light -A 5

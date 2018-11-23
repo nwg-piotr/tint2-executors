@@ -7,7 +7,9 @@ arch=('x86_64')
 url="https://github.com/nwg-piotr/tint2-executors"
 license=('GPL3')
 depends=('python' 'acpi' 'xorg-xbacklight' 'alsa-utils' 'wireless_tools')
-optdepends=('light-git: for machines not handling xbacklight')
+optdepends=('light-git: for machines not handling xbacklight'
+            'rof-git: for handling additional mouse events'
+            'zenity: for volume and brightness sliders')
 
 source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/battery-icon.sh"
