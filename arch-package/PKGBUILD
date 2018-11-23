@@ -17,7 +17,7 @@ source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/desktop.py"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/volume-icon.sh"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/wifi-name.sh"
-	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/zenity-slider.sh"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/zenity-box.sh"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/help.sh"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-empty-charging.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-empty.svg"
