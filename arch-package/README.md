@@ -1,5 +1,5 @@
-To simplify installation and usage of the scripts I like most, I thought to give them a PKGBUILD file, 
-and a common command:
+To simplify installation and usage of the scripts I like most, which have not been published in the [psuinfo](https://github.com/nwg-piotr/psuinfo) package,I thought to give them a PKGBUILD file, 
+and a common command, too:
 
 ```bash
 t2ec --script [argument]
