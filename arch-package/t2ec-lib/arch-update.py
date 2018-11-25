@@ -51,7 +51,7 @@ def main():
                 do_notify = True
                 break
 
-            elif sys.argv[i].upper().startswith('-C'):
+            if sys.argv[i].upper().startswith('-C'):
                 try:
                     helper_cmd = aur_check_commands[sys.argv[i][2::]]
                 except KeyError:
@@ -64,7 +64,7 @@ def main():
                 do_update = False
                 do_notify = False
 
-            elif sys.argv[i].upper().startswith('-U'):
+            if sys.argv[i].upper().startswith('-U'):
                 tools = sys.argv[i][2::].split(":")
                 terminal_name = tools[0]
                 try:
@@ -75,21 +75,21 @@ def main():
                 do_update = True
                 do_notify = False
 
-            elif sys.argv[i].upper() == '-N':
+            if sys.argv[i].upper() == '-N':
                 name = "Upd:"
 
-            elif sys.argv[i].upper().startswith('-M'):
+            if sys.argv[i].upper().startswith('-M'):
                 name = sys.argv[i][2::]
 
-            else:
-                print("\nt2ec --updates -C[aur_helper] | -U<terminal>[:aur_helper] | [-O] [-N] | [-M<custom_name]\n")
+            if sys.argv[i].upper() == '-H' or sys.argv[i].upper() == '-HELP':
+                print("\nt2ec --updates -C[aur_helper] | -U<terminal>[:aur_helper] | [-O] [-N] | [-M<custom_name>]\n")
                 print("-C[aur_helper] - (C)heck updates with pacman and optionally AUR helper")
                 print(" example: t2ec --update -Ctrizen\n")
                 print("-U<terminal>[:aur_helper] - (U)pdate in <terminal> with pacman or AUR helper")
                 print(" example: t2ec --update -Uxfce4-terminal:trizen\n")
                 print("-O - display saved pending updates as n(O)tification")
                 print("-N - print (N)ame instead of icon")
-                print("-M - print custom na(M)e instead of icon\n")
+                print("-M<custom_name> - print custom na(M)e instead of icon\n")
 
     if do_check:
         subprocess.call(check_command, shell=True)
