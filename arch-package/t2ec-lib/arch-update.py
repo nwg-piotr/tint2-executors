@@ -12,12 +12,13 @@
 # https://github.com/RaphaelRochet/arch-update
 # Icon by @edskeye
 
-Arguments -T<terminal> [-A<aur_helper>] | [-C] | [-U] | [-N]
+Arguments [-C<aur_helper>] | [-U<aur_helper> <terminal>] | [-N] | [-M<custom_name>] |-[O]
 
--T<terminal> - your terminal name
-[-U<aur_helper>] - your AUR helper name
-[-C] - check updates
+[-C<aur_helper>] - check updates
+[-U<terminal>,<aur_helper>] - your AUR helper name
+[-O] - show pending updates as notification
 [-N] - name instead of icon
+
 
 Dependencies: `pacman-contrib`
 Optional: `pacaur` | `trizen` | `yay`
@@ -29,45 +30,82 @@ import subprocess
 
 
 def main():
-    terminal, aur_helper, updates = None, None, None
-    helper = ""
-    check_updates, update, display_name = False, False, False
+    name = None
+    helper_name, terminal_name, helper_cmd, updates = "", "", "", ""
+    do_check, do_update, do_notify = False, False, False
 
-    tmp_file = os.getenv("HOME") + "/arch-updates"
-    check_command = 'sh -c "/usr/bin/checkupdates'
+    tmp_file = os.getenv("HOME") + "/.arch-updates"
 
-    aur_check_commands = {'pacaur': 'pacaur -Qqu -a', 'trizen': 'trizen -Qqu -a', 'yay': 'yay -Qqu'}
+    check_command = 'sh -c "checkupdates > ' + tmp_file
 
-    aur_update_commands = {'pacaur': 'sh -c "pacaur -Syu ; echo Done - Press enter to exit; read"',
-                          'trizen': 'trizen -Syu ; echo Done - Press enter to exit; read',
-                          'yay': 'sh -c "yay ; echo Done - Press enter to exit; read"'}
+    aur_check_commands = {'pacaur': 'pacaur check -q',
+                          'trizen': 'trizen -Qqu -a',
+                          'yay': 'yay -Qqu'}
 
     for i in range(1, len(sys.argv)):
 
-        if sys.argv[i].upper().startswith("-T"):
-            terminal = sys.argv[i][2::]
+        if sys.argv[i].upper() == '-O':
+            do_check = False
+            do_update = False
+            do_notify = True
+            break
 
-        if sys.argv[i].upper().startswith("-A"):
+        if sys.argv[i].upper().startswith('-C'):
             try:
-                helper = aur_check_commands[sys.argv[i][2::]]
+                helper_cmd = aur_check_commands[sys.argv[i][2::]]
             except KeyError:
+                helper_cmd = sys.argv[i][2::] + " -Qqu"
                 pass
-            if helper:
-                check_command += ' && ' + helper
-            check_command += '" > ' + tmp_file
+            if helper_cmd:
+                check_command += " && " + helper_cmd
+            check_command += ' >> ' + tmp_file + '"'
+            do_check = True
+            do_update = False
+            do_notify = False
 
-        if sys.argv[i].upper() == "-C":
-            check_updates = True
+        if sys.argv[i].upper().startswith('-U'):
+            tools = sys.argv[i][2::].split(":")
+            helper_name = tools[0]
+            terminal_name = tools[1]
+            do_check = False
+            do_update = True
+            do_notify = False
 
-        if sys.argv[i].upper() == "-N":
-            display_name = True
+        if sys.argv[i].upper() == '-N':
+            name = "Upd:"
 
-    os.system(check_command)
-    updates = open(tmp_file, 'r').read().rstrip()
-    #os.remove(tmp_file)
-    print(updates)
-    num_upd = len(updates.splitlines())
-    subprocess.call(['notify-send', "Pending updates:", "--icon=/usr/share/t2ec/bat-empty.svg", "--expire-time=5000", updates])
+        if sys.argv[i].upper().startswith('-M'):
+            name = sys.argv[i][2::]
+
+    if do_check:
+        subprocess.call(check_command, shell=True)
+        updates = open(tmp_file, 'r').read().rstrip()
+        num_upd = len(updates.splitlines())
+
+        if name is not None:
+            print(name + " " + str(num_upd))
+        else:
+            if num_upd > 0:
+                print("/usr/share/t2ec/arch-icon-notify.svg")
+                print(num_upd)
+            else:
+                print("/usr/share/t2ec/arch-icon.svg")
+
+        if num_upd > 0:
+            notify(updates)
+
+    if do_update:
+        command = terminal_name + ' -e \'sh -c \"' + helper_name + ' -Syu; echo Press enter to exit; read; killall -SIGUSR1 tint2\"\''
+        subprocess.call(command, shell=True)
+
+    if do_notify:
+        updates = open(tmp_file, 'r').read().rstrip()
+        notify(updates)
+
+
+def notify(updates):
+    subprocess.call(
+        ['notify-send', "Pending updates:", "--icon=/usr/share/t2ec/arch-update48.svg", "--expire-time=5000", updates])
 
 
 if __name__ == "__main__":
