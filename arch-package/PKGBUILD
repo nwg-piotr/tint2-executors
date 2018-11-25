@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('t2ec')
 pkgver=0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="A package of scripts to display system icons and controls in Tint2 panel"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/tint2-executors"
@@ -19,6 +19,7 @@ source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/desktop.py"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/volume-icon.sh"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/wifi-name.sh"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/arch-update.py"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/zenity-box.sh"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2ec-lib/help.sh"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/bat-empty-charging.svg"
@@ -44,9 +45,12 @@ source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-low.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-lowest.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-medium.svg"
-	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-muted.svg")
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/vol-muted.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/arch-icon.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/arch-icon-notify.svg"
+	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/arch-update48.svg")
 
-md5sums=('b9a17504468b98267a7990fcd5bcc898'
+md5sums=('3bd539d2b01eaaa6c1493952c18d9e41'
          'b86f03023ea9a927c90a50e12c51d05b'
          '921064d0eb82b775080872a5507e820d'
          '1dae806f7c7b0eb34cda8468b4631474'
@@ -54,8 +58,12 @@ md5sums=('b9a17504468b98267a7990fcd5bcc898'
          '5193ce4ee5ab775c709410df111717b0'
          '63a955c04f03451a13fd4a5f3ea1bbf3'
          '4d5efb2581959b68db65a0964e1c26b9'
+         '66e5337c2561ab174a6ec4e4b25cd2fb'
          'f9a82c34f8f4228c5dc194b0fb7b37a0'
-         '969b1c0bdb8af02287c08e4e1df7a50b'
+         'f05f47518bc3337c02a7f70748004169'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -98,6 +106,8 @@ package() {
  	 "$pkgdir"/usr/lib/$pkgname/volume-icon.sh
   install -D -m 755 wifi-name.sh \
  	 "$pkgdir"/usr/lib/$pkgname/wifi-name.sh
+  install -D -m 755 arch-update.py \
+ 	 "$pkgdir"/usr/lib/$pkgname/arch-update.py
   install -D -m 755 zenity-box.sh \
  	 "$pkgdir"/usr/lib/$pkgname/zenity-box.sh
   install -D -m 755 help.sh \
