@@ -82,7 +82,7 @@ def main():
                 name = sys.argv[i][2::]
 
             if sys.argv[i].upper() == '-H' or sys.argv[i].upper() == '-HELP':
-                print("\nt2ec --updates -C[aur_helper] | -U<terminal>[:aur_helper] | [-O] [-N] | [-M<custom_name>]\n")
+                print("\nt2ec --update -C[aur_helper] | -U<terminal>[:aur_helper] | [-O] [-N] | [-M<custom_name>]\n")
                 print("-C[aur_helper] - (C)heck updates with pacman and optionally AUR helper")
                 print(" example: t2ec --update -Ctrizen\n")
                 print("-U<terminal>[:aur_helper] - (U)pdate in <terminal> with pacman or AUR helper")
