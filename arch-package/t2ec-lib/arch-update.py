@@ -65,8 +65,11 @@ def main():
 
         if sys.argv[i].upper().startswith('-U'):
             tools = sys.argv[i][2::].split(":")
-            helper_name = tools[0]
-            terminal_name = tools[1]
+            terminal_name = tools[0]
+            try:
+                helper_name = tools[1]
+            except IndexError:
+                helper_name = "sudo pacman"
             do_check = False
             do_update = True
             do_notify = False
