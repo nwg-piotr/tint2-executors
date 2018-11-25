@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('t2ec')
 pkgver=0.1
-pkgrel=8
+pkgrel=9
 pkgdesc="A package of scripts to display system icons and controls in Tint2 panel"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/tint2-executors"
@@ -50,7 +50,7 @@ source=("https://github.com/nwg-piotr/tint2-executors/raw/master/arch-package/t2
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/arch-icon-notify.svg"
 	"https://github.com/nwg-piotr/tint2-executors/raw/master/images/arch-update48.svg")
 
-md5sums=('3bd539d2b01eaaa6c1493952c18d9e41'
+md5sums=('8a02b12a94a553f860cb91ac14a55324'
          'b86f03023ea9a927c90a50e12c51d05b'
          '921064d0eb82b775080872a5507e820d'
          '1dae806f7c7b0eb34cda8468b4631474'
