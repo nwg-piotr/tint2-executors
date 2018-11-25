@@ -40,45 +40,55 @@ def main():
 
     aur_check_commands = {'pacaur': 'pacaur check -q',
                           'trizen': 'trizen -Qqu -a',
-                          'yay': 'yay -Qqu'}
+                          'yay': 'yay -Qqu -a'}
 
-    for i in range(1, len(sys.argv)):
+    if len(sys.argv) > 1:
+        for i in range(1, len(sys.argv)):
 
-        if sys.argv[i].upper() == '-O':
-            do_check = False
-            do_update = False
-            do_notify = True
-            break
+            if sys.argv[i].upper() == '-O':
+                do_check = False
+                do_update = False
+                do_notify = True
+                break
 
-        if sys.argv[i].upper().startswith('-C'):
-            try:
-                helper_cmd = aur_check_commands[sys.argv[i][2::]]
-            except KeyError:
-                helper_cmd = sys.argv[i][2::] + " -Qqu"
-                pass
-            if helper_cmd:
-                check_command += " && " + helper_cmd
-            check_command += ' >> ' + tmp_file + '"'
-            do_check = True
-            do_update = False
-            do_notify = False
+            if sys.argv[i].upper().startswith('-C'):
+                try:
+                    helper_cmd = aur_check_commands[sys.argv[i][2::]]
+                except KeyError:
+                    helper_cmd = ""
+                    pass
+                if helper_cmd:
+                    check_command += " && " + helper_cmd
+                check_command += ' >> ' + tmp_file + '"'
+                do_check = True
+                do_update = False
+                do_notify = False
 
-        if sys.argv[i].upper().startswith('-U'):
-            tools = sys.argv[i][2::].split(":")
-            terminal_name = tools[0]
-            try:
-                helper_name = tools[1]
-            except IndexError:
-                helper_name = "sudo pacman"
-            do_check = False
-            do_update = True
-            do_notify = False
+            if sys.argv[i].upper().startswith('-U'):
+                tools = sys.argv[i][2::].split(":")
+                terminal_name = tools[0]
+                try:
+                    helper_name = tools[1]
+                except IndexError:
+                    helper_name = "sudo pacman"
+                do_check = False
+                do_update = True
+                do_notify = False
 
-        if sys.argv[i].upper() == '-N':
-            name = "Upd:"
+            if sys.argv[i].upper() == '-N':
+                name = "Upd:"
 
-        if sys.argv[i].upper().startswith('-M'):
-            name = sys.argv[i][2::]
+            if sys.argv[i].upper().startswith('-M'):
+                name = sys.argv[i][2::]
+    else:
+        print("t2ec --updates -C[aur_helper] | -U<terminal>[:aur_helper] | [-O] [-N] | [-M<custom_name]\n")
+        print("-C[aur_helper] - (C)heck updates with pacman and optionally AUR helper")
+        print("Example: t2ec --arch-update -Ctrizen\n")
+        print("-U<terminal>[:aur_helper] - (U)pdate in <terminal> with pacman or AUR helper")
+        print("Example: t2ec --arch-update -Uxfce4-terminal:trizen\n")
+        print("-O - display saved pending updates as n(O)tification")
+        print("-N - print (N)ame instead of icon")
+        print("-M - print custom na(M)e instead of icon")
 
     if do_check:
         subprocess.call(check_command, shell=True)
