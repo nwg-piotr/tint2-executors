@@ -82,14 +82,14 @@ def main():
                 name = sys.argv[i][2::]
 
             else:
-                print("t2ec --updates -C[aur_helper] | -U<terminal>[:aur_helper] | [-O] [-N] | [-M<custom_name]\n")
+                print("\nt2ec --updates -C[aur_helper] | -U<terminal>[:aur_helper] | [-O] [-N] | [-M<custom_name]\n")
                 print("-C[aur_helper] - (C)heck updates with pacman and optionally AUR helper")
-                print("Example: t2ec --arch-update -Ctrizen\n")
+                print(" example: t2ec --update -Ctrizen\n")
                 print("-U<terminal>[:aur_helper] - (U)pdate in <terminal> with pacman or AUR helper")
-                print("Example: t2ec --arch-update -Uxfce4-terminal:trizen\n")
+                print(" example: t2ec --update -Uxfce4-terminal:trizen\n")
                 print("-O - display saved pending updates as n(O)tification")
                 print("-N - print (N)ame instead of icon")
-                print("-M - print custom na(M)e instead of icon")
+                print("-M - print custom na(M)e instead of icon\n")
 
     if do_check:
         subprocess.call(check_command, shell=True)
