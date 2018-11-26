@@ -13,8 +13,6 @@ The most useful part of the scripts was gathered in three AUR packages, which co
 - [psuinfo](https://github.com/nwg-piotr/psuinfo) - a separate project, which contains python-psutil-based commands ([AUR](https://aur.archlinux.org/packages/psuinfo));
 - [t2ec](https://github.com/nwg-piotr/tint2-executors/tree/master/arch-package) - a selection from the rest of the scripts ([AUR](https://aur.archlinux.org/packages/t2ec));
 - [rof](https://github.com/nwg-piotr/rof) - a helper script, which is a launcher allowing to avoid running multiple instances of the same window ([AUR](https://aur.archlinux.org/packages/rof-git)).
-
-All the scripts described below are development versions, and may not contain latest changes. Use of packages named above is strongly recommended. 
 ___
 
 ## Scripts in action
@@ -22,6 +20,10 @@ ___
 Take a look at a sample `psuinfo` and `t2ec` usage on a laptop:
 
 ![scripts in action](http://nwg.pl/wiki-tint2-executors/my-panels-261118.jpg)
+
+___
+All the scripts described below are development versions, and may not contain latest changes. Use of packages named above is strongly recommended. 
+___
 
 ## [bbswitch-status-temp.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status-temp.sh)
 
