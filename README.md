@@ -10,8 +10,8 @@ The project is being developed and tested on [Arch Linux](https://www.archlinux.
 ___
 ## Installation (Arch Linux)
 The most useful part of the scripts was gathered in three AUR packages, which contain recent improvement and bug fixes:
-- [psuinfo](https://github.com/nwg-piotr/psuinfo) - a separate project, which contains python-psutil-based commands ([AUR](https://aur.archlinux.org/packages/psuinfo));
-- [t2ec](https://github.com/nwg-piotr/tint2-executors/tree/master/arch-package) - a folder in this project, containing selected scripts, published in ([AUR](https://aur.archlinux.org/packages/t2ec));
+- [psuinfo](https://github.com/nwg-piotr/psuinfo) - a separate project, which contains python-psutil-based commands of common syntax ([AUR](https://aur.archlinux.org/packages/psuinfo));
+- [t2ec](https://github.com/nwg-piotr/tint2-executors/tree/master/arch-package) - a folder in this project, containing selected scripts, given a common command syntax, published in ([AUR](https://aur.archlinux.org/packages/t2ec));
 - [rof](https://github.com/nwg-piotr/rof) - a separate project: a helper script, which is a launcher allowing to avoid running multiple instances of the same window ([AUR](https://aur.archlinux.org/packages/rof-git)).
 ___
 
