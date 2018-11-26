@@ -12,11 +12,15 @@ t2ec --script [argument]
 
 `t2ec --volume [up] | [down] | [toggle] | [level]` - to use as mouse event commands
 
-Together with the [psuinfo](https://github.com/nwg-piotr/psuinfo) package, all the most useful scripts (except for `arch-update.sh` at the moment) are now unified and given common syntax:
+Together with the [psuinfo](https://github.com/nwg-piotr/psuinfo) package, all the most useful scripts are now unified and given common syntax:
 
-![commands map](http://nwg.pl/wiki-tint2-executors/my-panels-231118.png)
+![scripts in action](http://nwg.pl/wiki-tint2-executors/my-panels-261118.jpg)
 
-The 0.1-7 package is in beta, and not yet published. You may find PKGBUILD and/or the package above.
+**Installation**:
+
+Please install the [t2ec (AUR) package](https://aur.archlinux.org/packages/t2ec).
+
+For `psuinfo` commands install the [psuinfo (AUR) package](https://aur.archlinux.org/packages/psuinfo).
 
 **Commands to display information** (`[-N]` replaces icons with text):
 
