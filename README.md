@@ -22,7 +22,7 @@ Take a look at a sample `psuinfo` and `t2ec` usage on a laptop:
 ![scripts in action](http://nwg.pl/wiki-tint2-executors/my-panels-261118.jpg)
 
 ___
-**Attention: all the content described below this point are development versions, and may not contain latest changes. Use of packages named above is strongly recommended.**
+**Attention: all the content described below this point concerns development versions, which may not contain latest changes. Use of packages named above is strongly recommended.**
 ___
 
 ## [bbswitch-status-temp.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status-temp.sh)
