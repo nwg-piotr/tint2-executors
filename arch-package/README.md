@@ -38,6 +38,8 @@ For `psuinfo` commands install the [psuinfo (AUR) package](https://aur.archlinux
 
 `t2ec --wifi [-N] | [-M'custom name']`
 
+`t2ec --update -C[aur_helper] [-N] | [-M<custom_name]`
+
 **Commands to assing to mouse events**:
 
 `t2ec --desktop [next] | [prev] | [<number>]`
@@ -47,6 +49,10 @@ For `psuinfo` commands install the [psuinfo (AUR) package](https://aur.archlinux
 `t2ec --brightness [up] | [down] | [<level>]`
 
 `t2ec --lbrightness [up] | [down] | [<level>]` (for 'light-git' optional package)
+
+`t2ec --update -U<terminal>[:aur_helper]`
+
+`t2ec --update -O` displays n(O)tifiction with the last saved updates list
 
 
 *Remember to uncheck 'Show icon' in executor if textual display selected!*
