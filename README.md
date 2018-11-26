@@ -17,6 +17,12 @@ The most useful part of the scripts was gathered in three AUR packages, which co
 All the scripts described below are development versions, and may not contain latest changes. Use of packages named above is strongly recommended. 
 ___
 
+## Scripts in action
+
+Take a look at a sample `psuinfo` and `t2ec` usage on a laptop:
+
+![scripts in action](http://nwg.pl/wiki-tint2-executors/my-panels-261118.jpg)
+
 ## [bbswitch-status-temp.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/bbswitch-status-temp.sh)
 
 Displays an icon according to the current Bumblebee status. If NVIDIA graphics turned on, it'll also display the GPU temperature.
