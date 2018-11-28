@@ -17,8 +17,8 @@ color_sel_fg        = #eeeeee 100
 EOF
 
 cat <<'EOF' >${menu_file}
-Check updates,t2ec --Ctrizen
-Show pending,t2ec --O
+Check updates,t2ec --Cyay
+Show pending,t2ec --update -O
 Update,t2ec --update -Utermite:yay
 EOF
 

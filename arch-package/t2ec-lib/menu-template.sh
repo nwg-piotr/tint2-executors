@@ -17,9 +17,9 @@ color_sel_fg        = #eeeeee 100
 EOF
 
 cat <<'EOF' >${menu_file}
-Check updates,t2ec --Ctrizen
-Show pending,t2ec --O
-Update,t2ec --update -Utermite:yay
+option 1,xterm
+option 2,t2ec --brightness down
+option 3,t2ec --brightness up
 EOF
 
 jgmenu --config-file=${config_file} --csv-file=${menu_file}
