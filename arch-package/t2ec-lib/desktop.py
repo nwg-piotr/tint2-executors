@@ -79,13 +79,13 @@ def select_desktop(which, last):
 
 
 def create_menu(d_number):
-
     try:
         subprocess.check_output("which jgmenu", shell=True)
     except subprocess.CalledProcessError:
         print("\nInstall jgmenu package, run `jgmenu init`\n")
         return
 
+    # Just in case user had more or less desktops than 4, let's create a relevant template at the 1st run
     t2ec_dir = os.getenv("HOME") + "/.t2ecol"
     if not os.path.isdir(t2ec_dir):
         os.makedirs(t2ec_dir)
@@ -94,7 +94,7 @@ def create_menu(d_number):
                '',
                'config_file=$(mktemp)',
                'menu_file=$(mktemp)',
-               'trap "rm -f ${config_file} ${menu_file} ~/.t2ecol/desktop-menu.sh" EXIT',
+               'trap "rm -f ${config_file} ${menu_file}" EXIT',
                '',
                'cat <<\'EOF\' >${config_file}',
                'stay_alive          = 0',
@@ -117,12 +117,12 @@ def create_menu(d_number):
     content.append('')
     content.append('jgmenu --config-file=${config_file} --csv-file=${menu_file}')
 
-    with open(t2ec_dir + '/desktop-menu.sh', 'w') as menu_file:
+    with open(t2ec_dir + '/menu-desktop.sh', 'w') as menu_file:
         for row in content:
             menu_file.write('%s\n' % row)
 
-    os.system('chmod +x ' + t2ec_dir + "/desktop-menu.sh")
-    subprocess.call([t2ec_dir + '/desktop-menu.sh'], shell=True)
+    os.system('chmod +x ' + t2ec_dir + "/menu-desktop.sh")
+    subprocess.call([t2ec_dir + '/menu-desktop.sh'], shell=True)
 
 
 if __name__ == "__main__":
