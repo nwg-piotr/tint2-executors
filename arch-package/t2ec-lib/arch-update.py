@@ -12,16 +12,16 @@
 # https://github.com/RaphaelRochet/arch-update
 # Icon by @edskeye
 
-Arguments [-C<aur_helper>] | [-U<aur_helper> <terminal>] | [-N] | [-M<custom_name>] |-[O]
+Arguments [-C<aur_helper>] | [-U<aur_helper> <terminal>] | [menu] | -[O] [-N] | [-M<custom_name>]
 
 [-C<aur_helper>] - check updates
 [-U<terminal>,<aur_helper>] - your AUR helper name
 [-O] - show pending updates as notification
 [-N] - name instead of icon
-
+[menu] - show context jgmenu
 
 Dependencies: `pacman-contrib`
-Optional: `pacaur` | `trizen` | `yay`
+Optional: `pacaur` | `trizen` | `yay`, `jgmenu`
 """
 
 import sys
@@ -49,6 +49,10 @@ def main():
                 do_check = False
                 do_update = False
                 do_notify = True
+                break
+
+            elif sys.argv[1].upper() == "MENU":
+                show_menu()
                 break
 
             if sys.argv[i].upper().startswith('-C'):
@@ -105,9 +109,6 @@ def main():
             else:
                 print("/usr/share/t2ec/arch-icon.svg")
 
-        if num_upd > 0:
-            notify(updates)
-
     if do_update:
         command = terminal_name + ' -e \'sh -c \"' + helper_name + ' -Syu; echo Press enter to exit; read; killall -SIGUSR1 tint2\"\''
         subprocess.call(command, shell=True)
@@ -120,6 +121,21 @@ def main():
 def notify(updates):
     subprocess.call(
         ['notify-send', "Pending updates:", "--icon=/usr/share/t2ec/arch-update48.svg", "--expire-time=5000", updates])
+
+
+def show_menu():
+    try:
+        subprocess.check_output("which jgmenu", shell=True)
+    except subprocess.CalledProcessError:
+        print("\nInstall jgmenu package, run `jgmenu init`\n")
+        return
+
+    t2ec_dir = os.getenv("HOME") + "/.t2ecol"
+    if not os.path.isdir(t2ec_dir):
+        os.makedirs(t2ec_dir)
+    if not os.path.isfile(t2ec_dir + "/menu-update.sh"):
+        subprocess.call(["cp /usr/lib/t2ec/menu-update.sh "+ t2ec_dir + "/menu-update.sh"], shell=True)
+    subprocess.call([t2ec_dir + '/menu-update.sh'], shell=True)
 
 
 if __name__ == "__main__":
