@@ -6,7 +6,7 @@ To simplify installation and usage of the scripts which are not a part of the [p
 t2ec --script [argument]
 ```
 
-##Example:
+## Example:
 
 `t2ec --volume` - to draw the volume icon + current volume level
 
@@ -18,13 +18,13 @@ Together with the [psuinfo](https://github.com/nwg-piotr/psuinfo) package, all t
 
 ![scripts in action](http://nwg.pl/wiki-tint2-executors/my-panels-261118.jpg)
 
-##Installation:
+## Installation:
 
 Please install the [t2ec (AUR) package](https://aur.archlinux.org/packages/t2ec).
 
 For `psuinfo` commands install the [psuinfo (AUR) package](https://aur.archlinux.org/packages/psuinfo).
 
-##Commands to display information
+## Commands to display information
  
 `[-N]` replaces icons with text:
 
@@ -44,7 +44,7 @@ For `psuinfo` commands install the [psuinfo (AUR) package](https://aur.archlinux
 
 `t2ec --update -C[aur_helper] [-N] | [-M<custom_name]`
 
-##Commands to assign to mouse events:
+## Commands to assign to mouse events:
 
 `t2ec --desktop [next] | [prev] | [<number>]`
 
@@ -61,7 +61,7 @@ For `psuinfo` commands install the [psuinfo (AUR) package](https://aur.archlinux
 
 *Remember to uncheck 'Show icon' in executor if textual display selected!*
 
-##Menus:
+## Menus:
 
 `t2ec --command menu` - assigned to a mouse event (preferrably left/right click) allows to attach context menus to executors.
 
@@ -77,7 +77,7 @@ You may customize templates to your taste. To restore defaults, just remove the 
 
 Check the [jgmenu reference document](https://github.com/johanmalm/jgmenu/blob/master/docs/manual/jgmenu.1.md) to learn more.
 
-##Helper command:
+## Helper command:
 
 `t2ec --zbox [bri] | [vol]` - displays Zenity box to set volume | brightness level. Depends on 'zenity' and 'rof-git' optional packages.
 
