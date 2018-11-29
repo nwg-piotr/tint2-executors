@@ -115,3 +115,8 @@ Check the [jgmenu reference document](https://github.com/johanmalm/jgmenu/blob/m
 ## Sample usage in Tint2:
 
 ![sample executor](http://nwg.pl/wiki-tint2-executors/tint2conf-commented.png)
+
+## Known bugs:
+
+1. 0.2-3 version: `t2ec --desktop menu` recreates once created default menu template at every usage. 
+To be fixed in 0.2-4. 
