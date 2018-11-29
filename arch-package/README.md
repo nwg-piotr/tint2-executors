@@ -1,10 +1,12 @@
+# t2ec package (AUR)
+
 To simplify installation and usage of the scripts which are not a part of the [psuinfo](https://github.com/nwg-piotr/psuinfo) package, I thought to give them a PKGBUILD file, and a common command, too:
 
 ```bash
 t2ec --script [argument]
 ```
 
-**Example:**
+##Example:
 
 `t2ec --volume` - to draw the volume icon + current volume level
 
@@ -16,13 +18,15 @@ Together with the [psuinfo](https://github.com/nwg-piotr/psuinfo) package, all t
 
 ![scripts in action](http://nwg.pl/wiki-tint2-executors/my-panels-261118.jpg)
 
-**Installation**:
+##Installation:
 
 Please install the [t2ec (AUR) package](https://aur.archlinux.org/packages/t2ec).
 
 For `psuinfo` commands install the [psuinfo (AUR) package](https://aur.archlinux.org/packages/psuinfo).
 
-**Commands to display information** (`[-N]` replaces icons with text):
+##Commands to display information
+ 
+`[-N]` replaces icons with text:
 
 `t2ec --desktop [-N]`
 
@@ -40,7 +44,7 @@ For `psuinfo` commands install the [psuinfo (AUR) package](https://aur.archlinux
 
 `t2ec --update -C[aur_helper] [-N] | [-M<custom_name]`
 
-**Commands to assing to mouse events**:
+##Commands to assign to mouse events:
 
 `t2ec --desktop [next] | [prev] | [<number>]`
 
@@ -57,7 +61,23 @@ For `psuinfo` commands install the [psuinfo (AUR) package](https://aur.archlinux
 
 *Remember to uncheck 'Show icon' in executor if textual display selected!*
 
-**Helper command**:
+##Menus:
+
+`t2ec --command menu` - assigned to a mouse event (preferrably left/right click) allows to attach context menus to executors.
+
+You need the [jgmenu](https://github.com/johanmalm/jgmenu) package (optional dependency) installed and initialized (`jgmenu init`).
+
+Two of the commands have predefined menus: `t2ec --update menu` and `t2ec --desktop menu` will display:
+
+![predefined menus](http://nwg.pl/wiki-tint2-executors/t2ec-menus-predefined.png)
+
+Other commands launched with the `menu` argument will use a sample template. All templates are being
+created in the `~/.t2ecol` hidden folder as soon, as you run the command for the first time.
+You may customize templates to your taste. To restore defaults, just remove the modified template.
+
+Check the [jgmenu reference document](https://github.com/johanmalm/jgmenu/blob/master/docs/manual/jgmenu.1.md) to learn more.
+
+##Helper command:
 
 `t2ec --zbox [bri] | [vol]` - displays Zenity box to set volume | brightness level. Depends on 'zenity' and 'rof-git' optional packages.
 
