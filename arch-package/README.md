@@ -112,6 +112,6 @@ Check the [jgmenu reference document](https://github.com/johanmalm/jgmenu/blob/m
 
 `t2ec --zbox [bri] | [vol]` - displays Zenity box to set volume | brightness level. Depends on 'zenity' and 'rof-git' optional packages.
 
-**Sample usage in Tint2**:
+## Sample usage in Tint2:
 
 ![sample executor](http://nwg.pl/wiki-tint2-executors/tint2conf-commented.png)
