@@ -22,7 +22,7 @@ Together with the [psuinfo](https://github.com/nwg-piotr/psuinfo) package, all t
 
 Please install the [t2ec package](https://aur.archlinux.org/packages/t2ec) (AUR).
 
-For `psuinfo` commands install the [psuinfo (AUR) package](https://aur.archlinux.org/packages/psuinfo).
+For `psuinfo` commands install the [psuinfo package](https://aur.archlinux.org/packages/psuinfo) (AUR).
 
 ## Commands to display information
  
