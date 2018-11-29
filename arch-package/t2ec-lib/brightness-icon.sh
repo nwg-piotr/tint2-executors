@@ -14,10 +14,10 @@
 if [[ $1 == up ]]; then
     exec xbacklight +5
 elif [[ $1 == down ]]; then
-    xbacklight -5
+    exec xbacklight -5
 else
     if [[ $(($1)) == $1 ]] && [[ "$1" -ge 0 ]] && [[ "$1" -le 100 ]]; then
-        xbacklight -set $1
+        exec xbacklight -set $1
     fi
 fi
 

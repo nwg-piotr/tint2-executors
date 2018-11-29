@@ -17,9 +17,10 @@ color_sel_fg        = #eeeeee 100
 EOF
 
 cat <<'EOF' >${menu_file}
-option 1,xterm
-option 2,t2ec --brightness down
-option 3,t2ec --brightness up
+Option 1,nano
+Option 2,top
+Option 3,t2ec --brightness up
+Option 4,t2ec --brightness down
 EOF
 
 jgmenu --config-file=${config_file} --csv-file=${menu_file}

@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if [[ $1 == --bbswitch ]] || [[ $1 == --volume ]] || [[ $1 == --brightness ]] || [[ $1 == --lbrightness ]] || [[ $1 == --battery ]] || [[ $1 == --wifi ]]; then
+    if [[ $2 == menu ]]; then
+        exec /usr/lib/t2ec/menus.sh $1
+    fi
+fi
+
 if [[ $1 == --desktop ]]; then
     exec /usr/lib/t2ec/desktop.py $2
 elif [[ $1 == --bbswitch ]]; then
