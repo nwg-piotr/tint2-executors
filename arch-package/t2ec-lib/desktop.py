@@ -90,39 +90,40 @@ def create_menu(d_number):
     if not os.path.isdir(t2ec_dir):
         os.makedirs(t2ec_dir)
 
-    content = ['#!/bin/sh',
-               '',
-               'config_file=$(mktemp)',
-               'menu_file=$(mktemp)',
-               'trap "rm -f ${config_file} ${menu_file}" EXIT',
-               '',
-               'cat <<\'EOF\' >${config_file}',
-               'stay_alive          = 0',
-               'tint2_look          = 1',
-               'menu_width          = 40',
-               'menu_border         = 0',
-               'item_height         = 20',
-               'font                = Sans 10',
-               'icon_size           = 0',
-               'color_norm_fg       = #eeeeee 100',
-               'color_sel_fg        = #eeeeee 100',
-               'EOF',
-               '',
-               'cat <<\'EOF\' >${menu_file}']
+    if not os.path.isfile(t2ec_dir + "/menu-desktop.sh"):
+        content = ['#!/bin/sh',
+                   '',
+                   'config_file=$(mktemp)',
+                   'menu_file=$(mktemp)',
+                   'trap "rm -f ${config_file} ${menu_file}" EXIT',
+                   '',
+                   'cat <<\'EOF\' >${config_file}',
+                   'stay_alive          = 0',
+                   'tint2_look          = 1',
+                   'menu_width          = 40',
+                   'menu_border         = 0',
+                   'item_height         = 20',
+                   'font                = Sans 10',
+                   'icon_size           = 0',
+                   'color_norm_fg       = #eeeeee 100',
+                   'color_sel_fg        = #eeeeee 100',
+                   'EOF',
+                   '',
+                   'cat <<\'EOF\' >${menu_file}']
 
-    for i in range(1, d_number + 1):
-        content.append("desktop " + str(i) + ", t2ec --desktop " + str(i))
+        for i in range(1, d_number + 1):
+            content.append("desktop " + str(i) + ", t2ec --desktop " + str(i))
 
-    content.append('EOF')
-    content.append('')
-    content.append('jgmenu --config-file=${config_file} --csv-file=${menu_file}')
+        content.append('EOF')
+        content.append('')
+        content.append('jgmenu --config-file=${config_file} --csv-file=${menu_file}')
 
-    with open(t2ec_dir + '/menu-desktop.sh', 'w') as menu_file:
-        for row in content:
-            menu_file.write('%s\n' % row)
+        with open(t2ec_dir + '/menu-desktop.sh', 'w') as menu_file:
+            for row in content:
+                menu_file.write('%s\n' % row)
 
-    os.system('chmod +x ' + t2ec_dir + "/menu-desktop.sh")
-    subprocess.call([t2ec_dir + '/menu-desktop.sh'], shell=True)
+        os.system('chmod +x ' + t2ec_dir + "/menu-desktop.sh")
+        subprocess.call([t2ec_dir + '/menu-desktop.sh'], shell=True)
 
 
 if __name__ == "__main__":
