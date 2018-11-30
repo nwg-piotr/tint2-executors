@@ -123,7 +123,8 @@ def create_menu(d_number):
                 menu_file.write('%s\n' % row)
 
         os.system('chmod +x ' + t2ec_dir + "/menu-desktop.sh")
-        subprocess.call([t2ec_dir + '/menu-desktop.sh'], shell=True)
+
+    subprocess.call([t2ec_dir + '/menu-desktop.sh'], shell=True)
 
 
 if __name__ == "__main__":
