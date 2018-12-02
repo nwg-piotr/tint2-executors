@@ -116,7 +116,7 @@ Check the [jgmenu reference document](https://github.com/johanmalm/jgmenu/blob/m
 
 ![sample executor](http://nwg.pl/wiki-tint2-executors/tint2conf-commented.png)
 
-## t2ec --update
+## t2ec --update command
 
 This command may need some further clarification. To benefit from all its features, you should install the `jgmenu` optional package, and assign `t2ec --update menu` to the left click event:
 
