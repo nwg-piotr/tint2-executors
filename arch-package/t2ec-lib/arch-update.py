@@ -96,6 +96,12 @@ def main():
                 print("-M<custom_name> - print custom na(M)e instead of icon\n")
 
     if do_check:
+        if name is not None:
+            os.system("echo " + name + " ?")
+        else:
+            os.system("echo /usr/share/t2ec/refresh.svg")
+            os.system("echo ?")
+
         subprocess.call(check_command, shell=True)
         updates = open(tmp_file, 'r').read().rstrip()
         num_upd = len(updates.splitlines())
@@ -108,6 +114,7 @@ def main():
                 print(num_upd)
             else:
                 print("/usr/share/t2ec/arch-icon.svg")
+                print(num_upd)
 
     if do_update:
         command = terminal_name + ' -e \'sh -c \"' + helper_name + ' -Syu; echo Press enter to exit; read; killall -SIGUSR1 tint2\"\''
