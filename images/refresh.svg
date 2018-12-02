@@ -16,7 +16,7 @@
    sodipodi:version="0.32"
    inkscape:version="0.92.2 2405546, 2018-03-11"
    version="1.0"
-   sodipodi:docname="arch-icon-check.svg"
+   sodipodi:docname="refresh.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    inkscape:export-filename="/home/thayer/archlinux-logo-contest/archer-full-detail.png"
    inkscape:export-xdpi="90"
@@ -126,15 +126,15 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="8.4378526"
-     inkscape:cx="28.878078"
-     inkscape:cy="25.924638"
+     inkscape:zoom="1.4916157"
+     inkscape:cx="-75.378268"
+     inkscape:cy="-98.332774"
      inkscape:document-units="px"
      inkscape:current-layer="g2210"
-     inkscape:window-width="1920"
-     inkscape:window-height="999"
-     inkscape:window-x="0"
-     inkscape:window-y="32"
+     inkscape:window-width="1356"
+     inkscape:window-height="700"
+     inkscape:window-x="5"
+     inkscape:window-y="40"
      showgrid="false"
      inkscape:window-maximized="1" />
   <metadata
@@ -160,11 +160,22 @@
       <g
          id="g2210"
          transform="matrix(0.25,0,0,0.25,502.3126,469.21738)">
-        <path
-           style="line-height:normal;font-family:Sans;-inkscape-font-specification:Sans;text-indent:0;text-align:start;text-transform:none;overflow:visible;opacity:1;fill:#ffffff;stroke-width:12.60321808"
-           d="m 830.06262,527.53908 -62.22837,-5.90775 18.11713,-18.11713 c -14.92039,-12.09354 -36.51097,-11.5388 -50.41287,2.3631 -14.86898,14.86897 -14.86898,38.6947 0,53.56369 14.86897,14.86897 38.6947,14.86897 53.56368,0 l 17.72325,17.72325 c -24.50345,24.50349 -64.50673,24.50349 -89.01023,0 -24.50346,-24.50345 -24.50346,-64.50675 0,-89.01024 23.50369,-23.50369 61.19201,-24.34265 85.85942,-2.75694 l 19.69252,-19.69252 z"
-           id="path884"
-           inkscape:connector-curvature="0" />
+        <g
+           id="g846"
+           transform="translate(-2.638782,2.4628623)"
+           style="fill:#ffffff">
+          <path
+             inkscape:connector-curvature="0"
+             id="path830"
+             d="m 828.64313,460.77925 -19.69117,19.69117 c -24.6674,-21.58571 -62.35812,-20.74368 -85.86181,2.76 -9.85791,9.85792 -15.70368,22.22452 -17.60956,35.07996 h 25.43732 c 1.63389,-6.34114 4.9001,-12.36257 9.89776,-17.36023 13.9019,-13.9019 35.49038,-14.45346 50.41077,-2.35992 l -18.11401,18.11401 62.22778,5.90851 z"
+             style="line-height:normal;font-family:Sans;-inkscape-font-specification:Sans;text-indent:0;text-align:start;text-transform:none;overflow:visible;opacity:1;fill:#ffffff;stroke-width:12.60321808" />
+          <path
+             id="path884"
+             transform="matrix(2.96875,0,0,2.96875,669.75015,435.62319)"
+             d="m 10,33.039062 2.255859,20.828126 6.632813,-6.632813 c 8.309022,7.270976 21.004843,6.987344 28.921875,-0.929687 3.28922,-3.289225 5.256158,-7.408821 5.921875,-11.695313 h -8.59961 c -0.55822,2.091516 -1.640961,4.074557 -3.292968,5.726563 -4.682745,4.682744 -11.954653,4.868535 -16.980469,0.794921 l 6.101563,-6.101562 z"
+             style="line-height:normal;font-family:Sans;-inkscape-font-specification:Sans;text-indent:0;text-align:start;text-transform:none;overflow:visible;opacity:1;fill:#ffffff;stroke-width:4.24529457"
+             inkscape:connector-curvature="0" />
+        </g>
       </g>
     </g>
   </g>
