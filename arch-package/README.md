@@ -116,7 +116,12 @@ Check the [jgmenu reference document](https://github.com/johanmalm/jgmenu/blob/m
 
 ![sample executor](http://nwg.pl/wiki-tint2-executors/tint2conf-commented.png)
 
-## Known bugs:
+## t2ec --update
 
-- 0.2-3 version: `t2ec --desktop menu` recreates once created default menu template at every usage. 
-To be fixed in 0.2-4. 
+This command may need some further clarification. To benefit from all its features, you should install the `jgmenu` optional package, and assign `t2ec --update menu` to the left click event:
+
+![t2ec --update](http://nwg.pl/wiki-tint2-executors/t2ec-update.png)
+
+Also the "Continous output" field is necessary. For graphical output (e.g. `t2ec --update -Ctrizen`) please set `execp_continuous = 2`. For textual output (e.g. `t2ec --update -Ctrizen -N` set `execp_continuous = 1.`
+
+
