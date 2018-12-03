@@ -42,7 +42,7 @@ For `psuinfo` commands install the [psuinfo package](https://aur.archlinux.org/p
 
 `t2ec --wifi [-N] | [-M'custom name']`
 
-`t2ec --update -C[aur_helper] [-N] | [-M<custom_name]` [read more](https://github.com/nwg-piotr/tint2-executors/blob/master/arch-package/README.md#t2ec---update-command)
+`t2ec --update -C[pacaur | trizen | yay] [-N] | [-M<custom_name]` [read more](https://github.com/nwg-piotr/tint2-executors/blob/master/arch-package/README.md#t2ec---update-command)
 
 ## Commands to assign to mouse events:
 
