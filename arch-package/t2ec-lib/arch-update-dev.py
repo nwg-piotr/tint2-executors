@@ -97,24 +97,27 @@ def main():
 
     if do_check:
         if name is not None:
-            os.system("echo " + name + " ?")
+            os.system("echo Checking...")
         else:
             os.system("echo /usr/share/t2ec/refresh.svg")
-            os.system("echo ?")
+            os.system("echo ''")
 
         subprocess.call(check_command, shell=True)
         updates = open(tmp_file, 'r').read().rstrip()
         num_upd = len(updates.splitlines())
 
         if name is not None:
-            print(name + " " + str(num_upd))
+            if num_upd > 0:
+                print(name + " " + str(num_upd))
+            else:
+                print("Up-to-date")
         else:
             if num_upd > 0:
-                print("/usr/share/t2ec/arch-icon-notify.svg")
-                print(num_upd)
+                os.system("echo /usr/share/t2ec/arch-icon-notify.svg")
+                os.system("echo " + str(num_upd))
             else:
-                print("/usr/share/t2ec/arch-icon.svg")
-                print(num_upd)
+                os.system("echo /usr/share/t2ec/arch-icon.svg")
+                os.system("echo ''")
 
     if do_update:
         command = terminal_name + ' -e \'sh -c \"' + helper_name + ' -Syu; echo Press enter to exit; read; killall -SIGUSR1 tint2\"\''
