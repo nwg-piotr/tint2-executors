@@ -75,8 +75,27 @@ Other commands launched with the `menu` argument will use a sample template. All
 created in the `~/.t2ecol` hidden folder as soon, as you run the command for the first time.
 You may customize templates to your taste. To restore defaults, just remove the modified template.
 
-**Note**: You definitely **should** edit the `~/.t2ecol/menu-update.sh` template, as your AUR helper 
-and terminal are defined here. By default **yay** and **termite** are used here, which may, or may not work for you.
+Check the [jgmenu reference document](https://github.com/johanmalm/jgmenu/blob/master/docs/manual/jgmenu.1.md) to learn more.
+
+## Helper command:
+
+`t2ec --zbox [bri] | [vol]` - displays Zenity box to set volume | brightness level. Depends on 'zenity' and 'rof-git' optional packages.
+
+## Sample usage in Tint2:
+
+![sample executor](http://nwg.pl/wiki-tint2-executors/tint2conf-commented.png)
+
+## t2ec --update command
+
+This command may need some further clarification. To benefit from all its features, you should install the `jgmenu` optional package, and assign `t2ec --update menu` to the left click event:
+
+![t2ec --update](http://nwg.pl/wiki-tint2-executors/t2ec-update.png)
+
+Also the "Continous output" field is necessary. For graphical output (e.g. `t2ec --update -Ctrizen`) please set `execp_continuous = 2`. For textual output (e.g. `t2ec --update -Ctrizen -N` set `execp_continuous = 1.`
+
+### t2ec --update menu
+
+You need to edit the `~/.t2ecol/menu-update.sh` template, as your AUR helper and terminal are defined here. Default **yay** and **termite** may, or may not work for you.
 
 ```bash
 #!/bin/sh
@@ -105,23 +124,5 @@ EOF
 
 jgmenu --config-file=${config_file} --csv-file=${menu_file}
 ```
-
-Check the [jgmenu reference document](https://github.com/johanmalm/jgmenu/blob/master/docs/manual/jgmenu.1.md) to learn more.
-
-## Helper command:
-
-`t2ec --zbox [bri] | [vol]` - displays Zenity box to set volume | brightness level. Depends on 'zenity' and 'rof-git' optional packages.
-
-## Sample usage in Tint2:
-
-![sample executor](http://nwg.pl/wiki-tint2-executors/tint2conf-commented.png)
-
-## t2ec --update command
-
-This command may need some further clarification. To benefit from all its features, you should install the `jgmenu` optional package, and assign `t2ec --update menu` to the left click event:
-
-![t2ec --update](http://nwg.pl/wiki-tint2-executors/t2ec-update.png)
-
-Also the "Continous output" field is necessary. For graphical output (e.g. `t2ec --update -Ctrizen`) please set `execp_continuous = 2`. For textual output (e.g. `t2ec --update -Ctrizen -N` set `execp_continuous = 1.`
 
 
