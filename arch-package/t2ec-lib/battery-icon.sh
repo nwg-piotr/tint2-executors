@@ -46,7 +46,7 @@ if [[ $bat ]]; then
             fi
         else
             if [[ "$level" -ge "95" ]]; then
-                echo /usr/share/t2ec/images/bat-full.svg
+                echo /usr/share/t2ec/bat-full.svg
             elif [[ "$level" -ge "75" ]]; then
                 echo /usr/share/t2ec/bat-threefourth.svg
             elif [[ "$level" -ge "35" ]]; then
