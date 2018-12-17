@@ -106,7 +106,7 @@ def print_output(owm, name, items, units):
                 print(str(getattr(owm.main, "pressure")) + " hpa")
             if items[i] == "p":
                 unit = "m/h" if units == "imperial" else "m/s"
-                print(str(getattr(owm.wind, "speed")) + " " + unit + " " + str(getattr(owm.wind, "deg")) + " deg")
+                print(str(getattr(owm.wind, "speed")) + " " + unit + " " + wind_dir(float(str(getattr(owm.wind, "deg")))))
 
     else:
         print("Error accessing openweathermap.org, HTTP status: " + str(owm.cod))
@@ -123,7 +123,7 @@ class Settings:
             os.makedirs(t2ec_dir)
         if not os.path.isfile(t2ec_dir + "/weatherrc"):
             config = [
-                "# Items: [s]hort description, [d]escription, [t]emperature, [t]ressure, [h]umidity, [w]ind, [c]ity name\n",
+                "# Items: [s]hort description, [d]escription, [t]emperature, [p]ressure, [h]umidity, [w]ind, [c]ity name\n",
                 "# API key: go to http://openweathermap.org and get one\n",
                 "# city_id you will find at http://openweathermap.org/find\n",
                 "# units may be metric or imperial\n",
@@ -163,6 +163,44 @@ class Settings:
         if self.lang is None:
             loc = locale.getdefaultlocale()[0][:2]
             self.lang = loc if loc else "en"
+
+
+def wind_dir(deg):
+    if deg >= 348.75 or deg <= 11.25:
+        return "N"
+    elif 11.25 < deg <= 33.75:
+        return "NNE"
+    elif 33.75 < deg <= 56.25:
+        return "NE"
+    elif 56.25 < deg <= 78.75:
+        return "ENE"
+    elif 78.75 < deg <= 101.25:
+        return "E"
+    elif 101.25 < deg <= 123.75:
+        return "ESE"
+    elif 123.75 < deg <= 146.25:
+        return "SE"
+    elif 146.25 < deg <= 168.75:
+        return "SSE"
+    elif 168.75 < deg <= 191.25:
+        return "S"
+    elif 191.25 < deg <= 213.75:
+        return "SSW"
+    elif 213.75 < deg <= 236.25:
+        return "SW"
+    elif 236.25 < deg <= 258.75:
+        return "WSW"
+    elif 258.75 < deg <= 281.25:
+        return "W"
+    elif 281.25 < deg <= 303.75:
+        return "WNW"
+    elif 303.75 < deg <= 326.25:
+        return "NW"
+    elif 326.25 < deg <= 348.75:
+        return "NNW"
+    else:
+        return "WTF"
+
 
 
 if __name__ == "__main__":
