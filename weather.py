@@ -12,13 +12,45 @@ import json
 from collections import namedtuple
 import locale
 import os
+import sys
 
 
 def main():
     t2ec_dir = os.getenv("HOME") + "/.t2ecol"
     response = None
+    name = None
 
     settings = Settings()
+
+    if len(sys.argv) > 1:
+        for i in range(1, len(sys.argv)):
+            if sys.argv[i].upper() == '-N':
+                name = "Weather:"
+
+            if sys.argv[i].upper().startswith('-M'):
+                name = sys.argv[i][2::]
+
+            if sys.argv[i].startswith("-I"):
+                settings.items = sys.argv[i][2::]
+
+            if sys.argv[i].startswith("-A"):
+                settings.api_key = sys.argv[i][2::]
+
+            if sys.argv[i].startswith("-C"):
+                settings.city_id = sys.argv[i][2::]
+
+            if sys.argv[i].startswith("-U"):
+                settings.units = sys.argv[i][2::]
+
+            if sys.argv[i].startswith("-L"):
+                settings.lang = sys.argv[i][2::]
+
+    print(name)
+    print(settings.items)
+    print(settings.api_key)
+    print(settings.city_id)
+    print(settings.units)
+    print(settings.lang)
 
     request_url = "http://api.openweathermap.org/data/2.5/weather?id=" + settings.city_id + "&appid=" + \
                   settings.api_key + "&units=" + settings.units + "&lang=" + settings.lang
