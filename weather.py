@@ -5,14 +5,6 @@
 Development just started. Nothing useful inside yet.
 
 Dependencies: wget
-Items:
-    S - Short description (main)
-    D - Description (description)
-    T - Temp [℃ | ℉]
-    P - Pressure [hpa]
-    H - Humidity [%]
-    W - Wind [m/s, degrees]
-    C - City name (name)
 """
 
 import subprocess
@@ -30,6 +22,7 @@ def main():
         loc = locale.getdefaultlocale()[0][:2]
         settings.lang = loc if loc else "en"
 
+    print(settings.items)
     print(settings.api_key)
     print(settings.city_id)
     print(settings.units)
@@ -55,6 +48,7 @@ def main():
 
         else:
             print("Error accessing openweathermap.org, HTTP status: " + str(owm.cod))
+            exit(0)
 
 
 class Settings:
@@ -68,10 +62,12 @@ class Settings:
         if not os.path.isfile(t2ec_dir + "/weatherrc"):
             config = [
                 "# Items: [S]hort description, [D]escription, [T]emperature, [P]ressure, [H]umidity, [W]ind, [C]ity name\n",
-                "# API key: go to http://openweathermap.org and get one\n"
-                "# units may be metric or imperial\n"
-                "# uncomment lang to override system $LANG value\n"
-                "# ------------------------------------------------\n"
+                "# API key: go to http://openweathermap.org and get one\n",
+                "# city_id you will find at http://openweathermap.org/find\n",
+                "# units may be metric or imperial\n",
+                "# uncomment lang to override system $LANG value\n",
+                "# Delete this file if something goes wrong :)\n",
+                "# ------------------------------------------------\n",
                 "items = CSTW\n",
                 "api_key = your_key_here\n",
                 "city_id = 2643743\n",
@@ -80,16 +76,20 @@ class Settings:
 
             subprocess.call(["echo '" + ''.join(config) + "' > " + t2ec_dir + "/weatherrc"], shell=True)
 
+        self.items = "CSTW"
         self.api_key = ""
         self.city_id = "2643743"  # London, UK
         self.units = "metric"
         self.lang = None
 
-        # read settings file
+        # read from settings file
         lines = open(t2ec_dir + "/weatherrc", 'r').read().rstrip().splitlines()
+
         for line in lines:
             if not line.startswith("#"):
-                if line.startswith("api_key"):
+                if line.startswith("items"):
+                    self.items = line.split("=")[1].strip()
+                elif line.startswith("api_key"):
                     self.api_key = line.split("=")[1].strip()
                 elif line.startswith("city_id"):
                     self.city_id = line.split("=")[1].strip()
