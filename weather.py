@@ -45,13 +45,6 @@ def main():
             if sys.argv[i].startswith("-L"):
                 settings.lang = sys.argv[i][2::]
 
-    print(name)
-    print(settings.items)
-    print(settings.api_key)
-    print(settings.city_id)
-    print(settings.units)
-    print(settings.lang)
-
     request_url = "http://api.openweathermap.org/data/2.5/weather?id=" + settings.city_id + "&appid=" + \
                   settings.api_key + "&units=" + settings.units + "&lang=" + settings.lang
     try:
@@ -65,10 +58,10 @@ def main():
     if response is not None:
         # Convert JSON to object - after DS. at https://stackoverflow.com/a/15882054/4040598
         owm = json.loads(response, object_hook=lambda d: namedtuple('t', d.keys())(*d.values()))
-        print_output(owm)
+        print_output(owm, name, settings.items, settings.units)
 
 
-def print_output(owm):
+def print_output(owm, name, items, units):
     icons = {'01d': '01d.png',
              '01n': '01n.png',
              '02d': '02d.png',
@@ -89,10 +82,30 @@ def print_output(owm):
              '50n': '50d.png'}
 
     if owm.cod == 200:
-        print(owm)
-        print(owm.weather)
-        print(getattr(owm.weather[0], "main"))
-        print(getattr(owm.main, "temp"))
+        #print(owm)
+        if name is not None:
+            print(name)
+        else:
+            icon = getattr(owm.weather[0], "icon")
+            if icon:
+                print("icons/" + icons[icon])
+            else:
+                print("icons/refresh.svg")
+
+        for i in range(len(items)):
+            if items[i] == "c":
+                print(owm.name + ", " + getattr(owm.sys, "country"))
+            if items[i] == "s":
+                print(getattr(owm.weather[0], "main"))
+            if items[i] == "d":
+                print(getattr(owm.weather[0], "description"))
+            if items[i] == "t":
+                unit = "℉" if units == "imperial" else "℃"
+                print(str(getattr(owm.main, "temp")) + unit)
+            if items[i] == "p":
+                print(str(getattr(owm.main, "pressure")) + " hpa")
+            if items[i] == "p":
+                print(str(getattr(owm.wind, "speed")) + " m/s " + str(getattr(owm.wind, "deg")) + " deg")
 
     else:
         print("Error accessing openweathermap.org, HTTP status: " + str(owm.cod))
@@ -109,14 +122,14 @@ class Settings:
             os.makedirs(t2ec_dir)
         if not os.path.isfile(t2ec_dir + "/weatherrc"):
             config = [
-                "# Items: [S]hort description, [D]escription, [T]emperature, [P]ressure, [H]umidity, [W]ind, [C]ity name\n",
+                "# Items: [s]hort description, [d]escription, [t]emperature, [t]ressure, [h]umidity, [w]ind, [c]ity name\n",
                 "# API key: go to http://openweathermap.org and get one\n",
                 "# city_id you will find at http://openweathermap.org/find\n",
                 "# units may be metric or imperial\n",
                 "# uncomment lang to override system $LANG value\n",
                 "# Delete this file if something goes wrong :)\n",
                 "# ------------------------------------------------\n",
-                "items = CSTW\n",
+                "items = cstw\n",
                 "api_key = your_key_here\n",
                 "city_id = 2643743\n",
                 "units = metric\n",
@@ -124,7 +137,7 @@ class Settings:
 
             subprocess.call(["echo '" + ''.join(config) + "' > " + t2ec_dir + "/weatherrc"], shell=True)
 
-        self.items = "CSTW"
+        self.items = "cstw"
         self.api_key = ""
         self.city_id = "2643743"  # London, UK
         self.units = "metric"
