@@ -13,6 +13,7 @@ from collections import namedtuple
 import locale
 import os
 import sys
+import re
 
 
 def main():
@@ -52,7 +53,9 @@ def main():
         subprocess.call(["echo '" + str(response) + "' > " + t2ec_dir + "/.weather-" + settings.city_id], shell=True)
 
     except subprocess.CalledProcessError as exitcode:
-        print("Error accessing openweathermap.org, exit code: ", exitcode.returncode)
+        if name is None:
+            print("icons/refresh.svg")
+        print("Exit code: ", exitcode.returncode)
         exit(0)
 
     if response is not None:
@@ -82,41 +85,58 @@ def print_output(owm, name, items, units):
              '50n': '50d'}
 
     if owm.cod == 200:
-        # print(owm)
+        print(owm)
         # Prepare items
         icon = "icons/refresh.svg"
-        city = str(owm.name + ", " + getattr(owm.sys, "country"))
-        s_desc = str(getattr(owm.weather[0], "main"))
-        desc = str(getattr(owm.weather[0], "description"))
-        unit = "℉" if units == "imperial" else "℃"
-        temp = str(round(float(str(getattr(owm.main, "temp"))), 1)) + unit
         try:
             icon = "icons/" + icons[str(getattr(owm.weather[0], "icon"))] + ".png"
         except KeyError:
             pass
 
-        if name is not None:
-            print(name)
-        else:
+        city = str(owm.name + ", " + getattr(owm.sys, "country"))
+
+        s_desc = str(getattr(owm.weather[0], "main"))
+
+        desc = str(getattr(owm.weather[0], "description"))
+
+        unit = "℉" if units == "imperial" else "℃"
+        temp = str(round(float(str(getattr(owm.main, "temp"))), 1)) + unit
+
+        pressure = str(int(round(float(str(getattr(owm.main, "pressure"))), 0))) + " hpa"
+
+        humidity = str(round(float(str(getattr(owm.main, "humidity"))), 0)) + "%"
+
+        unit = "m/h" if units == "imperial" else "m/s"
+        wind = str(getattr(owm.wind, "speed")) + " " + unit + ", " + wind_dir(float(str(getattr(owm.wind, "deg"))))
+
+        output = ""
+        if name is None:
             print(icon)
+        else:
+            output += name
 
         for i in range(len(items)):
             if items[i] == "c":
-                print(city)
+                output += " " + city + " "
             if items[i] == "s":
-                print(s_desc)
+                output += " " + s_desc + " "
             if items[i] == "d":
-                print(desc)
+                output += " " + desc + " "
             if items[i] == "t":
-                print(temp)
+                output += " " + temp + " "
             if items[i] == "p":
-                print(str(getattr(owm.main, "pressure")) + " hpa")
-            if items[i] == "p":
-                unit = "m/h" if units == "imperial" else "m/s"
-                print(str(getattr(owm.wind, "speed")) + " " + unit + ", " + wind_dir(float(str(getattr(owm.wind, "deg")))))
+                output += " " + pressure + " "
+            if items[i] == "h":
+                output += " " + humidity + " "
+            if items[i] == "w":
+                output += " " + wind + " "
+
+        print(re.sub(' +', ' ', output).strip())
 
     else:
-        print("Error accessing openweathermap.org, HTTP status: " + str(owm.cod))
+        if name is None:
+            print("icons/refresh.svg")
+        print("HTTP status: " + str(owm.cod))
         exit(0)
 
 
@@ -137,7 +157,7 @@ class Settings:
                 "# uncomment lang to override system $LANG value\n",
                 "# Delete this file if something goes wrong :)\n",
                 "# ------------------------------------------------\n",
-                "items = cstw\n",
+                "items = tpw\n",
                 "api_key = your_key_here\n",
                 "city_id = 2643743\n",
                 "units = metric\n",
@@ -145,7 +165,7 @@ class Settings:
 
             subprocess.call(["echo '" + ''.join(config) + "' > " + t2ec_dir + "/weatherrc"], shell=True)
 
-        self.items = "cstw"
+        self.items = "tpw"
         self.api_key = ""
         self.city_id = "2643743"  # London, UK
         self.units = "metric"
