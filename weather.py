@@ -15,40 +15,37 @@ import os
 
 
 def main():
+    t2ec_dir = os.getenv("HOME") + "/.t2ecol"
     response = None
+
     settings = Settings()
-
-    if settings.lang is None:
-        loc = locale.getdefaultlocale()[0][:2]
-        settings.lang = loc if loc else "en"
-
-    print(settings.items)
-    print(settings.api_key)
-    print(settings.city_id)
-    print(settings.units)
-    print(settings.lang)
 
     request_url = "http://api.openweathermap.org/data/2.5/weather?id=" + settings.city_id + "&appid=" + \
                   settings.api_key + "&units=" + settings.units + "&lang=" + settings.lang
     try:
         response = subprocess.check_output("wget -qO- '" + request_url + "'", shell=True)
+        subprocess.call(["echo '" + str(response) + "' > " + t2ec_dir + "/.weather-" + settings.city_id], shell=True)
+
     except subprocess.CalledProcessError as exitcode:
         print("Error accessing openweathermap.org, exit code: ", exitcode.returncode)
         exit(0)
 
     if response is not None:
-        # after DS. at https://stackoverflow.com/a/15882054/4040598
+        # Convert JSON to object - after DS. at https://stackoverflow.com/a/15882054/4040598
         owm = json.loads(response, object_hook=lambda d: namedtuple('t', d.keys())(*d.values()))
+        print_output(owm)
 
-        if owm.cod == 200:
-            print(owm)
-            print(owm.weather)
-            print(getattr(owm.weather[0], "main"))
-            print(getattr(owm.main, "temp"))
 
-        else:
-            print("Error accessing openweathermap.org, HTTP status: " + str(owm.cod))
-            exit(0)
+def print_output(owm):
+    if owm.cod == 200:
+        print(owm)
+        print(owm.weather)
+        print(getattr(owm.weather[0], "main"))
+        print(getattr(owm.main, "temp"))
+
+    else:
+        print("Error accessing openweathermap.org, HTTP status: " + str(owm.cod))
+        exit(0)
 
 
 class Settings:
@@ -97,6 +94,10 @@ class Settings:
                     self.units = line.split("=")[1].strip()
                 elif line.startswith("lang"):
                     self.lang = line.split("=")[1].strip()
+
+        if self.lang is None:
+            loc = locale.getdefaultlocale()[0][:2]
+            self.lang = loc if loc else "en"
 
 
 if __name__ == "__main__":
