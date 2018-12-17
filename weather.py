@@ -62,51 +62,58 @@ def main():
 
 
 def print_output(owm, name, items, units):
-    icons = {'01d': '01d.png',
-             '01n': '01n.png',
-             '02d': '02d.png',
-             '02n': '02n.png',
-             '03d': '03d.png',
-             '03n': '03d.png',
-             '04d': '04d.png',
-             '04n': '04d.png',
-             '09d': '09d.png',
-             '09n': '09d.png',
-             '10d': '10d.png',
-             '10n': '10n.png',
-             '11d': '11d.png',
-             '11n': '11d.png',
-             '13d': '13d.png',
-             '13n': '13d.png',
-             '50d': '50d.png',
-             '50n': '50d.png'}
+    icons = {'01d': '01d',
+             '01n': '01n',
+             '02d': '02d',
+             '02n': '02n',
+             '03d': '03d',
+             '03n': '03d',
+             '04d': '04d',
+             '04n': '04d',
+             '09d': '09d',
+             '09n': '09d',
+             '10d': '10d',
+             '10n': '10n',
+             '11d': '11d',
+             '11n': '11d',
+             '13d': '13d',
+             '13n': '13d',
+             '50d': '50d',
+             '50n': '50d'}
 
     if owm.cod == 200:
         # print(owm)
+        # Prepare items
+        icon = "icons/refresh.svg"
+        city = str(owm.name + ", " + getattr(owm.sys, "country"))
+        s_desc = str(getattr(owm.weather[0], "main"))
+        desc = str(getattr(owm.weather[0], "description"))
+        unit = "℉" if units == "imperial" else "℃"
+        temp = str(round(float(str(getattr(owm.main, "temp"))), 1)) + unit
+        try:
+            icon = "icons/" + icons[str(getattr(owm.weather[0], "icon"))] + ".png"
+        except KeyError:
+            pass
+
         if name is not None:
             print(name)
         else:
-            icon = getattr(owm.weather[0], "icon")
-            if icon:
-                print("icons/" + icons[icon])
-            else:
-                print("icons/refresh.svg")
+            print(icon)
 
         for i in range(len(items)):
             if items[i] == "c":
-                print(owm.name + ", " + getattr(owm.sys, "country"))
+                print(city)
             if items[i] == "s":
-                print(getattr(owm.weather[0], "main"))
+                print(s_desc)
             if items[i] == "d":
-                print(getattr(owm.weather[0], "description"))
+                print(desc)
             if items[i] == "t":
-                unit = "℉" if units == "imperial" else "℃"
-                print(str(getattr(owm.main, "temp")) + unit)
+                print(temp)
             if items[i] == "p":
                 print(str(getattr(owm.main, "pressure")) + " hpa")
             if items[i] == "p":
                 unit = "m/h" if units == "imperial" else "m/s"
-                print(str(getattr(owm.wind, "speed")) + " " + unit + " " + wind_dir(float(str(getattr(owm.wind, "deg")))))
+                print(str(getattr(owm.wind, "speed")) + " " + unit + ", " + wind_dir(float(str(getattr(owm.wind, "deg")))))
 
     else:
         print("Error accessing openweathermap.org, HTTP status: " + str(owm.cod))
