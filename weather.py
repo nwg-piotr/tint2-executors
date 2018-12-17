@@ -82,7 +82,7 @@ def print_output(owm, name, items, units):
              '50n': '50d.png'}
 
     if owm.cod == 200:
-        #print(owm)
+        # print(owm)
         if name is not None:
             print(name)
         else:
@@ -105,7 +105,8 @@ def print_output(owm, name, items, units):
             if items[i] == "p":
                 print(str(getattr(owm.main, "pressure")) + " hpa")
             if items[i] == "p":
-                print(str(getattr(owm.wind, "speed")) + " m/s " + str(getattr(owm.wind, "deg")) + " deg")
+                unit = "m/h" if units == "imperial" else "m/s"
+                print(str(getattr(owm.wind, "speed")) + " " + unit + " " + str(getattr(owm.wind, "deg")) + " deg")
 
     else:
         print("Error accessing openweathermap.org, HTTP status: " + str(owm.cod))
