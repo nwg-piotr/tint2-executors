@@ -251,6 +251,5 @@ def wind_dir(deg):
         return "WTF"
 
 
-
 if __name__ == "__main__":
     main()
