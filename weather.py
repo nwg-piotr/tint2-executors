@@ -96,7 +96,7 @@ def print_output(owm, name, items, units, img_path):
              '50n': 'ow-50d.png'}
 
     if owm.cod == 200:
-        # print(owm)
+        #print(owm)
         # Prepare panel items
         icon = "images/refresh.svg"
         try:
@@ -104,26 +104,68 @@ def print_output(owm, name, items, units, img_path):
         except KeyError:
             pass
 
-        city = str(owm.name + ", " + getattr(owm.sys, "country"))
+        city, s_desc, desc, temp, pressure, humidity, wind, deg, sunrise, sunset, cloudiness \
+            = None, None, None, None, None, None, None, None, None, None, None
 
-        s_desc = str(getattr(owm.weather[0], "main"))
+        try:
+            city = str(owm.name + ", " + getattr(owm.sys, "country"))
+        except AttributeError:
+            pass
 
-        desc = str(getattr(owm.weather[0], "description"))
+        try:
+            s_desc = str(getattr(owm.weather[0], "main"))
+        except AttributeError:
+            pass
+
+        try:
+            desc = str(getattr(owm.weather[0], "description"))
+        except AttributeError:
+            pass
 
         unit = "℉" if units == "imperial" else "℃"
-        temp = str(round(float(str(getattr(owm.main, "temp"))), 1)) + unit
+        try:
+            temp = str(round(float(str(getattr(owm.main, "temp"))), 1)) + unit
+        except AttributeError:
+            pass
 
-        pressure = str(int(round(float(str(getattr(owm.main, "pressure"))), 0))) + " hpa"
+        try:
+            pressure = str(int(round(float(str(getattr(owm.main, "pressure"))), 0))) + " hpa"
+        except AttributeError:
+            pass
 
-        humidity = str(round(float(str(getattr(owm.main, "humidity"))), 0)) + "%"
+        try:
+            humidity = str(round(float(str(getattr(owm.main, "humidity"))), 0)) + "%"
+        except AttributeError:
+            pass
 
         unit = "m/h" if units == "imperial" else "m/s"
-        wind = str(getattr(owm.wind, "speed")) + " " + unit + ", " + wind_dir(float(str(getattr(owm.wind, "deg"))))
+        try:
+            wind = str(getattr(owm.wind, "speed")) + unit
+        except AttributeError:
+            pass
+
+        try:
+            deg = str(getattr(owm.wind, "deg"))
+        except AttributeError:
+            pass
+        if deg is not None:
+            wind += ", " + wind_dir(float(deg))
 
         # Values below will only be used in the Details view (notification)
-        sunrise = time.strftime('%H:%M', time.localtime(getattr(owm.sys, "sunrise")))
-        sunset = time.strftime('%H:%M', time.localtime(getattr(owm.sys, "sunset")))
-        cloudiness = str(getattr(owm.clouds, "all")) + "%"
+        try:
+            sunrise = time.strftime('%H:%M', time.localtime(getattr(owm.sys, "sunrise")))
+        except AttributeError:
+            pass
+
+        try:
+            sunset = time.strftime('%H:%M', time.localtime(getattr(owm.sys, "sunset")))
+        except AttributeError:
+            pass
+
+        try:
+            cloudiness = str(getattr(owm.clouds, "all")) + "%"
+        except AttributeError:
+            pass
 
         output = ""
         if name is None:
@@ -132,19 +174,19 @@ def print_output(owm, name, items, units, img_path):
             output += name
 
         for i in range(len(items)):
-            if items[i] == "c":
+            if items[i] == "c" and city is not None:
                 output += " " + city + " "
-            if items[i] == "s":
+            if items[i] == "s" and s_desc is not None:
                 output += " " + s_desc + " "
-            if items[i] == "d":
+            if items[i] == "d" and desc is not None:
                 output += " " + desc + " "
-            if items[i] == "t":
+            if items[i] == "t" and temp is not None:
                 output += " " + temp + " "
-            if items[i] == "p":
+            if items[i] == "p" and pressure is not None:
                 output += " " + pressure + " "
-            if items[i] == "h":
+            if items[i] == "h" and humidity is not None:
                 output += " " + humidity + " "
-            if items[i] == "w":
+            if items[i] == "w" and wind is not None:
                 output += " " + wind + " "
 
         print(re.sub(' +', ' ', output).strip())
