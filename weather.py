@@ -14,6 +14,7 @@ import locale
 import os
 import sys
 import re
+import time
 
 
 def main():
@@ -60,7 +61,7 @@ def main():
                   settings.api_key + "&units=" + settings.units + "&lang=" + settings.lang
     try:
         response = subprocess.check_output("wget -qO- '" + request_url + "'", shell=True)
-        subprocess.call(["echo '" + str(response) + "' > " + t2ec_dir + "/.weather-" + settings.city_id], shell=True)
+        #subprocess.call(["echo '" + str(response) + "' > " + t2ec_dir + "/.weather-" + settings.city_id], shell=True)
 
     except subprocess.CalledProcessError as exitcode:
         if name is None:
@@ -95,8 +96,8 @@ def print_output(owm, name, items, units, img_path):
              '50n': 'ow-50d.png'}
 
     if owm.cod == 200:
-        #print(owm)
-        # Prepare items
+        # print(owm)
+        # Prepare panel items
         icon = "images/refresh.svg"
         try:
             icon = img_path + icons[str(getattr(owm.weather[0], "icon"))]
@@ -118,6 +119,11 @@ def print_output(owm, name, items, units, img_path):
 
         unit = "m/h" if units == "imperial" else "m/s"
         wind = str(getattr(owm.wind, "speed")) + " " + unit + ", " + wind_dir(float(str(getattr(owm.wind, "deg"))))
+
+        # Values below will only be used in the Details view (notification)
+        sunrise = time.strftime('%H:%M', time.localtime(getattr(owm.sys, "sunrise")))
+        sunset = time.strftime('%H:%M', time.localtime(getattr(owm.sys, "sunset")))
+        cloudiness = str(getattr(owm.clouds, "all")) + "%"
 
         output = ""
         if name is None:
