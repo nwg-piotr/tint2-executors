@@ -27,6 +27,9 @@ def main():
 
     if len(sys.argv) > 1:
         for i in range(1, len(sys.argv)):
+            if sys.argv[i] == '-details':
+                show_details(t2ec_dir, settings.city_id)
+
             if sys.argv[i].upper() == '-N':
                 name = settings.dict["_weather"] + ":"
 
@@ -135,11 +138,11 @@ def print_output(owm, name, items, units, img_path, settings, t2ec_dir):
             pass
 
         try:
-            humidity = str(round(float(str(getattr(owm.main, "humidity"))), 0)) + "%"
+            humidity = str(int(round(float(str(getattr(owm.main, "humidity"))), 0))) + "%"
         except AttributeError:
             pass
 
-        unit = "m/h" if units == "imperial" else "m/s"
+        unit = " m/h" if units == "imperial" else " m/s"
         try:
             wind = str(getattr(owm.wind, "speed")) + unit
         except AttributeError:
@@ -195,6 +198,23 @@ def print_output(owm, name, items, units, img_path, settings, t2ec_dir):
         details = icon + "\n"
         if city is not None:
             details += settings.dict["_in_weather"] + " " + city + "\n"
+        if temp is not None:
+            details += temp
+        if desc is not None:
+            details += ", " + desc
+        details += "\n"
+        if wind is not None:
+            details += settings.dict["_wind"] + ": " + wind + "\n"
+        if cloudiness is not None:
+            details += settings.dict["_cloudiness"] + ": " + cloudiness + "\n"
+        if pressure is not None:
+            details += settings.dict["_pressure"] + ": " + pressure + "\n"
+        if humidity is not None:
+            details += settings.dict["_humidity"] + ": " + humidity + "\n"
+        if sunrise is not None:
+            details += settings.dict["_sunrise"] + ": " + sunrise + "\n"
+        if sunset is not None:
+            details += settings.dict["_sunset"] + ": " + sunset + "\n"
 
         subprocess.call(["echo '" + str(details) + "' > " + t2ec_dir + "/.weather-" + settings.city_id], shell=True)
 
@@ -203,6 +223,22 @@ def print_output(owm, name, items, units, img_path, settings, t2ec_dir):
             os.system("echo /usr/share/t2ec/refresh.svg")
         os.system("echo HTTP status: " + str(owm.cod))
         exit(0)
+
+
+def show_details(t2ec_dir, city):
+    details = ""
+    try:
+        details = open(t2ec_dir + "/.weather-" + city, 'r').read().rstrip().splitlines()
+    except FileNotFoundError:
+        exit(0)
+
+    if details:
+        icon = details[0]
+        title = details[1]
+        message = '\n'.join(details[2:])
+        message = message.replace("-", "\\-")
+
+        os.system("notify-send '" + title + "' " + "'" + message + "' -i " + icon)
 
 
 class Settings:
