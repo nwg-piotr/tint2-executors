@@ -28,7 +28,7 @@ def main():
     if len(sys.argv) > 1:
         for i in range(1, len(sys.argv)):
             if sys.argv[i].upper() == '-N':
-                name = "Weather:"
+                name = settings.dict["_weather"] + ":"
 
             if sys.argv[i].upper().startswith('-M'):
                 name = sys.argv[i][2::]
@@ -72,10 +72,11 @@ def main():
     if response is not None:
         # Convert JSON to object - after DS. at https://stackoverflow.com/a/15882054/4040598
         owm = json.loads(response, object_hook=lambda d: namedtuple('t', d.keys())(*d.values()))
-        print_output(owm, name, settings.items, settings.units, img_path)
+
+        print_output(owm, name, settings.items, settings.units, img_path, settings, t2ec_dir)
 
 
-def print_output(owm, name, items, units, img_path):
+def print_output(owm, name, items, units, img_path, settings, t2ec_dir):
     icons = {'01d': 'ow-01d.png',
              '01n': 'ow-01n.png',
              '02d': 'ow-02d.png',
@@ -191,6 +192,12 @@ def print_output(owm, name, items, units, img_path):
 
         print(re.sub(' +', ' ', output).strip())
 
+        details = icon + "\n"
+        if city is not None:
+            details += settings.dict["_in_weather"] + " " + city + "\n"
+
+        subprocess.call(["echo '" + str(details) + "' > " + t2ec_dir + "/.weather-" + settings.city_id], shell=True)
+
     else:
         if name is None:
             os.system("echo /usr/share/t2ec/refresh.svg")
@@ -222,7 +229,18 @@ class Settings:
                 "city_id = 2643743\n",
                 "units = metric\n",
                 "#lang = en\n",
-                "#img_path = /home/user/my_custom_icons/"]
+                "#img_path = /home/user/my_custom_icons/\n",
+                "\n",
+                "# You may translate your output below:\n",
+                "#\n",
+                "_weather = Weather\n",
+                "_in_weather = Weather in\n",
+                "_wind = Wind\n",
+                "_cloudiness = Cloudiness\n",
+                "_pressure = Pressure\n",
+                "_humidity = Humidity\n",
+                "_sunrise = Sunrise\n",
+                "_sunset = Sunset\n"]
 
             subprocess.call(["echo '" + ''.join(config) + "' > " + t2ec_dir + "/weatherrc"], shell=True)
 
@@ -232,6 +250,14 @@ class Settings:
         self.units = "metric"
         self.lang = None
         self.img_path = None
+        self.dict = {'_weather': 'Weather',
+                     '_in_weather': 'Weather in',
+                     '_wind': 'Wind',
+                     '_cloudiness': 'Cloudiness',
+                     '_pressure': 'Pressure',
+                     '_humidity': 'Humidity',
+                     '_sunrise': 'Sunrise',
+                     '_sunset': 'Sunset'}
 
         # read from settings file
         lines = open(t2ec_dir + "/weatherrc", 'r').read().rstrip().splitlines()
@@ -250,6 +276,23 @@ class Settings:
                     self.lang = line.split("=")[1].strip()
                 elif line.startswith("img_path"):
                     self.img_path = line.split("=")[1].strip()
+
+                elif line.startswith("_weather"):
+                    self.dict["_weather"] = line.split("=")[1].strip()
+                elif line.startswith("_in_weather"):
+                    self.dict["_in_weather"] = line.split("=")[1].strip()
+                elif line.startswith("_wind"):
+                    self.dict["_wind"] = line.split("=")[1].strip()
+                elif line.startswith("_cloudiness"):
+                    self.dict["_cloudiness"] = line.split("=")[1].strip()
+                elif line.startswith("_pressure"):
+                    self.dict["_pressure"] = line.split("=")[1].strip()
+                elif line.startswith("_humidity"):
+                    self.dict["_humidity"] = line.split("=")[1].strip()
+                elif line.startswith("_sunrise"):
+                    self.dict["_sunrise"] = line.split("=")[1].strip()
+                elif line.startswith("_sunset"):
+                    self.dict["_sunset"] = line.split("=")[1].strip()
 
         if self.lang is None:
             loc = locale.getdefaultlocale()[0][:2]
