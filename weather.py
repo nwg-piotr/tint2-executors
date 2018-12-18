@@ -47,6 +47,15 @@ def main():
             if sys.argv[i].startswith("-L"):
                 settings.lang = sys.argv[i][2::]
 
+    if settings.img_path is not None:
+        img_path = settings.img_path
+
+    if name is not None:
+        os.system("echo Checking...")
+    else:
+        os.system("echo /usr/share/t2ec/refresh.svg")
+        os.system("echo ''")
+
     request_url = "http://api.openweathermap.org/data/2.5/weather?id=" + settings.city_id + "&appid=" + \
                   settings.api_key + "&units=" + settings.units + "&lang=" + settings.lang
     try:
@@ -55,8 +64,8 @@ def main():
 
     except subprocess.CalledProcessError as exitcode:
         if name is None:
-            print("images/refresh.svg")
-        print("Exit code: ", exitcode.returncode)
+            os.system("echo /usr/share/t2ec/refresh.svg")
+        os.system("echo Exit code: " + str(exitcode.returncode))
         exit(0)
 
     if response is not None:
@@ -136,8 +145,8 @@ def print_output(owm, name, items, units, img_path):
 
     else:
         if name is None:
-            print("images/refresh.svg")
-        print("HTTP status: " + str(owm.cod))
+            os.system("echo /usr/share/t2ec/refresh.svg")
+        os.system("echo HTTP status: " + str(owm.cod))
         exit(0)
 
 
@@ -157,13 +166,14 @@ class Settings:
                 "# units may be metric or imperial\n",
                 "# Uncomment lang to override system $LANG value\n",
                 "# Uncomment img_path to override built-in icons\n",
+                "# \n",
                 "# Delete this file if something goes wrong :)\n",
                 "# ------------------------------------------------\n",
                 "items = tpw\n",
                 "api_key = your_key_here\n",
                 "city_id = 2643743\n",
                 "units = metric\n",
-                "#lang = en",
+                "#lang = en\n",
                 "#img_path = /home/user/my_custom_icons/"]
 
             subprocess.call(["echo '" + ''.join(config) + "' > " + t2ec_dir + "/weatherrc"], shell=True)
@@ -173,6 +183,7 @@ class Settings:
         self.city_id = "2643743"  # London, UK
         self.units = "metric"
         self.lang = None
+        self.img_path = None
 
         # read from settings file
         lines = open(t2ec_dir + "/weatherrc", 'r').read().rstrip().splitlines()
@@ -189,6 +200,8 @@ class Settings:
                     self.units = line.split("=")[1].strip()
                 elif line.startswith("lang"):
                     self.lang = line.split("=")[1].strip()
+                elif line.startswith("img_path"):
+                    self.img_path = line.split("=")[1].strip()
 
         if self.lang is None:
             loc = locale.getdefaultlocale()[0][:2]
