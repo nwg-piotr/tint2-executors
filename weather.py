@@ -64,7 +64,6 @@ def main():
                   settings.api_key + "&units=" + settings.units + "&lang=" + settings.lang
     try:
         response = subprocess.check_output("wget -qO- '" + request_url + "'", shell=True)
-        #subprocess.call(["echo '" + str(response) + "' > " + t2ec_dir + "/.weather-" + settings.city_id], shell=True)
 
     except subprocess.CalledProcessError as exitcode:
         if name is None:
@@ -80,24 +79,24 @@ def main():
 
 
 def print_output(owm, name, items, units, img_path, settings, t2ec_dir):
-    icons = {'01d': 'ow-01d.png',
-             '01n': 'ow-01n.png',
-             '02d': 'ow-02d.png',
-             '02n': 'ow-02n.png',
-             '03d': 'ow-03d.png',
-             '03n': 'ow-03d.png',
-             '04d': 'ow-04d.png',
-             '04n': 'ow-04d.png',
-             '09d': 'ow-09d.png',
-             '09n': 'ow-09d.png',
-             '10d': 'ow-10d.png',
-             '10n': 'ow-10n.png',
-             '11d': 'ow-11d.png',
-             '11n': 'ow-11d.png',
-             '13d': 'ow-13d.png',
-             '13n': 'ow-13d.png',
-             '50d': 'ow-50d.png',
-             '50n': 'ow-50d.png'}
+    icons = {'01d': 'ow-01d.svg',
+             '01n': 'ow-01n.svg',
+             '02d': 'ow-02d.svg',
+             '02n': 'ow-02n.svg',
+             '03d': 'ow-03d.svg',
+             '03n': 'ow-03d.svg',
+             '04d': 'ow-04d.svg',
+             '04n': 'ow-04d.svg',
+             '09d': 'ow-09d.svg',
+             '09n': 'ow-09d.svg',
+             '10d': 'ow-10d.svg',
+             '10n': 'ow-10n.svg',
+             '11d': 'ow-11d.svg',
+             '11n': 'ow-11d.svg',
+             '13d': 'ow-13d.svg',
+             '13n': 'ow-13d.svg',
+             '50d': 'ow-50d.svg',
+             '50n': 'ow-50d.svg'}
 
     if owm.cod == 200:
         #print(owm)
@@ -155,7 +154,7 @@ def print_output(owm, name, items, units, img_path, settings, t2ec_dir):
         if deg is not None:
             wind += ", " + wind_dir(float(deg))
 
-        # Values below will only be used in the Details view (notification)
+        # Values below will only be used in the -details view (notification)
         try:
             sunrise = time.strftime('%H:%M', time.localtime(getattr(owm.sys, "sunrise")))
         except AttributeError:
