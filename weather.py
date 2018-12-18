@@ -2,7 +2,7 @@
 # _*_ coding: utf-8 _*_
 
 """
-Development just started. Nothing useful inside yet.
+Development in progress.
 
 Dependencies: wget
 """
@@ -20,6 +20,7 @@ def main():
     t2ec_dir = os.getenv("HOME") + "/.t2ecol"
     response = None
     name = None
+    img_path = "~/PycharmProjects/tint2-executors/images/"  # todo change to /usr/share/t2ec/
 
     settings = Settings()
 
@@ -54,42 +55,42 @@ def main():
 
     except subprocess.CalledProcessError as exitcode:
         if name is None:
-            print("icons/refresh.svg")
+            print("images/refresh.svg")
         print("Exit code: ", exitcode.returncode)
         exit(0)
 
     if response is not None:
         # Convert JSON to object - after DS. at https://stackoverflow.com/a/15882054/4040598
         owm = json.loads(response, object_hook=lambda d: namedtuple('t', d.keys())(*d.values()))
-        print_output(owm, name, settings.items, settings.units)
+        print_output(owm, name, settings.items, settings.units, img_path)
 
 
-def print_output(owm, name, items, units):
-    icons = {'01d': '01d',
-             '01n': '01n',
-             '02d': '02d',
-             '02n': '02n',
-             '03d': '03d',
-             '03n': '03d',
-             '04d': '04d',
-             '04n': '04d',
-             '09d': '09d',
-             '09n': '09d',
-             '10d': '10d',
-             '10n': '10n',
-             '11d': '11d',
-             '11n': '11d',
-             '13d': '13d',
-             '13n': '13d',
-             '50d': '50d',
-             '50n': '50d'}
+def print_output(owm, name, items, units, img_path):
+    icons = {'01d': 'ow-01d.png',
+             '01n': 'ow-01n.png',
+             '02d': 'ow-02d.png',
+             '02n': 'ow-02n.png',
+             '03d': 'ow-03d.png',
+             '03n': 'ow-03d.png',
+             '04d': 'ow-04d.png',
+             '04n': 'ow-04d.png',
+             '09d': 'ow-09d.png',
+             '09n': 'ow-09d.png',
+             '10d': 'ow-10d.png',
+             '10n': 'ow-10n.png',
+             '11d': 'ow-11d.png',
+             '11n': 'ow-11d.png',
+             '13d': 'ow-13d.png',
+             '13n': 'ow-13d.png',
+             '50d': 'ow-50d.png',
+             '50n': 'ow-50d.png'}
 
     if owm.cod == 200:
-        print(owm)
+        #print(owm)
         # Prepare items
-        icon = "icons/refresh.svg"
+        icon = "images/refresh.svg"
         try:
-            icon = "icons/" + icons[str(getattr(owm.weather[0], "icon"))] + ".png"
+            icon = img_path + icons[str(getattr(owm.weather[0], "icon"))]
         except KeyError:
             pass
 
@@ -111,7 +112,7 @@ def print_output(owm, name, items, units):
 
         output = ""
         if name is None:
-            print(icon)
+            os.system("echo " + icon)
         else:
             output += name
 
@@ -135,7 +136,7 @@ def print_output(owm, name, items, units):
 
     else:
         if name is None:
-            print("icons/refresh.svg")
+            print("images/refresh.svg")
         print("HTTP status: " + str(owm.cod))
         exit(0)
 
@@ -154,14 +155,16 @@ class Settings:
                 "# API key: go to http://openweathermap.org and get one\n",
                 "# city_id you will find at http://openweathermap.org/find\n",
                 "# units may be metric or imperial\n",
-                "# uncomment lang to override system $LANG value\n",
+                "# Uncomment lang to override system $LANG value\n",
+                "# Uncomment img_path to override built-in icons\n",
                 "# Delete this file if something goes wrong :)\n",
                 "# ------------------------------------------------\n",
                 "items = tpw\n",
                 "api_key = your_key_here\n",
                 "city_id = 2643743\n",
                 "units = metric\n",
-                "#lang = en"]
+                "#lang = en",
+                "#img_path = /home/user/my_custom_icons/"]
 
             subprocess.call(["echo '" + ''.join(config) + "' > " + t2ec_dir + "/weatherrc"], shell=True)
 
