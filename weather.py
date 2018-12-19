@@ -2,7 +2,25 @@
 # _*_ coding: utf-8 _*_
 
 """
-Development in progress.
+This script retrieves weather data from http://openweathermap.org © 2012 — 2018 OpenWeatherMap, Inc.
+1. obtain API key at http://openweathermap.org
+2. find your city ID at https://openweathermap.org/find
+3. enter both values in the ~/t2ecol/weatherrc file
+4. edit other values if necessary
+
+README: https://github.com/nwg-piotr/tint2-executors/tree/master/arch-package
+
+Author: Piotr Miller
+e-mail: nwg.piotr@gmail.com
+Website: http://nwg.pl
+Project: https://github.com/nwg-piotr/tint2-executors
+License: GPL3
+
+Arguments to override some ~/t2ecol/weatherrc config file values:
+
+[-I<items>] [-A<api_key>] [-C<city_id>] [-U<metric>|<imperial>] [-L<lang>] [-D[<city_id>]]
+items: [s]hort description, [d]escription, [t]emperature, [p]ressure, [h]umidity, [w]ind, [c]ity ID
+-D[<city_id>] shows details as a notification.
 
 Dependencies: wget
 """
@@ -27,8 +45,6 @@ def main():
 
     if len(sys.argv) > 1:
         for i in range(1, len(sys.argv)):
-            if sys.argv[i] == '-details':
-                show_details(t2ec_dir, settings.city_id)
 
             if sys.argv[i].upper() == '-N':
                 name = settings.dict["_weather"] + ":"
@@ -50,6 +66,13 @@ def main():
 
             if sys.argv[i].startswith("-L"):
                 settings.lang = sys.argv[i][2::]
+
+            if sys.argv[i].startswith("-D"):
+                c_id = sys.argv[i][2::]
+                if c_id:
+                    show_details(t2ec_dir, c_id)
+                else:
+                    show_details(t2ec_dir, settings.city_id)
 
     if settings.img_path is not None:
         img_path = settings.img_path
@@ -99,7 +122,6 @@ def print_output(owm, name, items, units, img_path, settings, t2ec_dir):
              '50n': 'ow-50d.svg'}
 
     if owm.cod == 200:
-        #print(owm)
         # Prepare panel items
         icon = "images/refresh.svg"
         try:
@@ -154,7 +176,7 @@ def print_output(owm, name, items, units, img_path, settings, t2ec_dir):
         if deg is not None:
             wind += ", " + wind_dir(float(deg))
 
-        # Values below will only be used in the -details view (notification)
+        # Values below will only be used in the details view (notification)
         try:
             sunrise = time.strftime('%H:%M', time.localtime(getattr(owm.sys, "sunrise")))
         except AttributeError:
@@ -245,12 +267,13 @@ class Settings:
         super().__init__()
 
         t2ec_dir = os.getenv("HOME") + "/.t2ecol"
+
         # Create settings file if not found
         if not os.path.isdir(t2ec_dir):
             os.makedirs(t2ec_dir)
         if not os.path.isfile(t2ec_dir + "/weatherrc"):
             config = [
-                "# Items: [s]hort description, [d]escription, [t]emperature, [p]ressure, [h]umidity, [w]ind, [c]ity name\n",
+                "# Items: [s]hort description, [d]escription, [t]emperature, [p]ressure, [h]umidity, [w]ind, [c]ity ID\n",
                 "# API key: go to http://openweathermap.org and get one\n",
                 "# city_id you will find at http://openweathermap.org/find\n",
                 "# units may be metric or imperial\n",
@@ -279,6 +302,7 @@ class Settings:
 
             subprocess.call(["echo '" + ''.join(config) + "' > " + t2ec_dir + "/weatherrc"], shell=True)
 
+        # Set default values
         self.items = "tpw"
         self.api_key = ""
         self.city_id = "2643743"  # London, UK
@@ -294,7 +318,7 @@ class Settings:
                      '_sunrise': 'Sunrise',
                      '_sunset': 'Sunset'}
 
-        # read from settings file
+        # Override defaults with config file values, if found
         lines = open(t2ec_dir + "/weatherrc", 'r').read().rstrip().splitlines()
 
         for line in lines:
