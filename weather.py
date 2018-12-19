@@ -3,10 +3,10 @@
 
 """
 This script retrieves weather data from http://openweathermap.org © 2012 — 2018 OpenWeatherMap, Inc.
-1. obtain API key at http://openweathermap.org
-2. find your city ID at https://openweathermap.org/find
-3. enter both values in the ~/t2ecol/weatherrc file
-4. edit other values if necessary
+1. Obtain API key at http://openweathermap.org;
+2. find your city ID at https://openweathermap.org/find;
+3. enter both values in the ~/t2ecol/weatherrc file;
+4. edit other values if necessary.
 
 README: https://github.com/nwg-piotr/tint2-executors/tree/master/arch-package
 
