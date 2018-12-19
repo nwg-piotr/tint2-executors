@@ -99,6 +99,8 @@ def main():
         owm = json.loads(response, object_hook=lambda d: namedtuple('t', d.keys())(*d.values()))
 
         print_output(owm, name, settings.items, settings.units, img_path, settings, t2ec_dir)
+        # todo No need for the print_output() function below
+        # todo Just replace items with settings.items and units with settings.units
 
 
 def print_output(owm, name, items, units, img_path, settings, t2ec_dir):
@@ -123,7 +125,7 @@ def print_output(owm, name, items, units, img_path, settings, t2ec_dir):
 
     if owm.cod == 200:
         # Prepare panel items
-        icon = "images/refresh.svg"
+        icon = "/usr/share/t2ec/refresh.svg"
         try:
             icon = img_path + icons[str(getattr(owm.weather[0], "icon"))]
         except KeyError:
