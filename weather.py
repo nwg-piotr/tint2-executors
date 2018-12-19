@@ -46,6 +46,10 @@ def main():
     if len(sys.argv) > 1:
         for i in range(1, len(sys.argv)):
 
+            if sys.argv[i].upper() == '-H' or sys.argv[i].upper() == '--HELP':
+                print_help()
+                exit(0)
+
             if sys.argv[i].upper() == '-N':
                 name = settings.dict["_weather"] + ":"
 
@@ -98,154 +102,148 @@ def main():
         # Convert JSON to object - after DS. at https://stackoverflow.com/a/15882054/4040598
         owm = json.loads(response, object_hook=lambda d: namedtuple('t', d.keys())(*d.values()))
 
-        print_output(owm, name, settings.items, settings.units, img_path, settings, t2ec_dir)
-        # todo No need for the print_output() function below
-        # todo Just replace items with settings.items and units with settings.units
+        icons = {'01d': 'ow-01d.svg',
+                 '01n': 'ow-01n.svg',
+                 '02d': 'ow-02d.svg',
+                 '02n': 'ow-02n.svg',
+                 '03d': 'ow-03d.svg',
+                 '03n': 'ow-03d.svg',
+                 '04d': 'ow-04d.svg',
+                 '04n': 'ow-04d.svg',
+                 '09d': 'ow-09d.svg',
+                 '09n': 'ow-09d.svg',
+                 '10d': 'ow-10d.svg',
+                 '10n': 'ow-10n.svg',
+                 '11d': 'ow-11d.svg',
+                 '11n': 'ow-11d.svg',
+                 '13d': 'ow-13d.svg',
+                 '13n': 'ow-13d.svg',
+                 '50d': 'ow-50d.svg',
+                 '50n': 'ow-50d.svg'}
 
+        if owm.cod == 200:
+            # Prepare panel items
+            icon = "/usr/share/t2ec/refresh.svg"
+            try:
+                icon = img_path + icons[str(getattr(owm.weather[0], "icon"))]
+            except KeyError:
+                pass
 
-def print_output(owm, name, items, units, img_path, settings, t2ec_dir):
-    icons = {'01d': 'ow-01d.svg',
-             '01n': 'ow-01n.svg',
-             '02d': 'ow-02d.svg',
-             '02n': 'ow-02n.svg',
-             '03d': 'ow-03d.svg',
-             '03n': 'ow-03d.svg',
-             '04d': 'ow-04d.svg',
-             '04n': 'ow-04d.svg',
-             '09d': 'ow-09d.svg',
-             '09n': 'ow-09d.svg',
-             '10d': 'ow-10d.svg',
-             '10n': 'ow-10n.svg',
-             '11d': 'ow-11d.svg',
-             '11n': 'ow-11d.svg',
-             '13d': 'ow-13d.svg',
-             '13n': 'ow-13d.svg',
-             '50d': 'ow-50d.svg',
-             '50n': 'ow-50d.svg'}
+            city, s_desc, desc, temp, pressure, humidity, wind, deg, sunrise, sunset, cloudiness \
+                = None, None, None, None, None, None, None, None, None, None, None
 
-    if owm.cod == 200:
-        # Prepare panel items
-        icon = "/usr/share/t2ec/refresh.svg"
-        try:
-            icon = img_path + icons[str(getattr(owm.weather[0], "icon"))]
-        except KeyError:
-            pass
+            try:
+                city = str(owm.name + ", " + getattr(owm.sys, "country"))
+            except AttributeError:
+                pass
 
-        city, s_desc, desc, temp, pressure, humidity, wind, deg, sunrise, sunset, cloudiness \
-            = None, None, None, None, None, None, None, None, None, None, None
+            try:
+                s_desc = str(getattr(owm.weather[0], "main"))
+            except AttributeError:
+                pass
 
-        try:
-            city = str(owm.name + ", " + getattr(owm.sys, "country"))
-        except AttributeError:
-            pass
+            try:
+                desc = str(getattr(owm.weather[0], "description"))
+            except AttributeError:
+                pass
 
-        try:
-            s_desc = str(getattr(owm.weather[0], "main"))
-        except AttributeError:
-            pass
+            unit = "℉" if settings.units == "imperial" else "℃"
+            try:
+                temp = str(round(float(str(getattr(owm.main, "temp"))), 1)) + unit
+            except AttributeError:
+                pass
 
-        try:
-            desc = str(getattr(owm.weather[0], "description"))
-        except AttributeError:
-            pass
+            try:
+                pressure = str(int(round(float(str(getattr(owm.main, "pressure"))), 0))) + " hpa"
+            except AttributeError:
+                pass
 
-        unit = "℉" if units == "imperial" else "℃"
-        try:
-            temp = str(round(float(str(getattr(owm.main, "temp"))), 1)) + unit
-        except AttributeError:
-            pass
+            try:
+                humidity = str(int(round(float(str(getattr(owm.main, "humidity"))), 0))) + "%"
+            except AttributeError:
+                pass
 
-        try:
-            pressure = str(int(round(float(str(getattr(owm.main, "pressure"))), 0))) + " hpa"
-        except AttributeError:
-            pass
+            unit = " m/h" if settings.units == "imperial" else " m/s"
+            try:
+                wind = str(getattr(owm.wind, "speed")) + unit
+            except AttributeError:
+                pass
 
-        try:
-            humidity = str(int(round(float(str(getattr(owm.main, "humidity"))), 0))) + "%"
-        except AttributeError:
-            pass
+            try:
+                deg = str(getattr(owm.wind, "deg"))
+            except AttributeError:
+                pass
+            if deg is not None:
+                wind += ", " + wind_dir(float(deg))
 
-        unit = " m/h" if units == "imperial" else " m/s"
-        try:
-            wind = str(getattr(owm.wind, "speed")) + unit
-        except AttributeError:
-            pass
+            # Values below will only be used in the details view (notification)
+            try:
+                sunrise = time.strftime('%H:%M', time.localtime(getattr(owm.sys, "sunrise")))
+            except AttributeError:
+                pass
 
-        try:
-            deg = str(getattr(owm.wind, "deg"))
-        except AttributeError:
-            pass
-        if deg is not None:
-            wind += ", " + wind_dir(float(deg))
+            try:
+                sunset = time.strftime('%H:%M', time.localtime(getattr(owm.sys, "sunset")))
+            except AttributeError:
+                pass
 
-        # Values below will only be used in the details view (notification)
-        try:
-            sunrise = time.strftime('%H:%M', time.localtime(getattr(owm.sys, "sunrise")))
-        except AttributeError:
-            pass
+            try:
+                cloudiness = str(getattr(owm.clouds, "all")) + "%"
+            except AttributeError:
+                pass
 
-        try:
-            sunset = time.strftime('%H:%M', time.localtime(getattr(owm.sys, "sunset")))
-        except AttributeError:
-            pass
+            output = ""
+            if name is None:
+                os.system("echo " + icon)
+            else:
+                output += name
 
-        try:
-            cloudiness = str(getattr(owm.clouds, "all")) + "%"
-        except AttributeError:
-            pass
+            for i in range(len(settings.items)):
+                if settings.items[i] == "c" and city is not None:
+                    output += " " + city + " "
+                if settings.items[i] == "s" and s_desc is not None:
+                    output += " " + s_desc + " "
+                if settings.items[i] == "d" and desc is not None:
+                    output += " " + desc + " "
+                if settings.items[i] == "t" and temp is not None:
+                    output += " " + temp + " "
+                if settings.items[i] == "p" and pressure is not None:
+                    output += " " + pressure + " "
+                if settings.items[i] == "h" and humidity is not None:
+                    output += " " + humidity + " "
+                if settings.items[i] == "w" and wind is not None:
+                    output += " " + wind + " "
 
-        output = ""
-        if name is None:
-            os.system("echo " + icon)
+            print(re.sub(' +', ' ', output).strip())
+
+            details = icon + "\n"
+            if city is not None:
+                details += settings.dict["_in_weather"] + " " + city + "\n"
+            if temp is not None:
+                details += temp
+            if desc is not None:
+                details += ", " + desc
+            details += "\n"
+            if wind is not None:
+                details += settings.dict["_wind"] + ": " + wind + "\n"
+            if cloudiness is not None:
+                details += settings.dict["_cloudiness"] + ": " + cloudiness + "\n"
+            if pressure is not None:
+                details += settings.dict["_pressure"] + ": " + pressure + "\n"
+            if humidity is not None:
+                details += settings.dict["_humidity"] + ": " + humidity + "\n"
+            if sunrise is not None:
+                details += settings.dict["_sunrise"] + ": " + sunrise + "\n"
+            if sunset is not None:
+                details += settings.dict["_sunset"] + ": " + sunset + "\n"
+
+            subprocess.call(["echo '" + str(details) + "' > " + t2ec_dir + "/.weather-" + settings.city_id], shell=True)
+
         else:
-            output += name
-
-        for i in range(len(items)):
-            if items[i] == "c" and city is not None:
-                output += " " + city + " "
-            if items[i] == "s" and s_desc is not None:
-                output += " " + s_desc + " "
-            if items[i] == "d" and desc is not None:
-                output += " " + desc + " "
-            if items[i] == "t" and temp is not None:
-                output += " " + temp + " "
-            if items[i] == "p" and pressure is not None:
-                output += " " + pressure + " "
-            if items[i] == "h" and humidity is not None:
-                output += " " + humidity + " "
-            if items[i] == "w" and wind is not None:
-                output += " " + wind + " "
-
-        print(re.sub(' +', ' ', output).strip())
-
-        details = icon + "\n"
-        if city is not None:
-            details += settings.dict["_in_weather"] + " " + city + "\n"
-        if temp is not None:
-            details += temp
-        if desc is not None:
-            details += ", " + desc
-        details += "\n"
-        if wind is not None:
-            details += settings.dict["_wind"] + ": " + wind + "\n"
-        if cloudiness is not None:
-            details += settings.dict["_cloudiness"] + ": " + cloudiness + "\n"
-        if pressure is not None:
-            details += settings.dict["_pressure"] + ": " + pressure + "\n"
-        if humidity is not None:
-            details += settings.dict["_humidity"] + ": " + humidity + "\n"
-        if sunrise is not None:
-            details += settings.dict["_sunrise"] + ": " + sunrise + "\n"
-        if sunset is not None:
-            details += settings.dict["_sunset"] + ": " + sunset + "\n"
-
-        subprocess.call(["echo '" + str(details) + "' > " + t2ec_dir + "/.weather-" + settings.city_id], shell=True)
-
-    else:
-        if name is None:
-            os.system("echo /usr/share/t2ec/refresh.svg")
-        os.system("echo HTTP status: " + str(owm.cod))
-        exit(0)
+            if name is None:
+                os.system("echo /usr/share/t2ec/refresh.svg")
+            os.system("echo HTTP status: " + str(owm.cod))
+            exit(0)
 
 
 def show_details(t2ec_dir, city):
@@ -264,6 +262,21 @@ def show_details(t2ec_dir, city):
         os.system("notify-send '" + title + "' " + "'" + message + "' -i " + icon)
 
 
+def print_help():
+
+    print("\nFor multiple executors you may override /home/user/.t2ecol/weatherrc settings with arguments:")
+
+    print("\nt2ec --weather [-I<items>] [-A<api_key>] [-C<city_id>] [-U<units>] [-L<lang>]")
+
+    print("\n<items>: [s]hort description, [d]escription, [t]emperature, [p]ressure, [h]umidity, [w]ind, [c]ity name")
+
+    print("\nTo show details as a notification:")
+
+    print("\nt2ec --weather -D[<city_id>]")
+
+    print("\nAdd [<city_id>] if varies from weatherrc city_id field.\n")
+
+
 class Settings:
     def __init__(self):
         super().__init__()
@@ -275,7 +288,7 @@ class Settings:
             os.makedirs(t2ec_dir)
         if not os.path.isfile(t2ec_dir + "/weatherrc"):
             config = [
-                "# Items: [s]hort description, [d]escription, [t]emperature, [p]ressure, [h]umidity, [w]ind, [c]ity ID\n",
+                "# Items: [s]hort description, [d]escription, [t]emperature, [p]ressure, [h]umidity, [w]ind, [c]ity name\n",
                 "# API key: go to http://openweathermap.org and get one\n",
                 "# city_id you will find at http://openweathermap.org/find\n",
                 "# units may be metric or imperial\n",
