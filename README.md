@@ -15,7 +15,7 @@ Contains the rest of most useful scripts, which as well display system info, as 
 
 ## [rof](https://github.com/nwg-piotr/rof)
 
-A simple helper script, which is a launcher allowing to avoid running multiple instances of the same window. Useful while assigning commands to mouse click event. [AUR](https://aur.archlinux.org/packages/rof-git)
+A simple helper script, which is a launcher allowing to avoid running multiple instances of the same window. Useful while assigning commands to mouse click events. [AUR](https://aur.archlinux.org/packages/rof-git)
 
 ## Sample usage:
 
