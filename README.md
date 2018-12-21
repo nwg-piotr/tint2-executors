@@ -1,11 +1,13 @@
 # Tint2 executors collection
 While playing with Openbox, we often need a script to perform some actions not included OOTB. Having to search the same answers again and again on each new machine, I thought it was worth documenting them somewhere for further use.
 
-The [Tint2 panel](https://gitlab.com/o9000/tint2) - a brilliant and flexible piece of software - allows to execute scripts every certain period of time. At least some of these scripts should also be useful in other applications (panels?), however.
+The [Tint2 panel](https://gitlab.com/o9000/tint2) - a brilliant and flexible piece of software - allows to execute scripts every certain period of time. At least some of these scripts should also be useful in other applications (panels?).
 
-If you find the project useful, feel free to contribute. **Many thanks** to [PackRat](https://github.com/PackRat-SC2018), [Head_on_a_Stick](https://forum.archlabslinux.com/u/head_on_a_stick/summary), [Nathaniel](https://github.com/natemaia), [edskeye](https://github.com/edskeye), [johanmalm](https://github.com/johanmalm) for advices and support.
+This repository contains scripts of various usability in various stages of development. Always up to date versions you'll find in separate repositories:
 
-The project is being developed and tested on [Arch Linux](https://www.archlinux.org). Dependencies, shell references or something else (?), may (and probably will) be invalid be on other Linux distributions.
+## [psuinfo](https://github.com/nwg-piotr/psuinfo) 
+
+Contains a python-psutil-based script, which provides a set of commands to display information on system resources usage. In Tint2 panel you may choose from graphical (icons) and textual format. Published as [psuinfo](https://aur.archlinux.org/packages/psuinfo) (AUR) package for Arch Linux and in official Void Linux repository.
 
 ___
 ## Installation (Arch Linux)
