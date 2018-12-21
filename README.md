@@ -9,19 +9,17 @@ This repository contains scripts of various usability in various stages of devel
 
 Contains a python-psutil-based script, which provides a set of commands to display information on system resources usage. In Tint2 panel you may choose from graphical (icons) and textual format. Published as [psuinfo](https://aur.archlinux.org/packages/psuinfo) (AUR) package for Arch Linux and in official Void Linux repository.
 
-___
-## Installation (Arch Linux)
-The most useful part of the scripts was gathered in three AUR packages, which contain recent improvement and bug fixes:
-- [psuinfo](https://github.com/nwg-piotr/psuinfo) - a separate project, which contains python-psutil-based commands of common syntax ([AUR](https://aur.archlinux.org/packages/psuinfo));
-- [t2ec](https://github.com/nwg-piotr/tint2-executors/tree/master/arch-package) - a folder in this project, containing selected scripts, given a common command, published in ([AUR](https://aur.archlinux.org/packages/t2ec));
-- [rof](https://github.com/nwg-piotr/rof) - a separate project: a helper script, which is a launcher allowing to avoid running multiple instances of the same window ([AUR](https://aur.archlinux.org/packages/rof-git)).
-___
+## [t2ec](https://github.com/nwg-piotr/t2ec)
 
-## Scripts in action
+Contains the rest of most useful scripts, which as well display system info, as allow to assign some useful actions to mouse clicks: desktop indicator/switcher, Bumblebee status, brightness and volume level, wi-fi network in use, Arch updates and current weather. [AUR](https://aur.archlinux.org/packages/t2ec)
 
-Take a look at a sample `psuinfo` and `t2ec` usage on a laptop:
+## [rof](https://github.com/nwg-piotr/rof)
 
-![scripts in action](http://nwg.pl/wiki-tint2-executors/my-panels-261118.jpg)
+A simple helper script, which is a launcher allowing to avoid running multiple instances of the same window. Useful while assigning commands to mouse click event. [AUR](https://aur.archlinux.org/packages/rof-git)
+
+## Sample usage:
+
+![scripts in action](http://nwg.pl/wiki-tint2-executors/my-panels-201218.jpg)
 
 ___
 **Attention: all the content described below this point concerns development versions, which may not contain latest changes. Use of packages named above is strongly recommended.**
