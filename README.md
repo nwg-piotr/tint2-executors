@@ -11,7 +11,7 @@ Contains a python-psutil-based script, which provides a set of commands to displ
 
 ## [t2ec](https://github.com/nwg-piotr/t2ec)
 
-Contains the rest of most useful scripts, which as well display system info, as allow to assign some useful actions to mouse clicks: desktop indicator/switcher, Bumblebee status, brightness and volume level, wi-fi network in use, Arch updates and current weather. [AUR](https://aur.archlinux.org/packages/t2ec)
+Contains the rest of most useful scripts, which as well display system info, as allow to assign some useful actions to mouse clicks: desktop indicator/switcher, Bumblebee status, brightness and volume level, wi-fi network in use, Arch updates and current weather. Published as [t2ec](https://aur.archlinux.org/packages/t2ec) (AUR) package for Arch Linux.
 
 ## [rof](https://github.com/nwg-piotr/rof)
 
