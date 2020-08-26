@@ -26,6 +26,7 @@ else
           level=${level::-1}
         else
           level=${level::-2}
+        fi
     fi
 fi
 
